@@ -1,8 +1,8 @@
 {
   "schema": "rds-validation-status/v1",
   "campaign": "Mujina on the BZM2 RDS control board",
-  "updated_at": "2026-09-15T16:24:03Z",
-  "status_updated_at": "2026-09-15T16:24:03Z",
+  "updated_at": "2026-09-15T16:40:28Z",
+  "status_updated_at": "2026-09-15T16:40:28Z",
   "stale_after_s": 86400,
   "git_commit": "3efd366",
   "source": "generated from case records and result files",
@@ -18,12 +18,20 @@
           "layout": "RDS-LOG-01",
           "suite": "phase 0",
           "mode": "open",
-          "detail": "not executed",
-          "status": "pending",
+          "detail": "1 run",
+          "status": "skipped",
           "why": "Establish what each log level of the vendor daemon costs and what it buys, so that later cases can choose a level deliberately and so Mujina's own logging can be designed against a known comparison.",
-          "started_at": null,
-          "finished_at": null,
-          "cases": []
+          "started_at": "2026-09-15T02:24:59Z",
+          "finished_at": "2026-09-15T02:33:02Z",
+          "cases": [
+            {
+              "id": "RDS-LOG-01 20260915T022459Z",
+              "status": "skipped",
+              "started_at": "2026-09-15T02:24:59Z",
+              "finished_at": "2026-09-15T02:33:02Z",
+              "why": "executed 2026-09-14."
+            }
+          ]
         },
         {
           "n": 1,
@@ -105,24 +113,40 @@
           "layout": "RDS-PWR-01",
           "suite": "phase 1",
           "mode": "open",
-          "detail": "not executed",
-          "status": "pending",
+          "detail": "1 run",
+          "status": "skipped",
           "why": "Record the vendor daemon's complete power-on sequence \u2014 every PSU command, MCU enable, trip-protection write and round \u2014 with values, so Mujina's own bring-up (#28, #29) can be written against an observed sequence rather than an inferred one.",
-          "started_at": null,
-          "finished_at": null,
-          "cases": []
+          "started_at": "2026-09-15T02:24:59Z",
+          "finished_at": "2026-09-15T02:33:02Z",
+          "cases": [
+            {
+              "id": "RDS-PWR-01 20260915T022459Z",
+              "status": "skipped",
+              "started_at": "2026-09-15T02:24:59Z",
+              "finished_at": "2026-09-15T02:33:02Z",
+              "why": "executed 2026-09-14, but under the defective capture method of RDS-PWR-02, so the sequence is recorded and the verdict is not."
+            }
+          ]
         },
         {
           "n": 1,
           "layout": "RDS-PWR-02",
           "suite": "phase 1",
           "mode": "open",
-          "detail": "not executed",
-          "status": "pending",
+          "detail": "1 run",
+          "status": "failed",
           "why": "Determine whether debug-level logging is safe to run through the whole power-on sequence, and if not, why not. Unplanned: this case exists because a characterization run at `-L 7` failed to power the boards on, and the failure turned out to be more informative than the capture would have been.",
-          "started_at": null,
-          "finished_at": null,
-          "cases": []
+          "started_at": "2026-09-15T02:24:59Z",
+          "finished_at": "2026-09-15T02:33:02Z",
+          "cases": [
+            {
+              "id": "RDS-PWR-02 20260915T022459Z",
+              "status": "failed",
+              "started_at": "2026-09-15T02:24:59Z",
+              "finished_at": "2026-09-15T02:33:02Z",
+              "why": "executed 2026-09-14. FAIL, and the failure is the finding."
+            }
+          ]
         },
         {
           "n": 2,
@@ -154,17 +178,17 @@
           "suite": "phase 1",
           "mode": "open",
           "detail": "1 run",
-          "status": "skipped",
+          "status": "passed",
           "why": "Observe the **closed loop**, not the endpoints: how fan duty tracks die temperature once the controller is actually running. Rewritten 2026-09-15. The first version asked for \"the fan curve at powered idle\" and would have measured the wrong thing, because the loop does not start until calibration completes, then waits about 180 seconds to settle and averages several samples before its first move. A run that ends before that sees a constant duty and concludes there is no feedback. One did, and it was reported as a finding before Ronald corrected it. See `docs/rds/fan-control-law.md`.",
           "started_at": "2026-09-15T13:01:13Z",
-          "finished_at": "2026-09-15T13:53:07Z",
+          "finished_at": "2026-09-15T16:40:02Z",
           "cases": [
             {
               "id": "RDS-THR-01 20260915T130113Z",
-              "status": "skipped",
+              "status": "passed",
               "started_at": "2026-09-15T13:01:13Z",
-              "finished_at": "2026-09-15T13:53:07Z",
-              "why": null
+              "finished_at": "2026-09-15T16:40:02Z",
+              "why": "PASS"
             }
           ]
         }
@@ -222,7 +246,7 @@
           "suite": "phase 2",
           "mode": "gated",
           "detail": "6 runs",
-          "status": "skipped",
+          "status": "failed",
           "why": "The first time our own code touches real silicon. Mujina attaches to the chain, enumerates it, and streams telemetry, while dispatching no work at all.",
           "started_at": "2026-09-15T04:36:07Z",
           "finished_at": "2026-09-15T05:17:49Z",
@@ -264,10 +288,10 @@
             },
             {
               "id": "MJ-OBS-01 20260915T051503Z",
-              "status": "skipped",
+              "status": "failed",
               "started_at": "2026-09-15T05:15:03Z",
               "finished_at": "2026-09-15T05:17:49Z",
-              "why": "ran, no verdict stated"
+              "why": "FAIL"
             }
           ]
         },
