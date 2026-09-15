@@ -145,6 +145,16 @@
       "pass_fail": "Pass: - The flush sequence is reconstructible from the capture, in order, with timings. - The two flushes agree. A sequence observed once is an anecdote. Fail: - Work in flight is lost in a way the daemon does not account for, and the discrepancy cannot be reconciled from the log. - A device does not resume dispatch after the flush.",
       "comments": "Our own flush path is the thing this case exists to specify and later to check. It is also the hardest case for the chain model in #57 to reproduce faithfully, which makes it the best test of whether that model is worth trusting."
     },
+    "MJ-HASH-01": {
+      "id": "MJ-HASH-01",
+      "title": "Mujina hashing on boards the vendor powered",
+      "subtitle": "not executed. GATED (G-HEAT), and blocked on the thermal interlock.",
+      "objective": "Establish that Mujina can drive a powered BZM2 chain to produce verifiable work, and do it without relying on anything the vendor stack is still doing. Not \"does it hash\". Does it hash, safely, with every share externally verifiable and every watt accounted for.",
+      "requirements": "- One RDS 2.0 unit, one hashboard, powered and calibrated by the vendor path. - The dispatch interlock, implemented and exercised against fault injection. - A pool and worker, with difficulty recorded, so shares are verifiable by something that is not us. - Metered wall power for the whole run, continuously, with no gaps. - An explicit go-ahead for the thermal load, recorded in the run.",
+      "procedure": "1. Bring one board up by the vendor path and let calibration settle. Record the operating point. 2. Hand over without dropping board power. 3. Confirm the interlock is armed and reporting a live die temperature before any work is dispatched. If it is not, the case aborts here, and that is a pass for the interlock. 4. Dispatch work at the recorded operating point. Hold for a stated duration after discarding a settling period. 5. Record submitted shares with their difficulty, metered power, die temperatures and fan state throughout. 6. Stop dispatching before stopping anything else, so the shutdown path is observed separately from the load being removed.",
+      "pass_fail": "Pass: - Shares are accepted by the pool. The count and difficulty are the evidence; our own reported hash rate is not. - Die temperature stays within the ceiling for the whole run, and the interlock never has to act. If it does act, that is also a result, and a good one. - Power metering has no gaps. - The board returns to the vendor stack afterwards and powers on normally. Fail: - Any dispatch occurs before the interlock reports a live temperature. - Any board trips, or die temperature exceeds the ceiling. - A metering gap. A share count without the power that produced it is not a result, and the run is discarded rather than reported with a hole. - Shares rejected at a rate the pool's difficulty does not explain.",
+      "comments": "The number this case exists to produce is joules per submitted share, which is the only efficiency figure that cannot be inflated by miscounting our own work. Reported throughput is self-reported; shares are not."
+    },
     "MJ-CMP-01": {
       "id": "MJ-CMP-01",
       "title": "Vendor against Mujina, same board, same frequency, same hours",
