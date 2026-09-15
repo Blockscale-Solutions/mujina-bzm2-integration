@@ -664,11 +664,15 @@
       var reqs = fieldText(doc, ["requirements", "hardware", "requirements_hardware", "Requirements"]);
       var proc = fieldText(doc, ["procedure", "Procedure"]);
       var pf = fieldText(doc, ["pass_fail", "pass/fail", "Pass/Fail"]);
+      // What the case said it would capture, declared before it ran. Shown
+      // next to the criteria because a criterion you cannot evaluate from the
+      // captured metrics is not a criterion.
+      var metrics = fieldText(doc, ["metrics", "Metrics"]);
       var comments = fieldText(doc, ["comments", "Comments"]);
       var configs = fieldText(doc, ["configurations", "config", "Configurations"]);
       var published = !!(
         doc &&
-        (title || objective || reqs || proc || pf || comments || configs || subtitle)
+        (title || objective || reqs || proc || pf || metrics || comments || configs || subtitle)
       );
       if (idEl) idEl.textContent = caseId;
       if (titleTextEl) titleTextEl.textContent = published && title ? title : "—";
@@ -716,6 +720,7 @@
         section("Procedure", proc) +
         section("Pass / Fail", pf) +
         section("Comments", comments) +
+        section("Metrics captured", metrics) +
         section("Configurations", configs);
     });
   }
