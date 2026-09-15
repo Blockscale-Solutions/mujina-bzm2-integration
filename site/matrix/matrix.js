@@ -146,9 +146,9 @@
             st +
             '">' +
             '<button type="button" class="case-open" data-case-id="' +
-            esc(id) +
+            esc(c.tcid || id) +
             '" title="' +
-            esc(id + " · " + mk.label) +
+            esc((c.tcid ? c.tcid + " · " : "") + id + " · " + mk.label) +
             '">' +
             '<span class="case-mark" aria-label="' +
             esc(mk.label) +
@@ -709,7 +709,7 @@
         bodyEl.innerHTML =
           '<p class="doc-empty">Doc not yet published for <code>' +
           esc(id) +
-          "</code>. Waiting on <code>docs/test-cases/</code>.</p>";
+          "</code>. Every executed case should have one: see <code>docs/rds/cases/</code>.</p>";
         return;
       }
       // Compact header already has Test/Title/Priority/Created/Updated — body starts at description.

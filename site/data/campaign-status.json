@@ -1,10 +1,10 @@
 {
   "schema": "rds-validation-status/v1",
   "campaign": "Mujina on the BZM2 RDS control board",
-  "updated_at": "2026-09-15T16:54:11Z",
-  "status_updated_at": "2026-09-15T16:54:11Z",
+  "updated_at": "2026-09-15T17:00:39Z",
+  "status_updated_at": "2026-09-15T17:00:39Z",
   "stale_after_s": 86400,
-  "git_commit": "97cb476",
+  "git_commit": "39a6076",
   "source": "generated from case records and result files",
   "note": "Status and timings only. No metric, temperature, serial, host or path appears here by design.",
   "stages": [
@@ -25,7 +25,9 @@
           "finished_at": "2026-09-15T02:33:02Z",
           "cases": [
             {
-              "id": "RDS-LOG-01 20260915T022459Z",
+              "id": "2026-09-15 02:24Z",
+              "tcid": "RDS-LOG-01",
+              "stamp": "20260915T022459Z",
               "status": "skipped",
               "started_at": "2026-09-15T02:24:59Z",
               "finished_at": "2026-09-15T02:33:02Z",
@@ -45,35 +47,45 @@
           "finished_at": "2026-09-15T03:37:01Z",
           "cases": [
             {
-              "id": "RDS-LOG-02 20260915T030927Z",
+              "id": "2026-09-15 03:09Z",
+              "tcid": "RDS-LOG-02",
+              "stamp": "20260915T030927Z",
               "status": "blocked",
               "started_at": "2026-09-15T03:09:27Z",
               "finished_at": "2026-09-15T03:09:35Z",
               "why": "status: ABORTED"
             },
             {
-              "id": "RDS-LOG-02 20260915T031619Z",
+              "id": "2026-09-15 03:16Z",
+              "tcid": "RDS-LOG-02",
+              "stamp": "20260915T031619Z",
               "status": "skipped",
               "started_at": "2026-09-15T03:16:19Z",
               "finished_at": "2026-09-15T03:22:14Z",
               "why": "ran, no verdict stated"
             },
             {
-              "id": "RDS-LOG-02 20260915T032314Z",
+              "id": "2026-09-15 03:23Z",
+              "tcid": "RDS-LOG-02",
+              "stamp": "20260915T032314Z",
               "status": "passed",
               "started_at": "2026-09-15T03:23:14Z",
               "finished_at": "2026-09-15T03:26:44Z",
               "why": "power-on done"
             },
             {
-              "id": "RDS-LOG-02 20260915T032744Z",
+              "id": "2026-09-15 03:27Z",
+              "tcid": "RDS-LOG-02",
+              "stamp": "20260915T032744Z",
               "status": "passed",
               "started_at": "2026-09-15T03:27:44Z",
               "finished_at": "2026-09-15T03:31:13Z",
               "why": "power-on done"
             },
             {
-              "id": "RDS-LOG-02 20260915T033214Z",
+              "id": "2026-09-15 03:32Z",
+              "tcid": "RDS-LOG-02",
+              "stamp": "20260915T033214Z",
               "status": "passed",
               "started_at": "2026-09-15T03:32:14Z",
               "finished_at": "2026-09-15T03:37:01Z",
@@ -93,7 +105,9 @@
           "finished_at": "2026-09-15T03:14:56Z",
           "cases": [
             {
-              "id": "RDS-LOG-03 20260915T031456Z",
+              "id": "2026-09-15 03:14Z",
+              "tcid": "RDS-LOG-03",
+              "stamp": "20260915T031456Z",
               "status": "skipped",
               "started_at": "2026-09-15T03:14:56Z",
               "finished_at": "2026-09-15T03:14:56Z",
@@ -120,7 +134,9 @@
           "finished_at": "2026-09-15T02:33:02Z",
           "cases": [
             {
-              "id": "RDS-PWR-01 20260915T022459Z",
+              "id": "2026-09-15 02:24Z",
+              "tcid": "RDS-PWR-01",
+              "stamp": "20260915T022459Z",
               "status": "skipped",
               "started_at": "2026-09-15T02:24:59Z",
               "finished_at": "2026-09-15T02:33:02Z",
@@ -140,7 +156,9 @@
           "finished_at": "2026-09-15T02:33:02Z",
           "cases": [
             {
-              "id": "RDS-PWR-02 20260915T022459Z",
+              "id": "2026-09-15 02:24Z",
+              "tcid": "RDS-PWR-02",
+              "stamp": "20260915T022459Z",
               "status": "failed",
               "started_at": "2026-09-15T02:24:59Z",
               "finished_at": "2026-09-15T02:33:02Z",
@@ -184,7 +202,9 @@
           "finished_at": "2026-09-15T16:40:02Z",
           "cases": [
             {
-              "id": "RDS-THR-01 20260915T130113Z",
+              "id": "2026-09-15 13:01Z",
+              "tcid": "RDS-THR-01",
+              "stamp": "20260915T130113Z",
               "status": "passed",
               "started_at": "2026-09-15T13:01:13Z",
               "finished_at": "2026-09-15T16:40:02Z",
@@ -211,28 +231,36 @@
           "finished_at": "2026-09-15T04:23:12Z",
           "cases": [
             {
-              "id": "MJ-BAUD-01 20260915T034026Z",
+              "id": "2026-09-15 03:40Z",
+              "tcid": "MJ-BAUD-01",
+              "stamp": "20260915T034026Z",
               "status": "skipped",
               "started_at": "2026-09-15T03:40:26Z",
               "finished_at": "2026-09-15T03:41:28Z",
               "why": "ran, no verdict stated"
             },
             {
-              "id": "MJ-BAUD-01 20260915T034226Z",
+              "id": "2026-09-15 03:42Z",
+              "tcid": "MJ-BAUD-01",
+              "stamp": "20260915T034226Z",
               "status": "failed",
               "started_at": "2026-09-15T03:42:26Z",
               "finished_at": "2026-09-15T03:43:29Z",
               "why": "FAIL"
             },
             {
-              "id": "MJ-BAUD-01 20260915T042032Z",
+              "id": "2026-09-15 04:20Z",
+              "tcid": "MJ-BAUD-01",
+              "stamp": "20260915T042032Z",
               "status": "failed",
               "started_at": "2026-09-15T04:20:32Z",
               "finished_at": "2026-09-15T04:21:35Z",
               "why": "FAIL"
             },
             {
-              "id": "MJ-BAUD-01 20260915T042209Z",
+              "id": "2026-09-15 04:22Z",
+              "tcid": "MJ-BAUD-01",
+              "stamp": "20260915T042209Z",
               "status": "passed",
               "started_at": "2026-09-15T04:22:09Z",
               "finished_at": "2026-09-15T04:23:12Z",
@@ -252,42 +280,54 @@
           "finished_at": "2026-09-15T05:17:49Z",
           "cases": [
             {
-              "id": "MJ-OBS-01 20260915T043607Z",
+              "id": "2026-09-15 04:36Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260915T043607Z",
               "status": "failed",
               "started_at": "2026-09-15T04:36:07Z",
               "finished_at": "2026-09-15T04:38:16Z",
               "why": "PARTIAL"
             },
             {
-              "id": "MJ-OBS-01 20260915T044246Z",
+              "id": "2026-09-15 04:42Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260915T044246Z",
               "status": "blocked",
               "started_at": "2026-09-15T04:42:46Z",
               "finished_at": "2026-09-15T04:44:58Z",
               "why": "ABORTED"
             },
             {
-              "id": "MJ-OBS-01 20260915T044754Z",
+              "id": "2026-09-15 04:47Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260915T044754Z",
               "status": "skipped",
               "started_at": "2026-09-15T04:47:54Z",
               "finished_at": "2026-09-15T04:50:32Z",
               "why": "ran, no verdict stated"
             },
             {
-              "id": "MJ-OBS-01 20260915T045056Z",
+              "id": "2026-09-15 04:50Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260915T045056Z",
               "status": "failed",
               "started_at": "2026-09-15T04:50:56Z",
               "finished_at": "2026-09-15T04:53:34Z",
               "why": "FAIL"
             },
             {
-              "id": "MJ-OBS-01 20260915T051445Z",
+              "id": "2026-09-15 05:14Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260915T051445Z",
               "status": "blocked",
               "started_at": "2026-09-15T05:14:45Z",
               "finished_at": "2026-09-15T05:14:46Z",
               "why": "status: ABORTED"
             },
             {
-              "id": "MJ-OBS-01 20260915T051503Z",
+              "id": "2026-09-15 05:15Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260915T051503Z",
               "status": "failed",
               "started_at": "2026-09-15T05:15:03Z",
               "finished_at": "2026-09-15T05:17:49Z",
