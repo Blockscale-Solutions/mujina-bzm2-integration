@@ -1,10 +1,10 @@
 {
   "schema": "rds-validation-status/v1",
   "campaign": "Mujina on the BZM2 RDS control board",
-  "updated_at": "2026-09-15T17:00:39Z",
-  "status_updated_at": "2026-09-15T17:00:39Z",
+  "updated_at": "2026-09-15T17:44:44Z",
+  "status_updated_at": "2026-09-15T17:44:44Z",
   "stale_after_s": 86400,
-  "git_commit": "39a6076",
+  "git_commit": "71c26b1",
   "source": "generated from case records and result files",
   "note": "Status and timings only. No metric, temperature, serial, host or path appears here by design.",
   "stages": [
@@ -31,7 +31,7 @@
               "status": "skipped",
               "started_at": "2026-09-15T02:24:59Z",
               "finished_at": "2026-09-15T02:33:02Z",
-              "why": "executed 2026-09-14."
+              "why": "**Executed 2026-09-14.** A measurement case: its output is a table, not a verdict."
             }
           ]
         },
@@ -130,17 +130,17 @@
           "detail": "1 run",
           "status": "skipped",
           "why": "Record the vendor daemon's complete power-on sequence \u2014 every PSU command, MCU enable, trip-protection write and round \u2014 with values, so Mujina's own bring-up (#28, #29) can be written against an observed sequence rather than an inferred one.",
-          "started_at": "2026-09-15T02:24:59Z",
-          "finished_at": "2026-09-15T02:33:02Z",
+          "started_at": "2026-09-15T13:01:13Z",
+          "finished_at": "2026-09-15T16:40:02Z",
           "cases": [
             {
-              "id": "2026-09-15 02:24Z",
+              "id": "2026-09-15 13:01Z",
               "tcid": "RDS-PWR-01",
-              "stamp": "20260915T022459Z",
+              "stamp": "20260915T130113Z",
               "status": "skipped",
-              "started_at": "2026-09-15T02:24:59Z",
-              "finished_at": "2026-09-15T02:33:02Z",
-              "why": "executed 2026-09-14, but under the defective capture method of RDS-PWR-02, so the sequence is recorded and the verdict is not."
+              "started_at": "2026-09-15T13:01:13Z",
+              "finished_at": "2026-09-15T16:40:02Z",
+              "why": "**Executed 2026-09-15.** The first attempt, on 2026-09-14, ran under the defective capture method that RDS-PWR-02 documents, so it recorded the sequence and not a verdict. It did not need a dedicated re-run in the end: the corrected harness captured a complete power-on with a verdict as the opening "
             }
           ]
         },
@@ -162,7 +162,7 @@
               "status": "failed",
               "started_at": "2026-09-15T02:24:59Z",
               "finished_at": "2026-09-15T02:33:02Z",
-              "why": "executed 2026-09-14. FAIL, and the failure is the finding."
+              "why": "**Executed 2026-09-14.** The failure is the finding; the verdict is computed from the evidence.log` 244,988 lines / 24 MB, sha256 `4097fc0932c5e1d6\u2026`."
             }
           ]
         },
@@ -272,7 +272,7 @@
           "n": 1,
           "layout": "MJ-OBS-01",
           "suite": "phase 2",
-          "mode": "gated",
+          "mode": "open",
           "detail": "6 runs",
           "status": "failed",
           "why": "The first time our own code touches real silicon. Mujina attaches to the chain, enumerates it, and streams telemetry, while dispatching no work at all.",
@@ -339,9 +339,9 @@
           "n": 2,
           "layout": "MJ-DIAG-01",
           "suite": "phase 2",
-          "mode": "gated",
+          "mode": "open",
           "detail": "not executed",
-          "status": "blocked",
+          "status": "pending",
           "why": "Exercise each read-only diagnostic against a real chain, in a fixed order that escalates from touching nothing to touching everything, so that a failure is attributable to one step rather than to the set.",
           "started_at": null,
           "finished_at": null,
@@ -351,9 +351,9 @@
           "n": 3,
           "layout": "MJ-ENUM-01",
           "suite": "phase 2",
-          "mode": "gated",
+          "mode": "open",
           "detail": "not executed",
-          "status": "blocked",
+          "status": "pending",
           "why": "Compare what Mujina sees on the chain against what the vendor stack sees on the same chain, in the same session, and treat every disagreement as a defect in one of them until it is attributed.",
           "started_at": null,
           "finished_at": null,

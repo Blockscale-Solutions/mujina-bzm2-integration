@@ -4,7 +4,7 @@
     "RDS-LOG-01": {
       "id": "RDS-LOG-01",
       "title": "Debug log level: volume, information content and cost",
-      "subtitle": "executed 2026-09-14.",
+      "subtitle": "**Executed 2026-09-14.** A measurement case: its output is a table, not a verdict.",
       "objective": "Establish what each log level of the vendor daemon costs and what it buys, so that later cases can choose a level deliberately and so Mujina's own logging can be designed against a known comparison.",
       "requirements": "- One RDS 2.0 unit, vendor firmware, reachable over ssh. - Enough free space on `/data` for the run (200 MB minimum).",
       "procedure": "1. Stop the vendor stack. 2. Start the daemon with `-L <level>`, output to a file on the unit. 3. Run through power-on; collect the log; delete it from the unit. 4. Count total lines, distinct lines, and distinct **message shapes** \u2014 lines with all digit runs replaced by `N`, so per-ASIC iteration collapses to the statement that produced it.",
@@ -16,7 +16,7 @@
     "RDS-LOG-02": {
       "id": "RDS-LOG-02",
       "title": "Power-on log-level ladder",
-      "subtitle": "executed 2026-09-14, four rungs.",
+      "subtitle": "**Executed 2026-09-14**, four rungs.md` across them.",
       "objective": "Establish, for one power-on on one hashboard, what each log level costs in volume and buys in distinct information, so every later case can choose a level deliberately instead of by habit. Produce the stock baseline corpus that our own carrier work will be argued against.",
       "requirements": "- One RDS 2.0 unit, reachable over ssh. - The debug daemon at `/data/bin/bzmd-debug` (board mask), the installed daemon untouched. - One hashboard, board mask 1. No *external* work: no pool, no miner started. The vendor stack dispatches its own work during power-on and calibration regardless, which is why a rung costs about a kilowatt at the wall rather than a third of powered idle. - Free RAM on the unit's tmpfs above the cap plus headroom.",
       "procedure": "For each level in 4, 5, 6, 7, in that order: 1. Confirm no vendor daemon is running, by exact process name. 2. Launch the debug daemon on board 0 at that level, output to the unit's tmpfs, with a hard 300-second ceiling and a size cap. 3. Let power-on run without intervention. Record the verdict it reports. 4. Collect the log, stop the daemon, remove the file from the unit. 5. Settle for 60 seconds before the next rung. Then compute, per rung: lines, bytes, distinct **message shapes** (a line with digit runs and hex literals replaced by placeholders), and the count of shapes appearing at that level and no lower one.",
@@ -28,7 +28,7 @@
     "RDS-LOG-03": {
       "id": "RDS-LOG-03",
       "title": "Runtime log-level control, and what the top level is made of",
-      "subtitle": "executed 2026-09-14.",
+      "subtitle": "**Executed 2026-09-14.** A measurement case.",
       "objective": "Two things at once, on one powered board: 1. Prove that the log level can be **raised and lowered while the daemon runs**, so a debug capture can be a window around a phase rather than a tax on the whole run. 2. Establish what the top level consists of **in steady state**, as opposed to during power-on, which RDS-LOG-01 already measured.",
       "requirements": "- One RDS 2.0 unit, reachable over ssh. - The debug daemon at `/data/bin/bzmd-debug`, built with the option set that restores the board mask and carrying the two signal handlers. Built by `tools/rds/build-debug-daemon.sh`; the installed daemon is not touched. - One hashboard only. The mask keeps this near a third of powered-idle draw.",
       "procedure": "1. Start the debug daemon on board 0 at `-L 4`, output to a file on the unit. 2. Let power-on complete without intervention. 3. Raise the level three times, one step each, pausing between steps, and record the file size after each. 4. Lower it twice and record the growth over the following seconds. 5. Collect the log, stop the daemon, remove the file from the unit.",
@@ -39,6 +39,7 @@
     "RDS-PWR-01": {
       "id": "RDS-PWR-01",
       "title": "Power-on sequence: PSU ramp, MCU enables, board verdict",
+      "subtitle": "**Executed 2026-09-15.** The first attempt, on 2026-09-14, ran under the defective capture method that RDS-PWR-02 documents, so it recorded the sequence and not a verdict. It did not need a dedicated re-run in the end: the corrected harness captured a complete power-on with a verdict as the opening ",
       "objective": "Record the vendor daemon's complete power-on sequence \u2014 every PSU command, MCU enable, trip-protection write and round \u2014 with values, so Mujina's own bring-up (#28, #29) can be written against an observed sequence rather than an inferred one.",
       "requirements": "- One RDS 2.0 unit, vendor firmware, boards unpowered. - `tools/rds/rds-testcase.sh` with its default tmpfs target and watchdog.",
       "procedure": "1. `tools/rds/rds-testcase.sh <unit> RDS-PWR-01 6 0` 2. The harness stops the vendor stack, launches the daemon detached on the unit at `-L 6`, polls with one-shot connections, and collects. 3. `RESULT.md` is computed from the log: sequence markers with line numbers, PSU voltage steps, rounds reached, and volume by message shape.",
@@ -49,7 +50,7 @@
     "RDS-PWR-02": {
       "id": "RDS-PWR-02",
       "title": "Power-on under logging back-pressure",
-      "subtitle": "executed 2026-09-14. FAIL, and the failure is the finding.",
+      "subtitle": "**Executed 2026-09-14.** The failure is the finding; the verdict is computed from the evidence.log` 244,988 lines / 24 MB, sha256 `4097fc0932c5e1d6\u2026`.",
       "objective": "Determine whether debug-level logging is safe to run through the whole power-on sequence, and if not, why not. Unplanned: this case exists because a characterization run at `-L 7` failed to power the boards on, and the failure turned out to be more informative than the capture would have been.",
       "requirements": "One RDS 2.0 unit, vendor firmware, boards powered down and idle.",
       "procedure": "1. Stop the vendor stack so the boards are unpowered. 2. Start the daemon with `-L 7`, **stdout piped over ssh to the controller** (this is the condition under test, and it is the wrong way to do it). 3. Observe the power-on sequence to its verdict.",
@@ -61,7 +62,7 @@
     "RDS-CAL-01": {
       "id": "RDS-CAL-01",
       "title": "Calibration and plug-and-play: search, convergence, persistence",
-      "subtitle": "not executed.",
+      "subtitle": "** not executed.**",
       "objective": "Observe how the vendor stack searches for an operating point: what it varies, in what order, what it measures to decide, how long it takes, what it writes to persistent storage, and what it does with a board that will not converge.",
       "requirements": "- One RDS 2.0 unit, one hashboard, boards powered by the vendor path. - A capture of the persistent areas **before** the run, so what calibration writes can be established by difference rather than by assumption. - Log level 6, with a window at the top level opened around the search itself using the runtime signal (RDS-LOG-03).",
       "procedure": "1. Capture the persistent areas and hash them. 2. Start the debug daemon on one board with calibration enabled, at level 6. 3. When power-on reports done, raise to the top level for the search, and lower it again once the search concludes. 4. Let the search run to its own conclusion. Do not intervene. 5. Capture the persistent areas again and diff against step 1. 6. Repeat the whole case once on the same board, from the stored result, to observe what a second boot does differently.",
@@ -73,7 +74,7 @@
     "RDS-ENG-01": {
       "id": "RDS-ENG-01",
       "title": "Engine enumeration: nominal population versus discovered",
-      "subtitle": "not executed.",
+      "subtitle": "** not executed.** Partially anticipated by RDS-LOG-03, which is why the objective below is narrower than it once was.",
       "objective": "Settle the engine-count question that every hit-rate denominator and every nonce-range partition depends on, and settle it in the right terms. RDS-LOG-03 already observed the vendor stack reporting 100 devices and 23,600 engines for one board \u2014 exactly 100 \u00d7 236. The exactness is the finding: it argues a **nominal** figure the firmware assumes rather than a count it discovered. So the open question is no longer \"236 or 512\" but: **Settled 2026-09-15, and not by this case.** The public integration guide states it outright: 236 hashing engine tiles per ASIC, 4 engines per tile, 944 engines total, with the \u00d74 carried inside its own throughput estimate. Our measured 23,600 across 100 devices is 100 \u00d7 236, so the vendor stack counts **tiles**. There was never a conflict between 236 and 944; I built an argument between a tile count and a core count that were printed side by side. The 512 figure that appeared in a requirements document is a **third** claim and is supported by no source either of us can find. It needs its own provenance rather than being treated as the alternative to 236.",
       "requirements": "- One RDS 2.0 unit with a powered, calibrated board. - A way to address engine positions individually and observe whether each answers \u2014 from Mujina's diagnostic surface, not the vendor stack, since the vendor stack is the source of the nominal figure under test.",
       "procedure": "1. Bring one board to powered and calibrated by the vendor path. 2. Hand over to Mujina without dropping board power. 3. Read a known register at each engine position across the whole addressable range, including positions above the nominal count and inside the non-engine region the protocol reference describes. 4. Record, per device, which positions answered, which did not, and which returned something unexpected.",
@@ -84,7 +85,7 @@
     "RDS-THR-01": {
       "id": "RDS-THR-01",
       "title": "Thermal response and fan control at powered idle",
-      "subtitle": "not executed.",
+      "subtitle": "**Executed 2026-09-15**, arm A. Arm B, which moves the setpoint, is not yet run. Verdict is computed from the evidence and shown on the matrix, not restated here.",
       "objective": "Observe the **closed loop**, not the endpoints: how fan duty tracks die temperature once the controller is actually running. Rewritten 2026-09-15. The first version asked for \"the fan curve at powered idle\" and would have measured the wrong thing, because the loop does not start until calibration completes, then waits about 180 seconds to settle and averages several samples before its first move. A run that ends before that sees a constant duty and concludes there is no feedback. One did, and it was reported as a finding before Ronald corrected it. See `docs/rds/fan-control-law.md`.",
       "requirements": "- One RDS 2.0 unit, one hashboard powered, no jobs. - Fan and temperature readings sampled from the controller, not from inside the daemon's log, so the two are independent records of the same thing.",
       "procedure": "1. Power one board by the vendor path at log level 6. 2. Sample fan speed, duty and every available temperature at a fixed interval for the whole run, from the controller. 3. **Hold for at least 30 minutes after calibration completes.** Not a margin picked for comfort: it is the settle wait plus enough sample windows to see several adjustments. Anything shorter measures the feed-forward startup value and reports it as the control law. 3. Open a top-level window long enough to capture one full per-device telemetry sweep, then lower it again. 4. Record the spread of die temperature across devices, not only the extremes: RDS-LOG-03 observed a 12-degree spread at a uniform commanded frequency.",
@@ -95,7 +96,7 @@
     "MJ-BAUD-01": {
       "id": "MJ-BAUD-01",
       "title": "5 Mbaud on the vendor 9-bit tty driver",
-      "subtitle": "executed 2026-09-14. PASS.",
+      "subtitle": "**Executed 2026-09-14.** Runs before MJ-DIAG-01, deliberately. Verdict is computed from the evidence.",
       "objective": "Establish whether the vendor tty driver accepts the baud rate Mujina asks for by the method Mujina uses to ask. Not whether 5 Mbaud works \u2014 the vendor stack proves that nightly \u2014 but whether *our* request is honoured, silently ignored, or rejected.",
       "requirements": "- One RDS 2.0 unit. **The chain need not be powered**, which is what makes this the cheapest case in the phase: it is about the driver, not the silicon. - Mujina able to open the tty, which means the vendor daemon must not hold it.",
       "procedure": "1. Stop the vendor stack so the ttys are free. Confirm by open file descriptors, not by assumption. 2. Have Mujina open the tty and set the rate the way it does in production. 3. Read the rate back **from the driver**, not from Mujina's own record of what it asked for. 4. Compare against what the vendor stack configures, read the same way. 5. Repeat for each of the three ttys: a driver that honours one and not another is a real possibility and a miserable thing to discover later.",
@@ -106,7 +107,7 @@
     "MJ-OBS-01": {
       "id": "MJ-OBS-01",
       "title": "Mujina in observer mode against real boards",
-      "subtitle": "not executed. GATED (G-HANDOVER)",
+      "subtitle": "**Executed 2026-09-15**, four handover windows. Verdict is computed from the evidence; the analysis is in `MJ-OBS-01-result.md`.",
       "objective": "The first time our own code touches real silicon. Mujina attaches to the chain, enumerates it, and streams telemetry, while dispatching no work at all.",
       "requirements": "- One RDS 2.0 unit, one hashboard, brought to powered by the vendor path. - Mujina at `/data/mujina/mujina-minerd` with `MUJINA_OBSERVE` set, so no job source is created and the scheduler starts paused. Both, not either: a paused scheduler with a job source is one API call away from dispatching. - The handover, which kills the vendor daemon rather than stopping it: its clean stop powers the device off.",
       "procedure": "1. Bring one board up by the vendor path. Confirm power-on done. 2. Start Mujina in observer mode alongside, touching no hashboard, and confirm it is healthy on its API. 3. Hand over. Record the timestamp of the last heartbeat. 4. For the whole window: read the chain summary, the enumeration and the telemetry through Mujina's API, and record every per-device voltage and thermal reading it returns. 5. Let the window close on its own. Do not extend it. 6. Restore the unit to the vendor stack and confirm it comes back.",
@@ -117,7 +118,7 @@
     "MJ-DIAG-01": {
       "id": "MJ-DIAG-01",
       "title": "The diagnostic surface, in order of increasing risk",
-      "subtitle": "not executed. GATED (G-HANDOVER).",
+      "subtitle": "**Not executed.** Needs a handover window. MJ-BAUD-01 has since passed, so the link rate it depended on is established.",
       "objective": "Exercise each read-only diagnostic against a real chain, in a fixed order that escalates from touching nothing to touching everything, so that a failure is attributable to one step rather than to the set.",
       "requirements": "- MJ-BAUD-01 passed. A diagnostic over a misconfigured link measures the link. - MJ-OBS-01 passed, so attachment and enumeration are known good. - One powered board and a handover window.",
       "procedure": "Run the six in order. Record the request, the response and the elapsed time for each. Stop at the first failure and record it as the case's verdict; do not continue to gather more data, because everything after it is suspect.",
@@ -128,7 +129,7 @@
     "MJ-ENUM-01": {
       "id": "MJ-ENUM-01",
       "title": "Our enumeration against the vendor's",
-      "subtitle": "not executed. GATED (G-HANDOVER).",
+      "subtitle": "**Not executed.** Needs a handover window, and needs MJ-OBS-01 to pass rather than merely to have run.",
       "objective": "Compare what Mujina sees on the chain against what the vendor stack sees on the same chain, in the same session, and treat every disagreement as a defect in one of them until it is attributed.",
       "requirements": "- One board, powered by the vendor path, and a capture of the vendor stack's own view taken in the same session \u2014 not a remembered figure from another night and another ambient. - Mujina in observer mode with the same board.",
       "procedure": "1. Capture the vendor stack's view: device count and ids, engine population, per-device thermal and voltage sense. RDS-LOG-02 shows the level to run at and RDS-LOG-03 shows how to open a window for the per-device stream. 2. Hand over. 3. Capture Mujina's view of the same quantities. 4. Compare, field by field. Record agreements as well as disagreements: an agreement across 100 devices is evidence, not a formality.",
@@ -139,7 +140,7 @@
     "RDS-MIN-01": {
       "id": "RDS-MIN-01",
       "title": "Steady-state hashing: dispatch, results, telemetry cadence",
-      "subtitle": "not executed. GATED",
+      "subtitle": "** not executed. GATED** \u2014 this case dispatches work. The unit drew 3,248 W mining against 339 W powered-idle, so it needs an explicit go-ahead and a cool day.",
       "objective": "Observe the job path as the vendor drives it at its own operating point: dispatch cadence, how results come back, how telemetry interleaves with work, and what the steady state costs in watts per unit of work.",
       "requirements": "- One RDS 2.0 unit, hashboards powered and calibrated. - A stated go-ahead for the thermal load, recorded in the case run. - Log level 6 for the body of the run. The top level only in short windows, because at steady state it is 99.6% one repeated message (RDS-LOG-03) and the useful part of it is telemetry, not narrative. - Metered power for the whole run, since the objective nobody optimises is the one that needs measuring (#5).",
       "procedure": "1. Bring the boards up by the vendor path and let calibration settle. 2. Start work. Hold steady state for a stated number of minutes. 3. Open a top-level window of a few seconds at steady state, and a second one later in the run, so the two can be compared for drift. 4. Record throughput, accepted work, power and die temperatures throughout. 5. Stop work before stopping the daemon, so the shutdown path is observed separately from the load being removed.",
@@ -151,7 +152,7 @@
     "RDS-FLU-01": {
       "id": "RDS-FLU-01",
       "title": "Job flush: what a new template does to work in flight",
-      "subtitle": "not executed. GATED",
+      "subtitle": "** not executed. GATED** \u2014 dispatches work; see RDS-MIN-01.",
       "objective": "Observe what happens to work already in flight when a new template arrives: whether it is abandoned or allowed to finish, how the transition is sequenced across devices, how long it takes, and what fraction of work is lost. This is the path with the most opportunity to be subtly wrong in our own implementation, because everything about it looks fine when it is broken \u2014 the miner keeps hashing, and only the stale share rate tells you.",
       "requirements": "- One RDS 2.0 unit hashing steadily (RDS-MIN-01 conditions). - The ability to force a template change at a chosen moment. - A top-level window opened immediately before the flush and closed after it, using the runtime signal. The flush is seconds long; paying debug volume for the whole run to catch it is exactly what the signal exists to avoid.",
       "procedure": "1. Reach steady state and confirm it. 2. Open the top-level window. 3. Force a template change. 4. Hold the window until dispatch has visibly resumed on the new template. 5. Lower the level, hold steady state again, and repeat the flush once more so the sequence can be compared against itself.",
@@ -162,7 +163,7 @@
     "MJ-HASH-01": {
       "id": "MJ-HASH-01",
       "title": "Mujina hashing on boards the vendor powered",
-      "subtitle": "not executed. GATED (G-HEAT), and blocked on the thermal interlock.",
+      "subtitle": "** not executed. GATED (G-HEAT), and blocked on the thermal interlock.** The first time our own code dispatches work to real silicon.",
       "objective": "Establish that Mujina can drive a powered BZM2 chain to produce verifiable work, and do it without relying on anything the vendor stack is still doing. Not \"does it hash\". Does it hash, safely, with every share externally verifiable and every watt accounted for.",
       "requirements": "- One RDS 2.0 unit, one hashboard, powered and calibrated by the vendor path. - The dispatch interlock, implemented and exercised against fault injection. - A pool and worker, with difficulty recorded, so shares are verifiable by something that is not us. - Metered wall power for the whole run, continuously, with no gaps. - An explicit go-ahead for the thermal load, recorded in the run.",
       "procedure": "1. Bring one board up by the vendor path and let calibration settle. Record the operating point. 2. Hand over without dropping board power. 3. Confirm the interlock is armed and reporting a live die temperature before any work is dispatched. If it is not, the case aborts here, and that is a pass for the interlock. 4. Dispatch work at the recorded operating point. Hold for a stated duration after discarding a settling period. 5. Record submitted shares with their difficulty, metered power, die temperatures and fan state throughout. 6. Stop dispatching before stopping anything else, so the shutdown path is observed separately from the load being removed.",
@@ -173,7 +174,7 @@
     "MJ-CMP-01": {
       "id": "MJ-CMP-01",
       "title": "Vendor against Mujina, same board, same frequency, same hours",
-      "subtitle": "not executed. GATED (G-HEAT).",
+      "subtitle": "** not executed. GATED (G-HEAT).** Sustained mining. Needs an explicit go-ahead and a cool day.",
       "objective": "Establish whether Mujina reproduces the shipped stack's power and performance at a stated operating point, and by how much it beats or misses it \u2014 scored on **metered power against successfully submitted shares**, not on reported throughput.",
       "requirements": "- One RDS 2.0 unit, one hashboard. One board keeps the load near a kilowatt rather than three. - The same pool, worker and difficulty for every arm. A difficulty change between arms invalidates the comparison outright. - Metered wall power for the whole run, continuously, with no gaps. - Ambient and inlet temperature logged throughout, at the same cadence. - A stated frequency and voltage, identical in every arm, and **not** left to either stack's own calibration to choose \u2014 calibration is what MJ-CMP-01 is holding constant, not what it is measuring. - `rds-switch.sh` for the transitions, with each transition timestamped.",
       "procedure": "1. Record the starting state: ambient, board serials, stored calibration, pool, worker, difficulty. 2. **Arm A1** \u2014 vendor stack at the stated point, two hours. Discard the first fifteen minutes as thermal settling; score the remainder. 3. Switch to Mujina. Record the transition timestamp and how long the board spent unpowered or idle, because that is the thermal discontinuity between arms. 4. **Arm B** \u2014 Mujina at the same stated point, two hours, same settling discard. 5. Switch back. 6. **Arm A2** \u2014 vendor stack again, two hours, same treatment. 7. Compute per arm: submitted shares, share difficulty, joules per share at the wall and at the rail, mean die temperature, mean ambient.",
