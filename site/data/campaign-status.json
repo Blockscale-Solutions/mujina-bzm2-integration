@@ -1,0 +1,356 @@
+{
+  "schema": "rds-validation-status/v1",
+  "campaign": "Mujina on the BZM2 RDS control board",
+  "updated_at": "2026-09-15T16:18:28Z",
+  "status_updated_at": "2026-09-15T16:18:28Z",
+  "stale_after_s": 86400,
+  "git_commit": "16756be",
+  "source": "generated from case records and result files",
+  "note": "Status and timings only. No metric, temperature, serial, host or path appears here by design.",
+  "stages": [
+    {
+      "id": 0,
+      "name": "Phase 0 \u2014 controller only, no unit, no heat",
+      "gated_on": null,
+      "cells": [
+        {
+          "n": 0,
+          "layout": "RDS-LOG-01",
+          "suite": "phase 0",
+          "mode": "open",
+          "detail": "not executed",
+          "status": "pending",
+          "why": "Establish what each log level of the vendor daemon costs and what it buys, so that later cases can choose a level deliberately and so Mujina's own logging can be designed against a known comparison.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        },
+        {
+          "n": 1,
+          "layout": "RDS-LOG-02",
+          "suite": "phase 0",
+          "mode": "open",
+          "detail": "5 runs",
+          "status": "passed",
+          "why": "Establish, for one power-on on one hashboard, what each log level costs in volume and buys in distinct information, so every later case can choose a level deliberately instead of by habit. Produce the stock baseline corpus that our own carrier work will be argued against.",
+          "started_at": "2026-09-15T03:09:27Z",
+          "finished_at": "2026-09-15T03:37:01Z",
+          "cases": [
+            {
+              "id": "RDS-LOG-02 20260915T030927Z",
+              "status": "blocked",
+              "started_at": "2026-09-15T03:09:27Z",
+              "finished_at": "2026-09-15T03:09:35Z",
+              "why": "status: ABORTED"
+            },
+            {
+              "id": "RDS-LOG-02 20260915T031619Z",
+              "status": "skipped",
+              "started_at": "2026-09-15T03:16:19Z",
+              "finished_at": "2026-09-15T03:22:14Z",
+              "why": "ran, no verdict stated"
+            },
+            {
+              "id": "RDS-LOG-02 20260915T032314Z",
+              "status": "passed",
+              "started_at": "2026-09-15T03:23:14Z",
+              "finished_at": "2026-09-15T03:26:44Z",
+              "why": "power-on done"
+            },
+            {
+              "id": "RDS-LOG-02 20260915T032744Z",
+              "status": "passed",
+              "started_at": "2026-09-15T03:27:44Z",
+              "finished_at": "2026-09-15T03:31:13Z",
+              "why": "power-on done"
+            },
+            {
+              "id": "RDS-LOG-02 20260915T033214Z",
+              "status": "passed",
+              "started_at": "2026-09-15T03:32:14Z",
+              "finished_at": "2026-09-15T03:37:01Z",
+              "why": "power-on done"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "layout": "RDS-LOG-03",
+          "suite": "phase 0",
+          "mode": "open",
+          "detail": "1 run",
+          "status": "skipped",
+          "why": "Two things at once, on one powered board: 1. Prove that the log level can be **raised and lowered while the daemon runs**, so a debug capture can be a window around a phase rather than a tax on the whole run. 2. Establish what the top level consists of **in steady state**, as opposed to during power-on, which RDS-LOG-01 already measured.",
+          "started_at": "2026-09-15T03:14:56Z",
+          "finished_at": "2026-09-15T03:14:56Z",
+          "cases": [
+            {
+              "id": "RDS-LOG-03 20260915T031456Z",
+              "status": "skipped",
+              "started_at": "2026-09-15T03:14:56Z",
+              "finished_at": "2026-09-15T03:14:56Z",
+              "why": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Phase 1 \u2014 vendor characterization, boards powered",
+      "gated_on": null,
+      "cells": [
+        {
+          "n": 0,
+          "layout": "RDS-PWR-01",
+          "suite": "phase 1",
+          "mode": "open",
+          "detail": "not executed",
+          "status": "pending",
+          "why": "Record the vendor daemon's complete power-on sequence \u2014 every PSU command, MCU enable, trip-protection write and round \u2014 with values, so Mujina's own bring-up (#28, #29) can be written against an observed sequence rather than an inferred one.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        },
+        {
+          "n": 1,
+          "layout": "RDS-PWR-02",
+          "suite": "phase 1",
+          "mode": "open",
+          "detail": "not executed",
+          "status": "pending",
+          "why": "Determine whether debug-level logging is safe to run through the whole power-on sequence, and if not, why not. Unplanned: this case exists because a characterization run at `-L 7` failed to power the boards on, and the failure turned out to be more informative than the capture would have been.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        },
+        {
+          "n": 2,
+          "layout": "RDS-CAL-01",
+          "suite": "phase 1",
+          "mode": "open",
+          "detail": "not executed",
+          "status": "pending",
+          "why": "Observe how the vendor stack searches for an operating point: what it varies, in what order, what it measures to decide, how long it takes, what it writes to persistent storage, and what it does with a board that will not converge.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        },
+        {
+          "n": 3,
+          "layout": "RDS-ENG-01",
+          "suite": "phase 1",
+          "mode": "open",
+          "detail": "not executed",
+          "status": "pending",
+          "why": "Settle the engine-count question that every hit-rate denominator and every nonce-range partition depends on, and settle it in the right terms. RDS-LOG-03 already observed the vendor stack reporting 100 devices and 23,600 engines for one board \u2014 exactly 100 \u00d7 236. The exactness is the finding: it argues a **nominal** figure the firmware assumes rather than a count it discovered. So the open question is no longer \"236 or 512\" but: **Settled 2026-09-15, and not by this case.** The public integration guide states it outright: 236 hashing engine tiles per ASIC, 4 engines per tile, 944 engines total, with the \u00d74 carried inside its own throughput estimate. Our measured 23,600 across 100 devices is 100 \u00d7 236, so the vendor stack counts **tiles**. There was never a conflict between 236 and 944; I built an argument between a tile count and a core count that were printed side by side. The 512 figure that appeared in a requirements document is a **third** claim and is supported by no source either of us can find. It needs its own provenance rather than being treated as the alternative to 236.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        },
+        {
+          "n": 4,
+          "layout": "RDS-THR-01",
+          "suite": "phase 1",
+          "mode": "open",
+          "detail": "1 run",
+          "status": "skipped",
+          "why": "Observe the **closed loop**, not the endpoints: how fan duty tracks die temperature once the controller is actually running. Rewritten 2026-09-15. The first version asked for \"the fan curve at powered idle\" and would have measured the wrong thing, because the loop does not start until calibration completes, then waits about 180 seconds to settle and averages several samples before its first move. A run that ends before that sees a constant duty and concludes there is no feedback. One did, and it was reported as a finding before Ronald corrected it. See `docs/rds/fan-control-law.md`.",
+          "started_at": "2026-09-15T13:01:13Z",
+          "finished_at": "2026-09-15T13:53:07Z",
+          "cases": [
+            {
+              "id": "RDS-THR-01 20260915T130113Z",
+              "status": "skipped",
+              "started_at": "2026-09-15T13:01:13Z",
+              "finished_at": "2026-09-15T13:53:07Z",
+              "why": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Phase 2 \u2014 Mujina on the hardware",
+      "gated_on": null,
+      "cells": [
+        {
+          "n": 0,
+          "layout": "MJ-BAUD-01",
+          "suite": "phase 2",
+          "mode": "open",
+          "detail": "4 runs",
+          "status": "passed",
+          "why": "Establish whether the vendor tty driver accepts the baud rate Mujina asks for by the method Mujina uses to ask. Not whether 5 Mbaud works \u2014 the vendor stack proves that nightly \u2014 but whether *our* request is honoured, silently ignored, or rejected.",
+          "started_at": "2026-09-15T03:40:26Z",
+          "finished_at": "2026-09-15T04:23:12Z",
+          "cases": [
+            {
+              "id": "MJ-BAUD-01 20260915T034026Z",
+              "status": "skipped",
+              "started_at": "2026-09-15T03:40:26Z",
+              "finished_at": "2026-09-15T03:41:28Z",
+              "why": "ran, no verdict stated"
+            },
+            {
+              "id": "MJ-BAUD-01 20260915T034226Z",
+              "status": "failed",
+              "started_at": "2026-09-15T03:42:26Z",
+              "finished_at": "2026-09-15T03:43:29Z",
+              "why": "FAIL"
+            },
+            {
+              "id": "MJ-BAUD-01 20260915T042032Z",
+              "status": "failed",
+              "started_at": "2026-09-15T04:20:32Z",
+              "finished_at": "2026-09-15T04:21:35Z",
+              "why": "FAIL"
+            },
+            {
+              "id": "MJ-BAUD-01 20260915T042209Z",
+              "status": "passed",
+              "started_at": "2026-09-15T04:22:09Z",
+              "finished_at": "2026-09-15T04:23:12Z",
+              "why": "PASS"
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "layout": "MJ-OBS-01",
+          "suite": "phase 2",
+          "mode": "gated",
+          "detail": "6 runs",
+          "status": "skipped",
+          "why": "The first time our own code touches real silicon. Mujina attaches to the chain, enumerates it, and streams telemetry, while dispatching no work at all.",
+          "started_at": "2026-09-15T04:36:07Z",
+          "finished_at": "2026-09-15T05:17:49Z",
+          "cases": [
+            {
+              "id": "MJ-OBS-01 20260915T043607Z",
+              "status": "failed",
+              "started_at": "2026-09-15T04:36:07Z",
+              "finished_at": "2026-09-15T04:38:16Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "MJ-OBS-01 20260915T044246Z",
+              "status": "blocked",
+              "started_at": "2026-09-15T04:42:46Z",
+              "finished_at": "2026-09-15T04:44:58Z",
+              "why": "ABORTED"
+            },
+            {
+              "id": "MJ-OBS-01 20260915T044754Z",
+              "status": "skipped",
+              "started_at": "2026-09-15T04:47:54Z",
+              "finished_at": "2026-09-15T04:50:32Z",
+              "why": "ran, no verdict stated"
+            },
+            {
+              "id": "MJ-OBS-01 20260915T045056Z",
+              "status": "failed",
+              "started_at": "2026-09-15T04:50:56Z",
+              "finished_at": "2026-09-15T04:53:34Z",
+              "why": "FAIL"
+            },
+            {
+              "id": "MJ-OBS-01 20260915T051445Z",
+              "status": "blocked",
+              "started_at": "2026-09-15T05:14:45Z",
+              "finished_at": "2026-09-15T05:14:46Z",
+              "why": "status: ABORTED"
+            },
+            {
+              "id": "MJ-OBS-01 20260915T051503Z",
+              "status": "skipped",
+              "started_at": "2026-09-15T05:15:03Z",
+              "finished_at": "2026-09-15T05:17:49Z",
+              "why": "ran, no verdict stated"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "layout": "MJ-DIAG-01",
+          "suite": "phase 2",
+          "mode": "gated",
+          "detail": "not executed",
+          "status": "blocked",
+          "why": "Exercise each read-only diagnostic against a real chain, in a fixed order that escalates from touching nothing to touching everything, so that a failure is attributable to one step rather than to the set.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        },
+        {
+          "n": 3,
+          "layout": "MJ-ENUM-01",
+          "suite": "phase 2",
+          "mode": "gated",
+          "detail": "not executed",
+          "status": "blocked",
+          "why": "Compare what Mujina sees on the chain against what the vendor stack sees on the same chain, in the same session, and treat every disagreement as a defect in one of them until it is attributed.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Phase 3 \u2014 mining (gated on heat)",
+      "gated_on": "an explicit go-ahead and a cool day",
+      "cells": [
+        {
+          "n": 0,
+          "layout": "RDS-MIN-01",
+          "suite": "phase 3",
+          "mode": "gated",
+          "detail": "not executed",
+          "status": "blocked",
+          "why": "Observe the job path as the vendor drives it at its own operating point: dispatch cadence, how results come back, how telemetry interleaves with work, and what the steady state costs in watts per unit of work.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        },
+        {
+          "n": 1,
+          "layout": "RDS-FLU-01",
+          "suite": "phase 3",
+          "mode": "gated",
+          "detail": "not executed",
+          "status": "blocked",
+          "why": "Observe what happens to work already in flight when a new template arrives: whether it is abandoned or allowed to finish, how the transition is sequenced across devices, how long it takes, and what fraction of work is lost. This is the path with the most opportunity to be subtly wrong in our own implementation, because everything about it looks fine when it is broken \u2014 the miner keeps hashing, and only the stale share rate tells you.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        },
+        {
+          "n": 2,
+          "layout": "MJ-HASH-01",
+          "suite": "phase 3",
+          "mode": "open",
+          "detail": "not executed",
+          "status": "pending",
+          "why": "no case record written yet",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        },
+        {
+          "n": 3,
+          "layout": "MJ-CMP-01",
+          "suite": "phase 3",
+          "mode": "gated",
+          "detail": "not executed",
+          "status": "blocked",
+          "why": "Establish whether Mujina reproduces the shipped stack's power and performance at a stated operating point, and by how much it beats or misses it \u2014 scored on **metered power against successfully submitted shares**, not on reported throughput.",
+          "started_at": null,
+          "finished_at": null,
+          "cases": []
+        }
+      ]
+    }
+  ]
+}
