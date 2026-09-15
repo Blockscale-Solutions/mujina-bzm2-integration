@@ -1,10 +1,10 @@
 {
   "schema": "rds-validation-status/v1",
   "campaign": "Mujina on the BZM2 RDS control board",
-  "updated_at": "2026-09-15T17:44:44Z",
-  "status_updated_at": "2026-09-15T17:44:44Z",
+  "updated_at": "2026-09-15T17:45:05Z",
+  "status_updated_at": "2026-09-15T17:45:05Z",
   "stale_after_s": 86400,
-  "git_commit": "71c26b1",
+  "git_commit": "7823cc9",
   "source": "generated from case records and result files",
   "note": "Status and timings only. No metric, temperature, serial, host or path appears here by design.",
   "stages": [
@@ -31,7 +31,7 @@
               "status": "skipped",
               "started_at": "2026-09-15T02:24:59Z",
               "finished_at": "2026-09-15T02:33:02Z",
-              "why": "**Executed 2026-09-14.** A measurement case: its output is a table, not a verdict."
+              "why": "**Executed 2026-09-14.** Evidence: (evidence held internally), shared with RDS-PWR-02. A measurement case: its output is a table, not a verdict."
             }
           ]
         },
@@ -140,7 +140,7 @@
               "status": "skipped",
               "started_at": "2026-09-15T13:01:13Z",
               "finished_at": "2026-09-15T16:40:02Z",
-              "why": "**Executed 2026-09-15.** The first attempt, on 2026-09-14, ran under the defective capture method that RDS-PWR-02 documents, so it recorded the sequence and not a verdict. It did not need a dedicated re-run in the end: the corrected harness captured a complete power-on with a verdict as the opening "
+              "why": "**Executed 2026-09-15.** Evidence: (evidence held internally). The first attempt, on 2026-09-14, ran under the defective capture method that RDS-PWR-02 documents, so it recorded the sequence and not a verdict. It did not need a dedicated re-run in the end: the corrected harness captured a complete p"
             }
           ]
         },
@@ -162,7 +162,7 @@
               "status": "failed",
               "started_at": "2026-09-15T02:24:59Z",
               "finished_at": "2026-09-15T02:33:02Z",
-              "why": "**Executed 2026-09-14.** The failure is the finding; the verdict is computed from the evidence.log` 244,988 lines / 24 MB, sha256 `4097fc0932c5e1d6\u2026`."
+              "why": "**Executed 2026-09-14.** Evidence: (evidence held internally). The failure is the finding; the verdict is computed from the evidence. Evidence: (evidence held internally), `daemon.log` 244,988 lines / 24 MB, sha256 `4097fc0932c5e1d6\u2026`."
             }
           ]
         },
