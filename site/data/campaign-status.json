@@ -1,10 +1,10 @@
 {
   "schema": "rds-validation-status/v1",
   "campaign": "Mujina on the BZM2 RDS control board",
-  "updated_at": "2026-09-15T21:36:19Z",
-  "status_updated_at": "2026-09-15T21:36:19Z",
+  "updated_at": "2026-09-16T04:42:13Z",
+  "status_updated_at": "2026-09-16T04:42:13Z",
   "stale_after_s": 86400,
-  "git_commit": "5c28e4e",
+  "git_commit": "3d3ab4d",
   "source": "generated from case records and result files",
   "note": "Status and timings only. No metric, temperature, serial, host or path appears here by design.",
   "stages": [
@@ -300,11 +300,11 @@
           "layout": "MJ-OBS-01",
           "suite": "phase 2",
           "mode": "open",
-          "detail": "8 runs",
+          "detail": "10 runs",
           "status": "failed",
           "why": "The first time our own code touches real silicon. Mujina attaches to the chain, enumerates it, and streams telemetry, while dispatching no work at all.",
           "started_at": "2026-09-15T04:36:07Z",
-          "finished_at": "2026-09-15T19:53:55Z",
+          "finished_at": "2026-09-16T04:42:12Z",
           "cases": [
             {
               "id": "2026-09-15 04:36Z",
@@ -377,6 +377,24 @@
               "started_at": "2026-09-15T19:49:16Z",
               "finished_at": "2026-09-15T19:53:55Z",
               "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-16 04:38Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260916T043844Z",
+              "status": "blocked",
+              "started_at": "2026-09-16T04:38:44Z",
+              "finished_at": "2026-09-16T04:38:49Z",
+              "why": "status: ABORTED"
+            },
+            {
+              "id": "2026-09-16 04:39Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260916T043901Z",
+              "status": "failed",
+              "started_at": "2026-09-16T04:39:01Z",
+              "finished_at": "2026-09-16T04:42:12Z",
+              "why": "FAIL"
             }
           ]
         },
