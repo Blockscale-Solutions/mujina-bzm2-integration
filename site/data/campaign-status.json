@@ -1,10 +1,10 @@
 {
   "schema": "rds-validation-status/v1",
   "campaign": "Mujina on the BZM2 RDS control board",
-  "updated_at": "2026-09-17T05:08:21Z",
-  "status_updated_at": "2026-09-17T05:08:21Z",
+  "updated_at": "2026-09-17T23:48:02Z",
+  "status_updated_at": "2026-09-17T23:48:02Z",
   "stale_after_s": 86400,
-  "git_commit": "816f174",
+  "git_commit": "16a8499",
   "source": "generated from case records and result files",
   "note": "Status and timings only. No metric, temperature, serial, host or path appears here by design.",
   "stages": [
@@ -300,11 +300,11 @@
           "layout": "MJ-OBS-01",
           "suite": "phase 2",
           "mode": "open",
-          "detail": "15 runs",
+          "detail": "17 runs",
           "status": "failed",
           "why": "The first time our own code touches real silicon. Mujina attaches to the chain, enumerates it, and streams telemetry, while dispatching no work at all.",
           "started_at": "2026-09-15T04:36:07Z",
-          "finished_at": "2026-09-16T13:41:23Z",
+          "finished_at": "2026-09-17T23:48:02Z",
           "cases": [
             {
               "id": "2026-09-15 04:36Z",
@@ -439,6 +439,24 @@
               "status": "failed",
               "started_at": "2026-09-16T13:38:42Z",
               "finished_at": "2026-09-16T13:41:23Z",
+              "why": "FAIL"
+            },
+            {
+              "id": "2026-09-17 23:41Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260917T234156Z",
+              "status": "blocked",
+              "started_at": "2026-09-17T23:41:56Z",
+              "finished_at": "2026-09-17T23:44:18Z",
+              "why": "status: ABORTED"
+            },
+            {
+              "id": "2026-09-17 23:44Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260917T234429Z",
+              "status": "failed",
+              "started_at": "2026-09-17T23:44:29Z",
+              "finished_at": "2026-09-17T23:48:02Z",
               "why": "FAIL"
             }
           ]
