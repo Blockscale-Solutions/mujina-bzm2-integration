@@ -129,9 +129,17 @@
   function renderCases(cell) {
     var cases = S.caseList(cell);
     if (!cases.length) {
-      return '<p class="case-empty">No case-level timestamps in this feed yet.</p>';
+      return '<p class="case-empty">No execution records in this feed yet.</p>';
     }
+    var layout = labelOf(cell);
     return (
+      '<div class="cell-detail-toolbar">' +
+      '<button type="button" class="case-doc-open" data-case-id="' +
+      esc(layout) +
+      '">Case description · ' +
+      esc(layout) +
+      "</button>" +
+      "</div>" +
       '<ul class="case-list">' +
       cases
         .map(function (c) {
@@ -139,16 +147,22 @@
           var started = S.caseStarted(c);
           var finished = S.caseFinished(c);
           var id = S.caseId(c);
+          var tcid = c.tcid || layout;
+          var stamp = c.stamp || "";
           var mk = caseMark(st);
           var when = caseWhen(st, started, finished);
           return (
             '<li class="case-row st-' +
             st +
             '">' +
-            '<button type="button" class="case-open" data-case-id="' +
-            esc(c.tcid || id) +
+            '<button type="button" class="run-open" data-tcid="' +
+            esc(tcid) +
+            '" data-run-id="' +
+            esc(id) +
+            '" data-stamp="' +
+            esc(stamp) +
             '" title="' +
-            esc((c.tcid ? c.tcid + " · " : "") + id + " · " + mk.label) +
+            esc("Execution " + id + " · " + mk.label) +
             '">' +
             '<span class="case-mark" aria-label="' +
             esc(mk.label) +
@@ -214,6 +228,7 @@
     var st = S.statusClass(cell.status);
     var expandable = canExpand(cell);
     var open = openKey === key;
+    var layout = labelOf(cell);
     var times = [];
     if (cell.started_at) times.push("started " + S.formatLocal(cell.started_at));
     if (cell.finished_at) {
@@ -243,17 +258,24 @@
       (expandable ? " is-expandable" : "") +
       '" data-key="' +
       esc(key) +
+      '" data-layout="' +
+      esc(layout) +
       '">' +
-      '<button type="button" class="cell-head" ' +
+      '<div class="cell-head">' +
+      '<button type="button" class="case-doc-open cell-name" data-case-id="' +
+      esc(layout) +
+      '" title="Case description">' +
+      esc(layout) +
+      "</button>" +
+      '<button type="button" class="cell-toggle" ' +
       (expandable ? "" : "disabled ") +
       'aria-expanded="' +
       (open ? "true" : "false") +
+      '" title="' +
+      esc(expandable ? "Show executions" : "No executions yet") +
       '">' +
       '<span class="cell-n">#' +
       esc(cell.n != null ? cell.n : "–") +
-      "</span>" +
-      '<span class="cell-name">' +
-      esc(labelOf(cell)) +
       "</span>" +
       '<span class="cell-meta">' +
       esc(
@@ -266,6 +288,7 @@
       cellStatusHtml(cell, st) +
       "</span>" +
       "</button>" +
+      "</div>" +
       body +
       "</article>"
     );
@@ -632,10 +655,54 @@
     );
   }
 
-  function openCaseModal(id) {
+  function findRun(status, tcid, runId, stamp) {
+    var stages = (S.normalizeStatus(status).stages) || [];
+    for (var i = 0; i < stages.length; i++) {
+      var cells = stages[i].cells || [];
+      for (var j = 0; j < cells.length; j++) {
+        var cases = S.caseList(cells[j]);
+        for (var k = 0; k < cases.length; k++) {
+          var c = cases[k];
+          var id = S.caseId(c);
+          var t = c.tcid || labelOf(cells[j]);
+          if (stamp && c.stamp && String(c.stamp) === String(stamp) && String(t) === String(tcid)) {
+            return { cell: cells[j], run: c };
+          }
+          if (String(t) === String(tcid) && String(id) === String(runId)) {
+            return { cell: cells[j], run: c };
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  function setModalChrome(kind, idText, titleText) {
     var modal = document.getElementById("case-doc-modal");
-    if (!modal) return;
+    if (!modal) return null;
+    modal.setAttribute("data-modal-kind", kind || "case");
     var idEl = modal.querySelector("[data-role='doc-id']");
+    var titleTextEl = modal.querySelector("[data-role='doc-title-text']");
+    var priorityRow = modal.querySelector("[data-role='doc-priority-row']");
+    var createdRow = modal.querySelector("[data-role='doc-created-row']");
+    var updatedRow = modal.querySelector("[data-role='doc-updated-row']");
+    var idLabel = modal.querySelector(".case-modal-meta dt");
+    // First dt is Case / Execution depending on mode
+    var dts = modal.querySelectorAll(".case-modal-meta dt");
+    if (dts[0]) dts[0].textContent = kind === "run" ? "Execution" : "Case";
+    if (dts[1]) dts[1].textContent = kind === "run" ? "Case" : "Title";
+    if (idEl) idEl.textContent = idText || "—";
+    if (titleTextEl) titleTextEl.textContent = titleText || "…";
+    if (priorityRow) priorityRow.hidden = true;
+    if (createdRow) createdRow.hidden = true;
+    if (updatedRow) updatedRow.hidden = true;
+    return modal;
+  }
+
+  function openCaseModal(id) {
+    var modal = setModalChrome("case", id, "…");
+    if (!modal) return;
+    var bodyEl = modal.querySelector("[data-role='doc-body']");
     var titleTextEl = modal.querySelector("[data-role='doc-title-text']");
     var priorityEl = modal.querySelector("[data-role='doc-priority']");
     var priorityRow = modal.querySelector("[data-role='doc-priority-row']");
@@ -643,13 +710,8 @@
     var createdRow = modal.querySelector("[data-role='doc-created-row']");
     var updatedEl = modal.querySelector("[data-role='doc-updated']");
     var updatedRow = modal.querySelector("[data-role='doc-updated-row']");
-    var bodyEl = modal.querySelector("[data-role='doc-body']");
-    if (idEl) idEl.textContent = id;
-    if (titleTextEl) titleTextEl.textContent = "…";
-    if (priorityRow) priorityRow.hidden = true;
-    if (createdRow) createdRow.hidden = true;
-    if (updatedRow) updatedRow.hidden = true;
-    if (bodyEl) bodyEl.innerHTML = '<p class="doc-empty">Loading case doc…</p>';
+    var idEl = modal.querySelector("[data-role='doc-id']");
+    if (bodyEl) bodyEl.innerHTML = '<p class="doc-empty">Loading case description…</p>';
     modal.hidden = false;
     document.body.style.overflow = "hidden";
     loadCaseIndex().then(function (index) {
@@ -664,9 +726,6 @@
       var reqs = fieldText(doc, ["requirements", "hardware", "requirements_hardware", "Requirements"]);
       var proc = fieldText(doc, ["procedure", "Procedure"]);
       var pf = fieldText(doc, ["pass_fail", "pass/fail", "Pass/Fail"]);
-      // What the case said it would capture, declared before it ran. Shown
-      // next to the criteria because a criterion you cannot evaluate from the
-      // captured metrics is not a criterion.
       var metrics = fieldText(doc, ["metrics", "Metrics"]);
       var comments = fieldText(doc, ["comments", "Comments"]);
       var configs = fieldText(doc, ["configurations", "config", "Configurations"]);
@@ -707,12 +766,11 @@
       }
       if (!published) {
         bodyEl.innerHTML =
-          '<p class="doc-empty">Doc not yet published for <code>' +
+          '<p class="doc-empty">No case description published for <code>' +
           esc(id) +
-          "</code>. Every executed case should have one: see <code>docs/rds/cases/</code>.</p>";
+          "</code> yet.</p>";
         return;
       }
-      // Compact header already has Test/Title/Priority/Created/Updated — body starts at description.
       bodyEl.innerHTML =
         (subtitle ? section("Subtitle", subtitle) : "") +
         section("Description", objective) +
@@ -725,6 +783,68 @@
     });
   }
 
+  function openRunModal(tcid, runId, stamp) {
+    var modal = setModalChrome("run", runId || "—", tcid || "—");
+    if (!modal) return;
+    var bodyEl = modal.querySelector("[data-role='doc-body']");
+    var titleTextEl = modal.querySelector("[data-role='doc-title-text']");
+    var createdEl = modal.querySelector("[data-role='doc-created']");
+    var createdRow = modal.querySelector("[data-role='doc-created-row']");
+    var updatedEl = modal.querySelector("[data-role='doc-updated']");
+    var updatedRow = modal.querySelector("[data-role='doc-updated-row']");
+    if (bodyEl) bodyEl.innerHTML = '<p class="doc-empty">Loading execution…</p>';
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+
+    var hit = findRun(currentStatus, tcid, runId, stamp);
+    var run = hit && hit.run;
+    if (!run) {
+      bodyEl.innerHTML =
+        '<p class="doc-empty">No execution record found for <code>' +
+        esc(runId || stamp || tcid) +
+        "</code>.</p>";
+      return;
+    }
+    var st = S.statusClass(run.status);
+    var started = S.caseStarted(run);
+    var finished = S.caseFinished(run);
+    var dur = started && finished ? S.formatDuration(started, finished) : "";
+    if (titleTextEl) titleTextEl.textContent = run.tcid || tcid || "—";
+    if (createdRow && createdEl && started) {
+      createdEl.textContent = S.formatLocal(started);
+      createdRow.hidden = false;
+      var dts = modal.querySelectorAll(".case-modal-meta dt");
+      if (dts[2]) {
+        /* priority row stays hidden; reuse created as Started */
+      }
+      var createdDt = createdRow.querySelector("dt");
+      if (createdDt) createdDt.textContent = "Started";
+    }
+    if (updatedRow && updatedEl && finished) {
+      updatedEl.textContent = S.formatLocal(finished) + (dur ? " · " + dur : "");
+      updatedRow.hidden = false;
+      var updatedDt = updatedRow.querySelector("dt");
+      if (updatedDt) updatedDt.textContent = "Finished";
+    }
+    var why = typeof run.why === "string" ? run.why.trim() : "";
+    bodyEl.innerHTML =
+      '<section class="doc-section">' +
+      '<h3 class="doc-section-label">Result</h3>' +
+      '<div class="doc-md"><p><strong class="run-status st-' +
+      esc(st) +
+      '">' +
+      esc(st.toUpperCase()) +
+      "</strong>" +
+      (dur ? " · " + esc(dur) : "") +
+      "</p></div></section>" +
+      (why ? section("Summary", why) : '<p class="doc-empty">No summary text on this execution record.</p>') +
+      '<p class="run-doc-link"><button type="button" class="case-doc-open" data-case-id="' +
+      esc(run.tcid || tcid) +
+      '">Open case description · ' +
+      esc(run.tcid || tcid) +
+      "</button></p>";
+  }
+
   function closeCaseModal() {
     var modal = document.getElementById("case-doc-modal");
     if (!modal) return;
@@ -733,6 +853,7 @@
   }
 
   function bind(status) {
+    currentStatus = status;
     root.querySelectorAll(".stage-head").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var sec = btn.closest(".matrix-stage");
@@ -742,18 +863,29 @@
         paint(status);
       });
     });
-    root.querySelectorAll(".matrix-cell.is-expandable .cell-head").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var art = btn.closest(".matrix-cell");
+    root.querySelectorAll(".matrix-cell.is-expandable .cell-head").forEach(function (head) {
+      head.addEventListener("click", function (e) {
+        if (e.target.closest(".case-doc-open")) return;
+        var art = head.closest(".matrix-cell");
         var key = art && art.getAttribute("data-key");
         openKey = openKey === key ? null : key;
         paint(status);
       });
     });
-    root.querySelectorAll(".case-open").forEach(function (btn) {
+    root.querySelectorAll(".case-doc-open").forEach(function (btn) {
       btn.addEventListener("click", function (e) {
         e.stopPropagation();
         openCaseModal(btn.getAttribute("data-case-id"));
+      });
+    });
+    root.querySelectorAll(".run-open").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        openRunModal(
+          btn.getAttribute("data-tcid"),
+          btn.getAttribute("data-run-id"),
+          btn.getAttribute("data-stamp")
+        );
       });
     });
   }
@@ -792,6 +924,15 @@
     });
   }
   loadCaseIndex();
+
+  // Case-doc buttons rendered inside the run modal body
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest && e.target.closest("#case-doc-modal .case-doc-open");
+    if (!t) return;
+    e.preventDefault();
+    openCaseModal(t.getAttribute("data-case-id"));
+  });
+
 
   var POLL_MS = 20000;
   var lastFingerprint = null;
