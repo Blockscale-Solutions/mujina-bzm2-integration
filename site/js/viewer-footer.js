@@ -11,8 +11,8 @@
   }
 
   function fill(root) {
-    if (!window.N5Status) return;
-    var S = window.N5Status;
+    var S = window.BringupStatus || window.N5Status;
+    if (!S) return;
     var dataRoot = root.getAttribute("data-data-root") || S.resolveDataRoot();
 
     Promise.all([S.loadBuildInfo(dataRoot), S.loadCampaignStatus(dataRoot)])
@@ -68,7 +68,7 @@
 
   function init() {
     document.querySelectorAll(".viewer-stale").forEach(function (el) {
-      el._n5Refresh = function () {
+      el._statusRefresh = function () {
         fill(el);
       };
       fill(el);
@@ -77,7 +77,7 @@
     setInterval(function () {
       if (document.hidden) return;
       document.querySelectorAll(".viewer-stale").forEach(function (el) {
-        if (typeof el._n5Refresh === "function") el._n5Refresh();
+        if (typeof el._statusRefresh === "function") el._statusRefresh();
       });
     }, 20000);
   }

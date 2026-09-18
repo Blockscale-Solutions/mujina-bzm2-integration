@@ -1,11 +1,12 @@
-/* N5 MAX — shared light/dark theme tokens + chrome
+/* Mujina BZM2 — shared light/dark theme tokens + chrome
  *
- * LIGHT  = Story/Matrix editorial stone (styles.css heritage)
- * DARK   = M.2 lab charcoal + teal (telemetry-viz heritage)
+ * LIGHT  = editorial stone
+ * DARK   = lab charcoal + teal
  *
  * Usage: set <html data-theme="light|dark"> via site/js/theme.js
- *        (localStorage key: n5-theme). Falls back to prefers-color-scheme.
+ *        (localStorage key: mujina-theme, with legacy n5-theme fallback).
  */
+
 
 :root {
   /* —— Light (editorial) —— */
@@ -22,16 +23,16 @@
   --shadow-card: 0 1px 3px rgba(26, 25, 23, 0.05), 0 12px 32px rgba(26, 25, 23, 0.07);
 
   /* Brand accents — same family both themes */
-  --raid10: #E86A2B;
-  --raid10-soft: rgba(232, 106, 43, 0.12);
-  --raid10-mid: rgba(232, 106, 43, 0.22);
-  --raidz1: #1FA6A0;
-  --raidz1-soft: rgba(31, 166, 160, 0.12);
-  --raidz1-mid: rgba(31, 166, 160, 0.22);
+  --accent-warm: #E86A2B;
+  --accent-warm-soft: rgba(232, 106, 43, 0.12);
+  --accent-warm-mid: rgba(232, 106, 43, 0.22);
+  --accent-cool: #1FA6A0;
+  --accent-cool-soft: rgba(31, 166, 160, 0.12);
+  --accent-cool-mid: rgba(31, 166, 160, 0.22);
 
   /* Hero washes / chrome helpers */
-  --wash-raid10: rgba(232, 106, 43, 0.07);
-  --wash-raidz1: rgba(31, 166, 160, 0.07);
+  --wash-warm: rgba(232, 106, 43, 0.07);
+  --wash-cool: rgba(31, 166, 160, 0.07);
   --nav-bg: rgba(244, 241, 236, 0.82);
   --hover-fill: rgba(26, 25, 23, 0.06);
   --hover-fill-soft: rgba(26, 25, 23, 0.03);
@@ -79,7 +80,7 @@
   color-scheme: light;
 }
 
-/* Dark = M.2 lab charcoal + teal, sitewide */
+/* Dark = lab charcoal + teal, sitewide */
 html[data-theme="dark"] {
   color-scheme: dark;
   --bg: #0e1114;
@@ -94,15 +95,15 @@ html[data-theme="dark"] {
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.45);
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
 
-  --raid10: #E86A2B;
-  --raid10-soft: rgba(232, 106, 43, 0.18);
-  --raid10-mid: rgba(232, 106, 43, 0.32);
-  --raidz1: #2dd4bf;
-  --raidz1-soft: rgba(45, 212, 191, 0.14);
-  --raidz1-mid: rgba(45, 212, 191, 0.28);
+  --accent-warm: #E86A2B;
+  --accent-warm-soft: rgba(232, 106, 43, 0.18);
+  --accent-warm-mid: rgba(232, 106, 43, 0.32);
+  --accent-cool: #2dd4bf;
+  --accent-cool-soft: rgba(45, 212, 191, 0.14);
+  --accent-cool-mid: rgba(45, 212, 191, 0.28);
 
-  --wash-raid10: rgba(232, 106, 43, 0.09);
-  --wash-raidz1: rgba(45, 212, 191, 0.08);
+  --wash-warm: rgba(232, 106, 43, 0.09);
+  --wash-cool: rgba(45, 212, 191, 0.08);
   --nav-bg: rgba(14, 17, 20, 0.88);
   --hover-fill: rgba(214, 221, 227, 0.08);
   --hover-fill-soft: rgba(214, 221, 227, 0.04);
@@ -154,14 +155,14 @@ html[data-theme="dark"] {
     --line-strong: rgba(214, 221, 227, 0.16);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.45);
     --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
-    --raid10: #E86A2B;
-    --raid10-soft: rgba(232, 106, 43, 0.18);
-    --raid10-mid: rgba(232, 106, 43, 0.32);
-    --raidz1: #2dd4bf;
-    --raidz1-soft: rgba(45, 212, 191, 0.14);
-    --raidz1-mid: rgba(45, 212, 191, 0.28);
-    --wash-raid10: rgba(232, 106, 43, 0.09);
-    --wash-raidz1: rgba(45, 212, 191, 0.08);
+    --accent-warm: #E86A2B;
+    --accent-warm-soft: rgba(232, 106, 43, 0.18);
+    --accent-warm-mid: rgba(232, 106, 43, 0.32);
+    --accent-cool: #2dd4bf;
+    --accent-cool-soft: rgba(45, 212, 191, 0.14);
+    --accent-cool-mid: rgba(45, 212, 191, 0.28);
+    --wash-warm: rgba(232, 106, 43, 0.09);
+    --wash-cool: rgba(45, 212, 191, 0.08);
     --nav-bg: rgba(14, 17, 20, 0.88);
     --hover-fill: rgba(214, 221, 227, 0.08);
     --hover-fill-soft: rgba(214, 221, 227, 0.04);
@@ -263,8 +264,8 @@ body:has(.provisional-banner) {
   white-space: nowrap;
 }
 
-.nav-brand span.r10 { color: var(--raid10); }
-.nav-brand span.rz1 { color: var(--raidz1); }
+.nav-brand span.accent { color: var(--accent-cool); }
+.nav-brand .muted { color: var(--muted); }
 
 .nav-links {
   display: flex;
@@ -331,7 +332,7 @@ body:has(.provisional-banner) {
 }
 
 .theme-toggle button:focus-visible {
-  outline: 2px solid var(--raidz1);
+  outline: 2px solid var(--accent-cool);
   outline-offset: 1px;
 }
 

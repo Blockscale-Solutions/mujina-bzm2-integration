@@ -1,4 +1,4 @@
-/* Shared campaign-status + build-info loader (status/timestamps only). */
+/* Shared validation-status + build-info loader (status/timestamps only). */
 (function (global) {
   "use strict";
 
@@ -312,7 +312,7 @@
     ]);
   }
 
-  global.N5Status = {
+  var api = {
     DEFAULT_STALE_S: DEFAULT_STALE_S,
     resolveDataRoot: resolveDataRoot,
     loadCampaignStatus: loadCampaignStatus,
@@ -341,4 +341,6 @@
     harnessCommit: harnessCommit,
     gitCommit: gitCommit,
   };
+  global.BringupStatus = api;
+  global.N5Status = api; // legacy alias
 })(window);

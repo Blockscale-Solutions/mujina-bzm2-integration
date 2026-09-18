@@ -3,7 +3,7 @@
 Bringing up the [Mujina](https://github.com/256foundation/mujina) mining daemon
 on Intel Blockscale BZM2 hardware, starting with the RDS 2.0 control board.
 
-**Live test matrix and results: https://blockscale-solutions.github.io/mujina-bzm2-integration/matrix/**
+**Live site (story, worklog, matrix, RDS schematic): https://blockscale-solutions.github.io/mujina-bzm2-integration/**
 
 This repository is the public face of that work: the validation test matrix,
 its live results, and a worklog. The driver itself is developed elsewhere and
@@ -17,6 +17,9 @@ will reach Mujina as pull requests.
 | `site/data/campaign-status.json` | live per-case status and timings, regenerated from test artifacts |
 | `site/data/test-cases-index.json` | case objectives, procedures and pass criteria |
 | `worklog/` | narrative notes on the work |
+| `site/rds-viz/` | RDS 2.0 control-board schematic |
+| `drawings/rds/` | SVG schematic sources |
+| `docs/rds/` | public topology notes |
 | `tools/check-public.sh` | the publication guard, run in CI |
 
 ## How the results get here
@@ -49,7 +52,7 @@ that fails the deploy rather than by anybody remembering.
 
 ## Provenance of the site code
 
-The matrix page, theme and status loader began as the dashboard from our own
-storage-validation lab and were adapted here. Same authors, different hardware.
-The parts specific to that domain have been replaced; what carried over is the
-stage/case status renderer, the theme, and the publish pipeline.
+The matrix page, theme and status loader began as an internal lab dashboard and
+were adapted here for this firmware bring-up. Same authors, different hardware.
+Domain-specific storage-lab chrome has been removed; what carried over is the
+phase/case status renderer, the theme, and the publish pipeline.

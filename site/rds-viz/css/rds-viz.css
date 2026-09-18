@@ -1,0 +1,184 @@
+/* RDS 2.0 schematic — lab charcoal + teal */
+.board-svg-wrap,
+.rds-board-host {
+  background: #0e1114;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.board-svg-wrap svg,
+.rds-board-host svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-family: Ubuntu, system-ui, sans-serif;
+}
+
+.chassis-bg {
+  fill: #12171c;
+  stroke: #3a4650;
+  stroke-width: 1.5;
+}
+
+.landmark {
+  fill: #1a2228;
+  stroke: #2e3942;
+  stroke-width: 1;
+}
+
+.landmark-label {
+  fill: #5a6a76;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 8px;
+  letter-spacing: 0.04em;
+}
+
+.face-label {
+  fill: #7a8792;
+  font-family: Orbitron, ui-sans-serif, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.region {
+  transition: opacity 0.25s, filter 0.25s;
+}
+.region.inactive {
+  opacity: 0.42;
+  filter: grayscale(0.25);
+}
+.region.active {
+  opacity: 1;
+  filter: drop-shadow(0 0 5px rgba(45, 212, 191, 0.35));
+}
+
+.region-body {
+  fill: #1e282f;
+  stroke: #3d4a55;
+  stroke-width: 1.3;
+}
+.region-control .region-body {
+  fill: #1a2a28;
+  stroke: #2dd4bf;
+  stroke-width: 2;
+}
+.region-hashboard .region-body {
+  fill: #1c2329;
+  stroke: #4a5864;
+}
+.region-psu .region-body {
+  fill: #252018;
+  stroke: #e86a2b;
+  stroke-width: 1.6;
+}
+.region-fan .region-body {
+  fill: #1a2228;
+  stroke: #3d4a55;
+}
+
+.region-connector {
+  fill: #2a353e;
+  stroke: #4a5864;
+  stroke-width: 0.8;
+}
+
+.region-heat {
+  fill: #3b82f6;
+  opacity: 0.18;
+  transition: fill 0.3s, opacity 0.3s;
+}
+.region.active .region-heat {
+  opacity: 0.35;
+}
+
+.region-label {
+  fill: #d6dde3;
+  font-family: Orbitron, ui-sans-serif, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.region-caption {
+  fill: #9aa7b2;
+  font-size: 9px;
+}
+.region-sub {
+  fill: #556069;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7px;
+}
+
+.asic-hint {
+  fill: #151a1f;
+  stroke: #3a4650;
+  stroke-width: 0.8;
+}
+.fan-hub {
+  fill: #2dd4bf;
+  opacity: 0.7;
+}
+.fan-ring {
+  stroke: #3d4a55;
+  stroke-width: 2;
+}
+.chain-port {
+  fill: #2dd4bf;
+  opacity: 0.45;
+}
+
+.harness-power {
+  stroke: #e86a2b;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.harness-signal {
+  stroke: #60a5fa;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 4 3;
+  opacity: 0.75;
+}
+.harness-chain {
+  stroke: #2dd4bf;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.8;
+}
+
+.rds-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--muted, #7a8792);
+}
+.rds-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.rds-legend .swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.rds-legend .swatch.power {
+  background: #e86a2b;
+}
+.rds-legend .swatch.chain {
+  background: #2dd4bf;
+}
+.rds-legend .swatch.fan {
+  background: #60a5fa;
+}
+.rds-legend .swatch.control {
+  background: #1a2a28;
+  border-color: #2dd4bf;
+}

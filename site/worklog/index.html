@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mujina BZM2 · worklog</title>
+  <meta name="description" content="Lab notebook for the Mujina firmware port onto Intel Blockscale BZM2 / RDS 2.0." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="../js/theme.js"></script>
+</head>
+<body class="worklog-page">
+  <aside class="provisional-banner" role="status" aria-live="polite">
+    <div class="provisional-banner-inner">
+      <strong class="provisional-title">BRING-UP IN PROGRESS — STATUS + TIMINGS ONLY</strong>
+      <p class="provisional-body">Firmware port onto Intel Blockscale BZM2 / RDS 2.0. Colors are case status. Measurements, temperatures, hashrates, serials, and hosts are not published.</p>
+    </div>
+  </aside>
+
+  <nav class="site-nav" aria-label="Section navigation">
+    <div class="inner">
+      <div class="nav-brand">Mujina BZM2 · <span class="accent">RDS bring-up</span></div>
+      <div class="nav-links">
+        <a href="../">Story</a>
+        <a href="./" class="active" aria-current="page">Worklog</a>
+        <a href="../matrix/">Matrix</a>
+        <a href="../rds-viz/">RDS</a>
+        <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <div class="theme-toggle" data-theme-toggle role="group" aria-label="Color theme">
+        <button type="button" data-theme-value="light">Light</button>
+        <button type="button" data-theme-value="dark">Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Worklog · lab notebook</p>
+      <h1>Bring-up notes</h1>
+      <p class="hero-sub">
+        Narrative from the bench. Defects in our harness and daemon, ordering decisions,
+        and what still gates Mujina-controlled hashing. Status for each case lives on the
+        <a href="../matrix/">validation matrix</a>.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap prose">
+    <ul class="worklog-list">
+      <li>
+        <span class="wl-date">2026-09-15</span>
+        <a href="2026-09-15-first-hardware-week.html">Bringing Mujina up on real BZM2 hardware</a>
+        <p class="wl-blurb">First week on an RDS 2.0 control board. Five defects; four of them ours. Thermal interlock still gates hashing.</p>
+      </li>
+    </ul>
+    <p>Source markdown lives in the repository under <code>worklog/</code>.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="section-label">Provenance</p>
+      <p class="lede">Status and timestamps only. No measurements published here.</p>
+    </div>
+  </footer>
+</body>
+</html>

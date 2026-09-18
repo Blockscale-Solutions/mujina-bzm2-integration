@@ -1,10 +1,12 @@
-/* N5 MAX — light/dark theme toggle. Persists to localStorage key n5-theme. */
+/* Mujina BZM2 — light/dark theme toggle.
+ * Persists to localStorage key mujina-theme (falls back to legacy n5-theme). */
 (function () {
-  var KEY = "n5-theme";
+  var KEY = "mujina-theme";
+  var LEGACY_KEY = "n5-theme";
 
   function preferred() {
     try {
-      var stored = localStorage.getItem(KEY);
+      var stored = localStorage.getItem(KEY) || localStorage.getItem(LEGACY_KEY);
       if (stored === "light" || stored === "dark") return stored;
     } catch (_) {}
     if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -25,11 +27,12 @@
 
   function set(theme) {
     if (theme !== "light" && theme !== "dark") return;
-    try { localStorage.setItem(KEY, theme); } catch (_) {}
+    try {
+      localStorage.setItem(KEY, theme);
+    } catch (_) {}
     apply(theme);
   }
 
-  // Apply ASAP (script may be in <head> without defer)
   apply(preferred());
 
   function wire() {
@@ -51,6 +54,7 @@
     wire();
   }
 
-  // Expose for optional callers
-  window.N5Theme = { get: preferred, set: set };
+  window.MujinaTheme = { get: preferred, set: set };
+  // Back-compat alias
+  window.N5Theme = window.MujinaTheme;
 })();
