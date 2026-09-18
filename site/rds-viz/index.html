@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mujina BZM2 · RDS 2.0 schematic</title>
+  <meta name="description" content="Stylized RDS 2.0 control-board schematic for the Mujina BZM2 bring-up: PSU, fans, control board, hashboard chain." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="css/rds-viz.css" />
+  <script src="../js/theme.js"></script>
+</head>
+<body class="rds-page">
+  <aside class="provisional-banner" role="status" aria-live="polite">
+    <div class="provisional-banner-inner">
+      <strong class="provisional-title">BRING-UP IN PROGRESS — STATUS + TIMINGS ONLY</strong>
+      <p class="provisional-body">Firmware port onto Intel Blockscale BZM2 / RDS 2.0. Colors are case status. Measurements, temperatures, hashrates, serials, and hosts are not published.</p>
+    </div>
+  </aside>
+
+  <nav class="site-nav" aria-label="Section navigation">
+    <div class="inner">
+      <div class="nav-brand">Mujina BZM2 · <span class="accent">RDS bring-up</span></div>
+      <div class="nav-links">
+        <a href="../">Story</a>
+        <a href="../worklog/">Worklog</a>
+        <a href="../matrix/">Matrix</a>
+        <a href="./" class="active" aria-current="page">RDS</a>
+        <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <div class="theme-toggle" data-theme-toggle role="group" aria-label="Color theme">
+        <button type="button" data-theme-value="light">Light</button>
+        <button type="button" data-theme-value="dark">Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> RDS 2.0 · control-board schematic</p>
+      <h1>Topology for bring-up.<br /><span class="t-muted">Schematic, not a photo.</span></h1>
+      <p class="hero-sub">
+        Original stylized drawing of the RDS 2.0 control plane we are porting Mujina onto:
+        power supply, fans, the control board, and hashboard chain seats.
+        Geometry is topological. It is not a CAD export, not a vendor figure, and not a measurement display.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="rds-board-host" id="rds-board-root"></div>
+    <ul class="rds-legend" aria-label="Harness legend">
+      <li><span class="swatch power" aria-hidden="true"></span> Power</li>
+      <li><span class="swatch fan" aria-hidden="true"></span> Fan PWM / sense</li>
+      <li><span class="swatch chain" aria-hidden="true"></span> Hashboard chain UART</li>
+      <li><span class="swatch control" aria-hidden="true"></span> Control board</li>
+    </ul>
+
+    <div class="prose" style="margin-top:2rem">
+      <h2>What this shows</h2>
+      <ul>
+        <li><strong>PSU</strong> — system power into the control board.</li>
+        <li><strong>Fans</strong> — PWM / sense headers driven from the control board.</li>
+        <li><strong>RDS 2.0 control board</strong> — host/MCU, fan headers, power in, chain UART ports.</li>
+        <li><strong>HB0–HB2</strong> — hashboard chain seats (BZM2 ASIC boards). Seat count is illustrative of a multi-board chain, not a claim about a specific SKU population.</li>
+      </ul>
+
+      <h2>What this is not</h2>
+      <ul>
+        <li>Not a photograph or a traced PCB.</li>
+        <li>Not a paste from vendor documentation.</li>
+        <li>Not a live telemetry panel — heat/status affordances exist for later wiring; this page publishes no temperatures or hashrates.</li>
+      </ul>
+
+      <p>
+        Source SVG also lives under <code>drawings/rds/</code> in this repository.
+        See <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration/blob/main/docs/rds/README.md">docs/rds/README.md</a>.
+      </p>
+      <p><a href="../matrix/">Validation matrix →</a> · <a href="../">Story</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="section-label">Provenance</p>
+      <p class="lede">Original schematic art for public bring-up notes. Obeys PUBLISHING.md.</p>
+    </div>
+  </footer>
+
+  <script src="js/board.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.RdsBoard) window.RdsBoard.mount(document.getElementById("rds-board-root"));
+    });
+  </script>
+</body>
+</html>

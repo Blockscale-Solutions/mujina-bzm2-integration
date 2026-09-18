@@ -1,20 +1,132 @@
-<!doctype html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mujina BZM2 integration</title>
-<link rel="stylesheet" href="css/theme.css">
-<link rel="stylesheet" href="css/styles.css">
-<main style="max-width:60rem;margin:0 auto;padding:2rem 1.25rem">
-  <h1>Mujina on the BZM2 RDS control board</h1>
-  <p>Bringing up the Mujina mining daemon on Intel Blockscale BZM2 hardware,
-     starting with the RDS 2.0 control board. This site publishes the
-     validation test matrix and its live results.</p>
-  <p><a href="matrix/">Test matrix and live results &rarr;</a></p>
-  <h2>What is published here</h2>
-  <p>Case identity, objectives, procedures and pass criteria, and per-run
-     status and timings. Measurements, temperatures, serial numbers, host
-     names and paths are deliberately not published, and a check refuses the
-     deploy if any appear.</p>
-  <p>See <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration">the repository</a>
-     and its publication rules.</p>
-</main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mujina BZM2 · firmware port / RDS bring-up</title>
+  <meta name="description" content="Bringing the open-source Mujina mining daemon onto Intel Blockscale BZM2, starting with the RDS 2.0 control board." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="rds-viz/css/rds-viz.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="story-page">
+  <aside class="provisional-banner" role="status" aria-live="polite">
+    <div class="provisional-banner-inner">
+      <strong class="provisional-title">BRING-UP IN PROGRESS — STATUS + TIMINGS ONLY</strong>
+      <p class="provisional-body">Firmware port onto Intel Blockscale BZM2 / RDS 2.0. Colors are case status. Measurements, temperatures, hashrates, serials, and hosts are not published.</p>
+    </div>
+  </aside>
+
+  <nav class="site-nav" aria-label="Section navigation">
+    <div class="inner">
+      <div class="nav-brand">Mujina BZM2 · <span class="accent">RDS bring-up</span></div>
+      <div class="nav-links">
+        <a href="./" class="active" aria-current="page">Story</a>
+        <a href="worklog/">Worklog</a>
+        <a href="matrix/">Matrix</a>
+        <a href="rds-viz/">RDS</a>
+        <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <div class="theme-toggle" data-theme-toggle role="group" aria-label="Color theme">
+        <button type="button" data-theme-value="light">Light</button>
+        <button type="button" data-theme-value="dark">Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Firmware port · hardware bring-up</p>
+      <h1>Mujina on the BZM2<br /><span class="t-muted">RDS 2.0 control board</span></h1>
+      <p class="hero-sub">
+        Open-source <a href="https://github.com/256foundation/mujina">Mujina</a> mining daemon onto
+        Intel Blockscale BZM2 silicon. Validation is gated: vendor RDS characterization (RDS-*),
+        then Mujina bring-up (MJ-*). Nothing hashes under Mujina control until the thermal interlock is in place.
+      </p>
+      <div class="story-links">
+        <a class="primary" href="matrix/">Validation matrix →</a>
+        <a href="worklog/">Worklog</a>
+        <a href="rds-viz/">RDS schematic</a>
+        <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration">Repository</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap prose">
+    <h2>Port thesis</h2>
+    <p>
+      The driver was written and reviewed against documentation; it had never been run against silicon.
+      This site tracks the bring-up on an RDS 2.0 control board: what we tried, what the harness got wrong,
+      what the daemon got wrong, and which cases still gate hashing.
+    </p>
+    <p>
+      It is a lab notebook for a firmware port — not a throughput leaderboard, not a storage benchmark,
+      and not a product launch page.
+    </p>
+
+    <h2>Current phase</h2>
+    <p>
+      Vendor stack characterized for everything short of sustained hashing. Mujina attaches to a real chain
+      and reads it. The remaining gap before we drive the hardware ourselves is an interlock that refuses to
+      dispatch work we cannot thermally protect. That interlock is specified and not yet built.
+    </p>
+    <div class="callout">
+      <strong>Gate:</strong> Phase 3 (mining) stays blocked until an explicit go-ahead and a cool thermal path.
+      Spurious stop beats missing stop.
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-item">
+        <div class="phase-id">RDS-* · vendor</div>
+        <h3>RDS characterization</h3>
+        <p>Power-on, logging, calibration, thermal response under the vendor stack — the baseline Mujina must match or beat safely.</p>
+      </div>
+      <div class="phase-item">
+        <div class="phase-id">MJ-* · Mujina</div>
+        <h3>Daemon bring-up</h3>
+        <p>Baud, observation, diagnostics, enumeration — attach and read before any Mujina-controlled hashing.</p>
+      </div>
+    </div>
+
+    <h2>RDS 2.0 topology (schematic)</h2>
+    <p>
+      Stylized control-board schematic: PSU, fans, hashboard chain seats. Not a photo, not a vendor drawing.
+      Status affordances are wired for later; this page does not invent temperatures or hashrates.
+    </p>
+    <div class="viz-embed" id="story-rds-viz">
+      <div id="rds-board-root" class="rds-board-host" data-compact="1"></div>
+      <p class="viz-caption">Schematic ≠ photo · <a href="rds-viz/">full RDS page</a> · source under <code>drawings/rds/</code></p>
+    </div>
+
+    <h2>What we publish / do not</h2>
+    <p><strong>Publish:</strong> case identity, objectives, procedures, pass criteria, per-run status and timings, defects in our own code.</p>
+    <p><strong>Do not publish:</strong> measurements, temperatures, voltages, hashrates, serials, host names, absolute paths, NDA material. The rule is in <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration/blob/main/PUBLISHING.md">PUBLISHING.md</a> and enforced by <code>tools/check-public.sh</code>.</p>
+
+    <h2>Read next</h2>
+    <ul>
+      <li><a href="worklog/2026-09-15-first-hardware-week.html">First hardware week</a> — five defects, four of them ours</li>
+      <li><a href="matrix/">Validation matrix</a> — live phase / case status</li>
+      <li><a href="rds-viz/">RDS schematic</a> — control board, PSU, fans, hashboards</li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="section-label">Provenance</p>
+      <p class="lede">Status and timestamps only. Site chrome began as an internal lab dashboard and was retargeted for this port.</p>
+    </div>
+  </footer>
+
+  <script src="rds-viz/js/board.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var root = document.getElementById("rds-board-root");
+      if (window.RdsBoard && root) window.RdsBoard.mount(root);
+    });
+  </script>
+</body>
+</html>

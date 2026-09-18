@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>First hardware week · Mujina BZM2 worklog</title>
+  <meta name="description" content="First week bringing Mujina up on an RDS 2.0 control board — harness and daemon defects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="../js/theme.js"></script>
+</head>
+<body class="worklog-page">
+  <aside class="provisional-banner" role="status" aria-live="polite">
+    <div class="provisional-banner-inner">
+      <strong class="provisional-title">BRING-UP IN PROGRESS — STATUS + TIMINGS ONLY</strong>
+      <p class="provisional-body">Firmware port onto Intel Blockscale BZM2 / RDS 2.0. Colors are case status. Measurements, temperatures, hashrates, serials, and hosts are not published.</p>
+    </div>
+  </aside>
+
+  <nav class="site-nav" aria-label="Section navigation">
+    <div class="inner">
+      <div class="nav-brand">Mujina BZM2 · <span class="accent">RDS bring-up</span></div>
+      <div class="nav-links">
+        <a href="../">Story</a>
+        <a href="./" class="active" aria-current="page">Worklog</a>
+        <a href="../matrix/">Matrix</a>
+        <a href="../rds-viz/">RDS</a>
+        <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <div class="theme-toggle" data-theme-toggle role="group" aria-label="Color theme">
+        <button type="button" data-theme-value="light">Light</button>
+        <button type="button" data-theme-value="dark">Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <p class="eyebrow" style="padding-top:2rem"><a href="./">← Worklog</a></p>
+    <article class="worklog-article">
+<h1>Bringing Mujina up on real BZM2 hardware</h1>
+<p class="worklog-date">2026-09-15</p>
+<p>The driver had been written and reviewed but never run against silicon. This week it was, on an RDS 2.0 control board, and the interesting part is not that it worked. It is what running it found.</p>
+<h2>Five defects, and four of them were ours</h2>
+<p>The bench exists to find defects in the part. It found defects in our test harness first, then in our daemon, and the vendor stack was not implicated in any of them.</p>
+<p><strong>A launcher that did not exist.</strong> The harness started the daemon with a detach helper the target&#x27;s shell does not provide, and sent its own error output to nowhere. So a program that was never launched reported itself as &quot;the daemon produced no output&quot; — a true statement about the wrong thing. Keeping a launcher&#x27;s error output costs one line and would have saved an afternoon.</p>
+<p><strong>A liveness check that could only answer one way.</strong> The busybox on this target matches process names against the whole command line, so the check was false for every daemon ever started with arguments. Every liveness test in the harness had been answering &quot;not running&quot;, including a stop-confirmation that could therefore only ever report success. The same defect was present in three more scripts. Liveness now reads the process name directly, which is exact and cannot match the shell doing the asking.</p>
+<p><strong>A counter that scored formatting as information.</strong> To decide which log level is worth running, we count distinct <em>message shapes</em> — a line with its numbers and hex literals replaced — so half a million lines reporting different values collapse to the one statement that produced them. The counter collapsed numbers but not whitespace, so a table printed with different column padding counted as several different statements.</p>
+<p>It was caught only because it produced an impossible ordering: a lower log level appearing to carry more distinct information than a higher one. Had the inflation been ten percent rather than an inversion, it would have been believed. That is the uncomfortable part.</p>
+<p><strong>A cap that guarded the wrong thing.</strong> Debug captures are capped so they cannot exhaust the target&#x27;s memory, and the cap watched the capture file. The daemon also writes every line to the system log, in the same filesystem. A run that believed it had spent a third of the budget had spent two thirds of it. The cap measured the artifact when the constraint was the filesystem.</p>
+<p><strong>A board destroyed milliseconds after being created.</strong> This one was in the daemon rather than the harness. Boards can be discovered through a transport or attached from configuration. The event loop that services transports returns immediately when there are none — which is the normal case for an embedded deployment with discovery compiled out — and the task that owned it then tore down every configured board. The daemon stayed up and served an empty board list, so nothing looked broken until something asked it for a board.</p>
+<h2>A protective check that disabled protection</h2>
+<p>The most instructive failure of the week was a fix.</p>
+<p>Telemetry frames carry a device address. After taking over a chain that another controller was already driving, our first read lands mid-stream rather than on a frame boundary, and the parser produced readings attributed to a device outside the chain, a die temperature below ambient, and a hardware fault that never happened. A fabricated fault is the worst of the three, because the natural response to a fault is to power something down.</p>
+<p>So we added a check: ignore frames from devices the chain does not contain. Correct for telemetry, where publishing a reading from a device we do not have turns a framing error into a plausible measurement.</p>
+<p>It was wrong on the fault path, twice, in one day.</p>
+<p>The first version discarded such frames outright, which would suppress a real over-temperature trip from a device we were simply not configured for. One bug fabricates faults; the other hides them. Corrected to escalate loudly instead of acting.</p>
+<p>The second version looked right and was worse. The configured chain carries addresses that are global across several buses, while the wire reports addresses local to each bus. On the first bus the two coincide, which is exactly the configuration the bench runs and every test covers. On any bus after the first they diverge completely, so every genuine frame read as out-of-chain and over-temperature shutdown was disabled for most of the machine, with a log line as the only symptom.</p>
+<p>The check is now off the fault path entirely. An asserted fault is acted on wherever it claims to come from, and an unrecognised address is reported as evidence that the line or the configuration is wrong rather than used as a reason to do nothing.</p>
+<p><strong>Between a spurious stop and a missing stop, the spurious stop is the safe failure.</strong> It is visible, recoverable, and costs a restart. A missing stop costs silicon. That rule is now written down, because we got it wrong while believing we were applying it — the principle &quot;an unknown reading must be treated as the dangerous case&quot; had been written into an issue the day before.</p>
+<p>The underlying address mismatch is filed and will be fixed properly, at which point the check can return, because it will mean what it says.</p>
+<h2>What made the difference</h2>
+<p>Two things, neither of them clever.</p>
+<p><strong>Escalating cost deliberately.</strong> The log-level survey runs cheapest first. The first three harness defects surfaced on a run that produced nineteen lines and cost four minutes. The same defects found on the largest run would have cost a capture the size of the target&#x27;s memory and the run it was measuring.</p>
+<p><strong>Being able to test without the hardware.</strong> Two experiments were burned on defects in a shell script before the harness grew a mode that runs everything except the part needing powered hardware. After that, the same class of defect cost seconds. One attempt per power cycle is too expensive a way to debug a shell script, and it took paying it twice to act on that.</p>
+<h2>Next</h2>
+<p>The test matrix on this site shows where each case stands. The short version: the vendor stack is characterised for everything except sustained hashing, our daemon attaches to a real chain and reads it, and the remaining gap before we can drive the hardware ourselves is an interlock that refuses to dispatch work we cannot thermally protect. That is specified and not yet built, and nothing hashes under our control until it is.</p>
+    </article>
+    <p class="prose" style="margin:2rem 0 3rem"><a href="../matrix/">Validation matrix →</a> · <a href="../">Story</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="section-label">Provenance</p>
+      <p class="lede">From <code>worklog/2026-09-15-first-hardware-week.md</code>. No measurements republished.</p>
+    </div>
+  </footer>
+</body>
+</html>

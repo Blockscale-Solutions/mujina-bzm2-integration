@@ -3,33 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mujina BZM2 · live campaign matrix</title>
-  <meta name="description" content="Live campaign matrix for the Mujina on the BZM2 RDS control board" />
+  <title>Mujina BZM2 · validation matrix</title>
+  <meta name="description" content="Live validation matrix for Mujina bring-up on the BZM2 RDS 2.0 control board." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="matrix.css?v=prio1" />
+  <link rel="stylesheet" href="matrix.css?v=bringup1" />
   <script src="../js/theme.js"></script>
 </head>
 <body class="matrix-page">
   <aside class="provisional-banner" role="status" aria-live="polite">
     <div class="provisional-banner-inner">
-      <strong class="provisional-title">RUNNING ANALYSIS — DO NOT DEPEND</strong>
-      <p class="provisional-body">Status feed is not a sealed story. Colors are cell and case status only — no throughput, temperatures, or invented figures.</p>
+      <strong class="provisional-title">BRING-UP IN PROGRESS — STATUS + TIMINGS ONLY</strong>
+      <p class="provisional-body">Firmware port onto Intel Blockscale BZM2 / RDS 2.0. Colors are case status. Measurements, temperatures, hashrates, serials, and hosts are not published.</p>
     </div>
   </aside>
 
   <nav class="site-nav" aria-label="Section navigation">
     <div class="inner">
-      <div class="nav-brand">Mujina BZM2 · <span class="r10">validation phases</span>/<span class="rz1">validation phases</span></div>
+      <div class="nav-brand">Mujina BZM2 · <span class="accent">RDS bring-up</span></div>
       <div class="nav-links">
         <a href="../">Story</a>
-        <a href="../#results">Results</a>
-        <a href="./" class="active" aria-current="page">Matrix</a>
-        <a href="../telemetry-viz/">M.2 lab</a>
-        <a href="../#follow">Follow</a>
+        <a href="../worklog/">Worklog</a>
+        <a href="../matrix/" class="active" aria-current="page">Matrix</a>
+        <a href="../rds-viz/">RDS</a>
+        <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration" rel="noopener noreferrer">GitHub</a>
       </div>
       <div class="theme-toggle" data-theme-toggle role="group" aria-label="Color theme">
         <button type="button" data-theme-value="light">Light</button>
@@ -40,29 +40,29 @@
 
   <header class="hero">
     <div class="wrap">
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Campaign matrix · status feed</p>
-      <h1>Cells in flight.<br /><span class="t-muted">Not the sealed chapter.</span></h1>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Validation matrix · status feed</p>
+      <h1>Phases and cases.<br /><span class="t-muted">Bring-up status grid.</span></h1>
       <p class="hero-sub">
-        Stage → cell grid from the SUT status daemon
-        (<code>n5-campaign-status/v1</code>). Host identifiers are redacted.
-        Expand a running or passed cell for STO case timestamps.
+        Phase → case grid from the validation status feed
+        (<code>rds-validation-status/v1</code>). Expand a running or passed case for run timestamps.
+        Host identifiers are redacted at the loader.
       </p>
       <div id="matrix-meta" class="matrix-meta">Loading status feed…</div>
     </div>
   </header>
 
   <main class="wrap" id="matrix-root" aria-live="polite">
-    <p class="lede">Loading campaign status…</p>
+    <p class="lede">Loading validation status…</p>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
       <p class="section-label">Provenance</p>
-      <p class="lede">Status and timestamps only. This page does not publish sealed throughput or invent inference numbers.</p>
+      <p class="lede">Status and timestamps only. This page does not publish measurements, temperatures, or hashrates.</p>
       <div class="viewer-stale" data-data-root="../data" id="viewer-stale">
         <p class="viewer-line" data-role="build">Site build · …</p>
         <p class="viewer-line" data-role="status">Status updated · …</p>
-        <p class="viewer-line" data-role="stale">Viewer may be stale if status older than 15 minutes.</p>
+        <p class="viewer-line" data-role="stale">Viewer may be stale if status older than the feed window.</p>
       </div>
     </div>
   </footer>
@@ -71,7 +71,7 @@
     <div class="case-modal-panel">
       <button type="button" class="case-modal-close" aria-label="Close">&times;</button>
       <dl class="case-modal-meta" data-role="doc-meta">
-        <div><dt>Test</dt><dd id="case-doc-title" data-role="doc-id">—</dd></div>
+        <div><dt>Case</dt><dd id="case-doc-title" data-role="doc-id">—</dd></div>
         <div><dt>Title</dt><dd data-role="doc-title-text">—</dd></div>
         <div data-role="doc-priority-row" hidden><dt>Priority</dt><dd data-role="doc-priority">—</dd></div>
         <div data-role="doc-created-row" hidden><dt>Created</dt><dd data-role="doc-created">—</dd></div>
@@ -83,6 +83,6 @@
 
   <script src="../js/campaign-status.js"></script>
   <script src="../js/viewer-footer.js"></script>
-  <script src="matrix.js?v=prio1"></script>
+  <script src="matrix.js?v=bringup1"></script>
 </body>
 </html>

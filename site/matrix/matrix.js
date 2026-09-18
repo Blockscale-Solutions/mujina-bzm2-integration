@@ -1,8 +1,8 @@
-/* Campaign matrix — status + timestamps only. No sealed numbers. */
+/* Validation matrix — status + timestamps only. No measurements. */
 (function () {
   "use strict";
 
-  var S = window.N5Status;
+  var S = window.BringupStatus || window.N5Status;
   var root = document.getElementById("matrix-root");
   var metaEl = document.getElementById("matrix-meta");
   var openKey = null;
@@ -23,7 +23,7 @@
     if (Array.isArray(cell.layouts) && cell.layouts.length) {
       return cell.layouts.join(" / ");
     }
-    return "cell";
+    return "case";
   }
 
   function cellTitle(cell) {
@@ -348,13 +348,13 @@
     var mid2 = "";
     var dur = "";
     if (roll.cellTotal > 0) {
-      if (roll.st === "passed") mid = roll.cellPassed + "/" + roll.cellTotal + " cells";
+      if (roll.st === "passed") mid = roll.cellPassed + "/" + roll.cellTotal + " cases";
       else if (roll.st === "failed")
-        mid = roll.cellFailed + "✗ · " + roll.cellPassed + "/" + roll.cellTotal + " cells";
+        mid = roll.cellFailed + "✗ · " + roll.cellPassed + "/" + roll.cellTotal + " cases";
       else if (roll.st === "running" || roll.st === "pending")
-        mid = roll.cellPassed + "/" + roll.cellTotal + " cells";
+        mid = roll.cellPassed + "/" + roll.cellTotal + " cases";
     } else {
-      mid = "0 cells";
+      mid = "0 cases";
     }
     if (roll.caseTotal > 0) {
       if (roll.st === "failed")
@@ -401,7 +401,7 @@
           ? cells.map(function (c) {
               return renderCell(stage, c);
             }).join("")
-          : '<p class="stage-empty">No cells in this stage yet.</p>') +
+          : '<p class="stage-empty">No cases in this phase yet.</p>') +
         "</div>";
     }
     return (
@@ -417,13 +417,13 @@
       (open ? "true" : "false") +
       '">' +
       '<div class="stage-head-text">' +
-      '<p class="section-label">Stage ' +
+      '<p class="section-label">Phase ' +
       esc(sid) +
       (hist ? " · historical" : "") +
       (open ? "" : " · collapsed") +
       "</p>" +
       "<h2>" +
-      esc(stage.name || "Stage " + sid) +
+      esc(stage.name || "Phase " + sid) +
       "</h2>" +
       "</div>" +
       '<span class="stage-status cell-status">' +
@@ -774,7 +774,7 @@
   function fail(err) {
     if (metaEl) metaEl.textContent = "Status feed failed to load.";
     root.innerHTML =
-      '<p class="matrix-error">Could not load campaign-status.json or the sample fixture.</p>';
+      '<p class="matrix-error">Could not load the validation status feed.</p>';
     console.warn("matrix status load failed", err);
   }
 
@@ -819,7 +819,7 @@
     paint(status);
     // Keep footer in sync without a full reload.
     document.querySelectorAll(".viewer-stale").forEach(function (el) {
-      if (typeof el._n5Refresh === "function") el._n5Refresh();
+      if (typeof el._statusRefresh === "function") el._statusRefresh();
     });
   }
 
