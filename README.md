@@ -47,7 +47,7 @@ that fails the deploy rather than by anybody remembering.
 ## Related
 
 - [`bzm2-hwref`](https://github.com/Blockscale-Solutions/bzm2-hwref) — hardware
-  reference documentation for the BZM2 ASIC
+  reference documentation for the BZM2 ASIC ([Pages](https://blockscale-solutions.github.io/bzm2-hwref/))
 - [Mujina](https://github.com/256foundation/mujina) — the mining firmware
 
 ## Provenance of the site code
