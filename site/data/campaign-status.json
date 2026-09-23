@@ -1,10 +1,10 @@
 {
   "schema": "rds-validation-status/v1",
   "campaign": "Mujina on the BZM2 RDS control board",
-  "updated_at": "2026-09-23T15:18:51Z",
-  "status_updated_at": "2026-09-23T15:18:51Z",
+  "updated_at": "2026-09-23T15:40:20Z",
+  "status_updated_at": "2026-09-23T15:40:20Z",
   "stale_after_s": 86400,
-  "git_commit": "ba98892",
+  "git_commit": "cae36e0",
   "source": "generated from case records and result files",
   "note": "Status and timings only. No metric, temperature, serial, host or path appears here by design.",
   "stages": [
