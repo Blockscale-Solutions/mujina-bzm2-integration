@@ -41,10 +41,17 @@ scan "vendor document or part filenames" \
      '\b(MFI[0-9]+|IM9[0-9]+|BZM[0-9]_[A-Za-z0-9_]+|bzm_[0-9]+i[0-9]+)[A-Za-z0-9_.-]*'
 scan "absolute paths from our machines" \
      '(/home/ronald|/srv/storage|C:\\\\Users|OneDrive|reckless-worklog|bzm2-proprietary)'
+# "bonanza" is NOT here: Ronald cleared it on 2026-09-23 as a generic
+# hostname, fine to publish. The unit's name is how every case record and run
+# path refers to it; scrubbing it would make the published records say less.
 scan "hosts, private addresses, ssh targets" \
-     '(littledoctor|razorclam|bonanza|192\.168\.[0-9]+\.[0-9]+|10\.[0-9]+\.[0-9]+\.[0-9]+|root@|ronald@)'
+     '(littledoctor|razorclam|192\.168\.[0-9]+\.[0-9]+|10\.[0-9]+\.[0-9]+\.[0-9]+|root@|ronald@)'
 scan "serial-number shapes" \
      '\b[A-Z]{2,4}[0-9]{6,}\b'
+# A pool username IS the payout address, and Mujina logs it on accepted
+# shares. Anything built from mining-run logs can carry one; it must not ship.
+scan "bitcoin addresses" \
+     '\b(bc1[ac-hj-np-z02-9]{11,71}|BC1[AC-HJ-NP-Z02-9]{11,71}|[13][a-km-zA-HJ-NP-Z1-9]{25,34})\b'
 scan "internal ledger" \
      '(CLAIMS-INTERNAL|claim ledger resolves|internal ledger.*file:line)'
 
