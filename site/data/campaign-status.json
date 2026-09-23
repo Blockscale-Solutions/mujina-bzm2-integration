@@ -1,10 +1,10 @@
 {
   "schema": "rds-validation-status/v1",
   "campaign": "Mujina on the BZM2 RDS control board",
-  "updated_at": "2026-09-18T00:05:51Z",
-  "status_updated_at": "2026-09-18T00:05:51Z",
+  "updated_at": "2026-09-23T04:14:30Z",
+  "status_updated_at": "2026-09-23T04:14:30Z",
   "stale_after_s": 86400,
-  "git_commit": "30bbbc3",
+  "git_commit": "2b19b13",
   "source": "generated from case records and result files",
   "note": "Status and timings only. No metric, temperature, serial, host or path appears here by design.",
   "stages": [
@@ -300,11 +300,11 @@
           "layout": "MJ-OBS-01",
           "suite": "phase 2",
           "mode": "open",
-          "detail": "19 runs",
-          "status": "failed",
+          "detail": "36 runs",
+          "status": "blocked",
           "why": "The first time our own code touches real silicon. Mujina attaches to the chain, enumerates it, and streams telemetry, while dispatching no work at all.",
           "started_at": "2026-09-15T04:36:07Z",
-          "finished_at": "2026-09-18T00:05:51Z",
+          "finished_at": "2026-09-22T00:52:52Z",
           "cases": [
             {
               "id": "2026-09-15 04:36Z",
@@ -476,6 +476,159 @@
               "started_at": "2026-09-18T00:02:56Z",
               "finished_at": "2026-09-18T00:05:51Z",
               "why": "FAIL"
+            },
+            {
+              "id": "2026-09-21 14:46Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T144604Z",
+              "status": "failed",
+              "started_at": "2026-09-21T14:46:04Z",
+              "finished_at": "2026-09-21T14:51:18Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 14:57Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T145704Z",
+              "status": "failed",
+              "started_at": "2026-09-21T14:57:04Z",
+              "finished_at": "2026-09-21T15:02:24Z",
+              "why": "FAIL"
+            },
+            {
+              "id": "2026-09-21 15:07Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T150701Z",
+              "status": "failed",
+              "started_at": "2026-09-21T15:07:01Z",
+              "finished_at": "2026-09-21T15:11:59Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 15:12Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T151246Z",
+              "status": "blocked",
+              "started_at": "2026-09-21T15:12:46Z",
+              "finished_at": "2026-09-21T15:12:53Z",
+              "why": "status: ABORTED"
+            },
+            {
+              "id": "2026-09-21 15:13Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T151320Z",
+              "status": "failed",
+              "started_at": "2026-09-21T15:13:20Z",
+              "finished_at": "2026-09-21T15:16:02Z",
+              "why": "FAIL"
+            },
+            {
+              "id": "2026-09-21 15:16Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T151652Z",
+              "status": "failed",
+              "started_at": "2026-09-21T15:16:52Z",
+              "finished_at": "2026-09-21T15:19:26Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 15:27Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T152719Z",
+              "status": "failed",
+              "started_at": "2026-09-21T15:27:19Z",
+              "finished_at": "2026-09-21T15:30:13Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 16:23Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T162322Z",
+              "status": "failed",
+              "started_at": "2026-09-21T16:23:22Z",
+              "finished_at": "2026-09-21T16:31:19Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 16:35Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T163509Z",
+              "status": "failed",
+              "started_at": "2026-09-21T16:35:09Z",
+              "finished_at": "2026-09-21T16:40:24Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 17:07Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T170723Z",
+              "status": "failed",
+              "started_at": "2026-09-21T17:07:23Z",
+              "finished_at": "2026-09-21T17:15:00Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 17:16Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T171646Z",
+              "status": "failed",
+              "started_at": "2026-09-21T17:16:46Z",
+              "finished_at": "2026-09-21T17:24:57Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 18:04Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T180444Z",
+              "status": "blocked",
+              "started_at": "2026-09-21T18:04:44Z",
+              "finished_at": "2026-09-21T18:14:30Z",
+              "why": "ABORTED"
+            },
+            {
+              "id": "2026-09-21 18:24Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T182448Z",
+              "status": "blocked",
+              "started_at": "2026-09-21T18:24:48Z",
+              "finished_at": "2026-09-21T18:31:17Z",
+              "why": "ABORTED"
+            },
+            {
+              "id": "2026-09-21 19:56Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T195607Z",
+              "status": "failed",
+              "started_at": "2026-09-21T19:56:07Z",
+              "finished_at": "2026-09-21T20:05:15Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 20:09Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T200914Z",
+              "status": "failed",
+              "started_at": "2026-09-21T20:09:14Z",
+              "finished_at": "2026-09-21T20:18:18Z",
+              "why": "PARTIAL"
+            },
+            {
+              "id": "2026-09-21 22:07Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260921T220743Z",
+              "status": "skipped",
+              "started_at": "2026-09-21T22:07:43Z",
+              "finished_at": "2026-09-21T22:17:13Z",
+              "why": null
+            },
+            {
+              "id": "2026-09-22 00:50Z",
+              "tcid": "MJ-OBS-01",
+              "stamp": "20260922T005014Z",
+              "status": "blocked",
+              "started_at": "2026-09-22T00:50:14Z",
+              "finished_at": "2026-09-22T00:52:52Z",
+              "why": "status: ABORTED"
             }
           ]
         },
@@ -538,13 +691,41 @@
           "n": 2,
           "layout": "MJ-HASH-01",
           "suite": "phase 3",
-          "mode": "gated",
-          "detail": "not executed",
-          "status": "blocked",
+          "mode": "open",
+          "detail": "3 runs",
+          "status": "skipped",
           "why": "Establish that Mujina can drive a powered BZM2 chain to produce verifiable work, and do it without relying on anything the vendor stack is still doing. Not \"does it hash\". Does it hash, safely, with every share externally verifiable and every watt accounted for.",
-          "started_at": null,
-          "finished_at": null,
-          "cases": []
+          "started_at": "2026-09-22T20:49:23Z",
+          "finished_at": "2026-09-23T02:54:35Z",
+          "cases": [
+            {
+              "id": "2026-09-22 20:49Z",
+              "tcid": "MJ-HASH-01",
+              "stamp": "20260922T204923Z",
+              "status": "skipped",
+              "started_at": "2026-09-22T20:49:23Z",
+              "finished_at": "2026-09-22T21:10:47Z",
+              "why": "ran, no verdict stated"
+            },
+            {
+              "id": "2026-09-23 02:03Z",
+              "tcid": "MJ-HASH-01",
+              "stamp": "20260923T020342Z",
+              "status": "skipped",
+              "started_at": "2026-09-23T02:03:42Z",
+              "finished_at": "2026-09-23T02:28:16Z",
+              "why": "ran, no verdict stated"
+            },
+            {
+              "id": "2026-09-23 02:29Z",
+              "tcid": "MJ-HASH-01",
+              "stamp": "20260923T022940Z",
+              "status": "skipped",
+              "started_at": "2026-09-23T02:29:40Z",
+              "finished_at": "2026-09-23T02:54:35Z",
+              "why": "ran, no verdict stated"
+            }
+          ]
         },
         {
           "n": 3,

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mujina&#x27;s first pool-accepted share on BZM2 silicon &middot; Mujina BZM2</title>
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/styles.css">
+<script src="../js/theme.js"></script>
+<style>
+  main.milestone { max-width: 46rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; line-height: 1.6; }
+  main.milestone table { border-collapse: collapse; margin: 1rem 0; }
+  main.milestone td, main.milestone th { padding: .35rem .75rem; border-bottom: 1px solid var(--border, #d9d4cb); text-align: left; vertical-align: top; }
+  main.milestone code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .9em; overflow-wrap: anywhere; }
+  nav.crumbs { max-width: 46rem; margin: 0 auto; padding: 1rem 1.25rem 0; font-size: .9rem; }
+</style>
+</head>
+<body>
+<nav class="crumbs"><a href="../">Mujina BZM2</a> &rsaquo; <a href="./">Milestones</a></nav>
+<main class="milestone">
+<h1>Mujina's first pool-accepted share on BZM2 silicon</h1>
+<p><strong>2026-09-23T02:37:09Z.</strong> Mujina, the open-source (GPL-3.0-or-later) Bitcoin
+mining software, submitted a share that a public pool accepted. It came from an
+RDS hashboard carrying 100 BZM2 ASICs, running on Mujina's own driver from job
+to result to submission.</p>
+<p>At that second the chain tip was block <strong>968,216</strong>
+(<code>000000000000000000014df86e986ca182365da99657cdfd1c22c3326d6a8cdc</code>), so the share
+was mined toward block <strong>968,217</strong>. Two independent block explorers,
+mempool.space and blockstream.info, agree on the tip's height, hash and header
+time. Header times are set by miners, and this tip was only 32 s old, so "tip at
+that second" is stated with that caveat. The pool accepting the share is the
+evidence that its job was on the current tip.</p>
+<h2>What ran</h2>
+<ul>
+<li><strong>Hardware:</strong> one RDS hashboard, 100 BZM2 ASICs on a single 9-bit, 5 Mbaud
+  chain.</li>
+<li><strong>Start-up:</strong> the unit's stock software powered and calibrated the board.
+  Mujina then took the chain over without dropping power, reset every engine,
+  ungated them, and read back that they were ready. It set a separate nonce
+  range for each ASIC and began dispatching work from the pool.</li>
+<li><strong>Pool:</strong> OCEAN, stratum v1, difficulty 262,144, under a worker named
+  <code>mujina</code>.</li>
+</ul>
+<h2>What it measured</h2>
+<p>Over a 610 s hold, from the first job to the pause:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shares accepted / rejected</td>
+<td><strong>13 / 0</strong>, at difficulty 262,144</td>
+</tr>
+<tr>
+<td>hash rate (Mujina's share-based estimate)</td>
+<td>26-29 TH/s, one board</td>
+</tr>
+<tr>
+<td>trips, arms, scrams</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p>When the harness paused mining at the end, the load came off within a second,
+with Mujina still running. The engines stop when work stops.</p>
+<p><em>Figures published by explicit decision (Ronald Bynoe, 2026-09-23): the share
+counts and window, and the hash rate. Power, efficiency and temperatures from
+this run are recorded in the project's case record and are not published.</em></p>
+<h2>What it took</h2>
+<p>A first dispatch, one run earlier, returned nothing. Every result was missing,
+and power stayed at idle. A verified investigation found three separate
+defects, and any one of them would have prevented an accepted share. Each fix
+carries a test that fails without it, and the first was confirmed on the
+silicon before any code was written:</p>
+<ol>
+<li><strong>The engines were clock-gated.</strong> Mujina's take-over reset gates every
+   engine's cores, and nothing ungated them. We read the engine's config
+   register on the chip after the reset (gated), wrote the run value, and read
+   it back (running). Mujina now ungates after every reset and refuses to
+   dispatch unless the readback agrees.</li>
+<li><strong>The job and the returned nonce were in the wrong byte order</strong>, and the
+   nonce offset was wrong. Checked against a public captured hardware result:
+   under the old rule it decodes to a header with 1 leading zero bit; under the
+   new rule, 34.</li>
+<li><strong>Every engine hashed identical work.</strong> The silicon does not split work
+   between engines or ASICs, so without distinct work the same nonces were
+   hashed 23,600 times over. Each ASIC now has its own nonce range, and each
+   engine its own extranonce2.</li>
+</ol>
+<p>The safety behaviour that surrounded those runs was exercised for real. A
+thermal interlock refuses work until every die has reported. A stall watch
+stops a chain that is given work but returns nothing. A ladder de-energises the
+board if that does not clear. All three fired correctly on the failed runs,
+including one caused by a sequencing mistake of ours, in which the sensor
+stream never came up. Each time, the board ended dark and safe.</p>
+<h2>What this does not claim</h2>
+<ul>
+<li><strong>Not an efficiency comparison.</strong> No efficiency figure is published here, and
+  none has yet been measured the same way against the stock software on the
+  same board.</li>
+<li><strong>Not a cold start.</strong> The stock software powered the board. Mujina
+  controlling the power supply from cold is separate work.</li>
+<li><strong>One board of three.</strong></li>
+<li><strong>Not upstream yet.</strong> This runs on a development branch. The enablement goes
+  to the upstream project as a reviewed change, once it is ready.</li>
+</ul>
+<h2>Reproducing it</h2>
+<p>The tree that produced this share is tagged <code>milestone/first-accepted-share</code>.
+The run's case record gives its configuration, pass and fail criteria, all
+written before the run, and every figure above with its evidence path.</p>
+</main>
+</body>
+</html>
