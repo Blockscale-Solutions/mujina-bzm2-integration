@@ -573,7 +573,7 @@ svg.tl .tl-plan{fill:var(--tl-surface);stroke:var(--tl-muted);stroke-width:2;str
 <p>Every run in which Mujina received work from the pool: the day it ran, the span it mined over, and the
 blocks found in that span, each of which it was mining toward when it was found. Read from each run's own
 record of the chain tip at the start and the end of that span, looked up once from two independent public
-block explorers, which agree on every one. Tips are placed by block header time, which miners set;
+block explorers, which agree on 14 of these 15. Tips are placed by block header time, which miners set;
 <span aria-label="approximately">&asymp;</span> marks a run where the pool's own new-block notices count
 differently, so a block at one edge of the span may sit on the other side of it.</p>
 <div class="tl-scroll"><table class="tl-runs">
@@ -594,6 +594,7 @@ differently, so a block at one edge of the span may sit on the other side of it.
 <tr><td>MJ-HARN-02<span class="tl-run">20260925T011219Z</span></td><td><span class="tl-when">2026-09-25</span><br>01:23&ndash;01:28Z<small>the hold</small></td><td>none; mining toward 968,479</td></tr>
 <tr><td>MJ-HASH-07<span class="tl-run">20260925T014028Z</span></td><td><span class="tl-when">2026-09-25</span><br>01:52&ndash;02:29Z<small>the hold&#x27;s start to the stop; it did not complete</small></td><td>968,481&ndash;968,482</td></tr>
 <tr><td>MJ-HASH-07<span class="tl-run">20260928T124110Z</span></td><td><span class="tl-when">2026-09-28</span><br>12:57&ndash;14:57Z<small>the hold</small></td><td>969,000&ndash;969,011</td></tr>
+<tr><td>MJ-HASH-08<span class="tl-run">20260928T155333Z</span></td><td><span class="tl-when">2026-09-28</span></td><td>not looked up yet</td></tr>
 </tbody></table></div>
 <h2>How each date is found</h2>
 <dl class="tl-how">
@@ -614,7 +615,7 @@ differently, so a block at one edge of the span may sit on the other side of it.
 <dt>First two-hour run</dt><dd>The earliest mining run whose window log reports a hold of two hours complete, at that line&#x27;s time.</dd>
 <dt>Planned</dt><dd>A roadmap item that has not happened yet. It is drawn after today with no date, and names the roadmap item, epic and issues it is tracked under.</dd>
 </dl>
-<p class="tl-prov">Generated 2026-09-28T17:51:34Z from commit 5f22905. Status, dates and case ids only.</p>
+<p class="tl-prov">Generated 2026-09-28T19:24:45Z from commit d5a0db7. Status, dates and case ids only.</p>
 </main>
 <script>
 (function () {

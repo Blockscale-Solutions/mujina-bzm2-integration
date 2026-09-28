@@ -1,7 +1,7 @@
 {
   "schema": "rds-roadmap/v2",
-  "generated_at": "2026-09-28T17:51:30Z",
-  "git_commit": "5f22905",
+  "generated_at": "2026-09-28T19:24:41Z",
+  "git_commit": "d5a0db7",
   "stale_after_s": 604800,
   "source": "typed in one source file from the case records, and checked by a generator before publication",
   "note": "Status, case ids, run times and links only. No figure, temperature, serial, host or path appears here by design.",
