@@ -52,6 +52,14 @@ scan "serial-number shapes" \
 # shares. Anything built from mining-run logs can carry one; it must not ship.
 scan "bitcoin addresses" \
      '\b(bc1[ac-hj-np-z02-9]{11,71}|BC1[AC-HJ-NP-Z02-9]{11,71}|[13][a-km-zA-HJ-NP-Z1-9]{25,34})\b'
+# PERFORMANCE CLAIMS wait for the first multi-day run, at least 48 hours
+# (Ronald, 2026-09-28). Until then a figure is logged, used in development and
+# kept in the lab notebook, but no hash rate, efficiency or power per hash is
+# published: a figure from a preliminary patch reads as an attestation of
+# Mujina's performance. The eventual public account is a retrospective timeline,
+# not a claim. A number followed by a hashing or efficiency unit is refused.
+scan "performance claims (the 48-hour rule)" \
+     '[0-9][0-9.,]*[[:space:]]*(-[[:space:]]*[0-9][0-9.,]*[[:space:]]*)?([KMGTPE]H/s|J/TH|W/TH|J/GH|W/GH)\b'
 scan "internal ledger" \
      '(CLAIMS-INTERNAL|claim ledger resolves|internal ledger.*file:line)'
 
