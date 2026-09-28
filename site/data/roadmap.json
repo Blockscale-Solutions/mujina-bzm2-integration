@@ -1,7 +1,7 @@
 {
   "schema": "rds-roadmap/v2",
-  "generated_at": "2026-09-28T16:37:34Z",
-  "git_commit": "fd45b49",
+  "generated_at": "2026-09-28T17:30:27Z",
+  "git_commit": "f34d028",
   "stale_after_s": 604800,
   "source": "typed in one source file from the case records, and checked by a generator before publication",
   "note": "Status, case ids, run times and links only. No figure, temperature, serial, host or path appears here by design.",
@@ -1681,7 +1681,7 @@
     {
       "id": "endurance",
       "class": "upstream-gate",
-      "text": "Show that the test harness carries long runs dependably: the two-hour run on all three hashboards passed on its fourth attempt, and what ended an earlier attempt's harness shell is still unexplained. Then decide the four-hour run.",
+      "text": "Show that the test harness carries long runs dependably: the two-hour run on all three hashboards passed on its fourth attempt, and what ended an earlier attempt's harness shell is still unexplained. Then decide the four-hour run, and then the first run of at least 48 hours: the run after which figures may be published.",
       "epic": {
         "ref": "mujina-bzm2-dev#82",
         "repo": "mujina-bzm2-dev",

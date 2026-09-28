@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="tl" data-view="detail" viewBox="0 0 360 2178" width="360" height="2178" role="img" aria-labelledby="tl-title-detail tl-desc-detail">
+<title id="tl-title-detail">Timeline, detailed view, 2025-01-31 to 2026-09-28</title>
+<desc id="tl-desc-detail">36 milestones in order along a vertical line, alternating sides, then what is planned; spaced by order, not by time. A pill marks each new year and a break marks each gap of more than a month. The same list follows as text.</desc>
+<style>
+svg.tl{--tl-ink:#1a1917;--tl-muted:#6b665e;--tl-line:rgba(26,25,23,.28);--tl-accent:#0e938b;--tl-surface:#ffffff;--tl-said:#b45309;--tl-pill:#efece6;font-family:Ubuntu,ui-sans-serif,system-ui,-apple-system,sans-serif}
+@media (prefers-color-scheme:dark){svg.tl:root,:root:not([data-theme="light"]) svg.tl{--tl-ink:#d6dde3;--tl-muted:#8b95a0;--tl-line:rgba(214,221,227,.3);--tl-accent:#2dd4bf;--tl-surface:#151a1f;--tl-said:#f59e0b;--tl-pill:#232a31}}
+:root[data-theme="dark"] svg.tl{--tl-ink:#d6dde3;--tl-muted:#8b95a0;--tl-line:rgba(214,221,227,.3);--tl-accent:#2dd4bf;--tl-surface:#151a1f;--tl-said:#f59e0b;--tl-pill:#232a31}
+svg.tl .tl-bg{fill:var(--tl-surface)}svg.tl .tl-rule{stroke:var(--tl-line);stroke-width:1.5;fill:none}
+svg.tl .tl-plan-rule{stroke:var(--tl-line);stroke-width:1.5;stroke-dasharray:4 4;fill:none}
+svg.tl .tl-label{fill:var(--tl-ink);font-size:13.5px;font-weight:500}
+svg.tl .tl-sub{fill:var(--tl-muted);font-size:12px;font-variant-numeric:tabular-nums}
+svg.tl .tl-pill{fill:var(--tl-pill);stroke:var(--tl-line);stroke-width:1}
+svg.tl .tl-band{fill:var(--tl-ink);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
+svg.tl .tl-gap{fill:var(--tl-muted);font-size:11.5px;font-style:italic}
+svg.tl .tl-cut{fill:var(--tl-surface)}
+svg.tl .tl-dot{fill:var(--tl-accent);stroke:var(--tl-surface);stroke-width:2}
+svg.tl .tl-said{fill:var(--tl-surface);stroke:var(--tl-said);stroke-width:2.5}
+svg.tl .tl-bound{fill:var(--tl-surface);stroke:var(--tl-accent);stroke-width:2}
+svg.tl .tl-plan{fill:var(--tl-surface);stroke:var(--tl-muted);stroke-width:2;stroke-dasharray:3 2}
+</style>
+<rect class="tl-bg" x="0" y="0" width="360" height="2178" rx="14"/>
+<line class="tl-rule" x1="180" y1="18.0" x2="180" y2="2017.0"/>
+<line class="tl-plan-rule" x1="180" y1="2017.0" x2="180" y2="2117.0"/>
+<rect class="tl-pill" x="159.0" y="23.0" width="42.0" height="20" rx="10"/>
+<text class="tl-band" x="180" y="37.0" text-anchor="middle">2025</text>
+<rect class="tl-cut" x="176" y="148.0" width="8" height="14"/>
+<path class="tl-rule" d="M173,152.0 l14,-5 M173,160.0 l14,-5"/>
+<text class="tl-gap" x="194" y="159.0">4 months later</text>
+<rect class="tl-cut" x="176" y="430.0" width="8" height="14"/>
+<path class="tl-rule" d="M173,434.0 l14,-5 M173,442.0 l14,-5"/>
+<text class="tl-gap" x="194" y="441.0">5 weeks later</text>
+<rect class="tl-pill" x="159.0" y="1277.0" width="42.0" height="20" rx="10"/>
+<text class="tl-band" x="180" y="1291.0" text-anchor="middle">2026</text>
+<rect class="tl-cut" x="176" y="1310.0" width="8" height="14"/>
+<path class="tl-rule" d="M173,1314.0 l14,-5 M173,1322.0 l14,-5"/>
+<text class="tl-gap" x="194" y="1321.0">3 months later</text>
+<rect class="tl-cut" x="176" y="1402.0" width="8" height="14"/>
+<path class="tl-rule" d="M173,1406.0 l14,-5 M173,1414.0 l14,-5"/>
+<text class="tl-gap" x="194" y="1413.0">5 weeks later</text>
+<rect class="tl-cut" x="176" y="1516.0" width="8" height="14"/>
+<path class="tl-rule" d="M173,1520.0 l14,-5 M173,1528.0 l14,-5"/>
+<text class="tl-gap" x="194" y="1527.0">2 months later</text>
+<rect class="tl-cut" x="176" y="1622.0" width="8" height="14"/>
+<path class="tl-rule" d="M173,1626.0 l14,-5 M173,1634.0 l14,-5"/>
+<text class="tl-gap" x="194" y="1633.0">3 months later</text>
+<rect class="tl-pill" x="159.0" y="2057.0" width="42.0" height="20" rx="10"/>
+<text class="tl-band" x="180" y="2071.0" text-anchor="middle">Next</text>
+<g class="tl-mark" data-id="grant-announced" data-side="right"><title>Proto and the 256 Foundation announce the BZM2 grant · 2025-01-31 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="59.0" x2="190" y2="59.0"/>
+<text class="tl-label" x="194" y="64.0" text-anchor="start">Proto and the 256</text>
+<text class="tl-label" x="194" y="80.0" text-anchor="start">Foundation announce</text>
+<text class="tl-label" x="194" y="96.0" text-anchor="start">the BZM2 grant</text>
+<text class="tl-sub" x="194" y="111.0" text-anchor="start">2025-01-31 · per Ronald</text>
+<text class="tl-sub" x="194" y="125.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="grant-applied" data-side="left"><title>Applied for the ASIC grant · 2025-06-05 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="181.0" x2="170" y2="181.0"/>
+<text class="tl-label" x="166" y="186.0" text-anchor="end">Applied for the ASIC</text>
+<text class="tl-label" x="166" y="202.0" text-anchor="end">grant</text>
+<text class="tl-sub" x="166" y="217.0" text-anchor="end">2025-06-05 · per Ronald</text>
+<text class="tl-sub" x="166" y="231.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="grant-approved" data-side="right"><title>Grant request approved by the 256 Foundation · 2025-06-09 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="205.0" x2="190" y2="205.0"/>
+<text class="tl-label" x="194" y="210.0" text-anchor="start">Grant request</text>
+<text class="tl-label" x="194" y="226.0" text-anchor="start">approved by the 256</text>
+<text class="tl-label" x="194" y="242.0" text-anchor="start">Foundation</text>
+<text class="tl-sub" x="194" y="257.0" text-anchor="start">2025-06-09 · per Ronald</text>
+<text class="tl-sub" x="194" y="271.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="gekkoscience-contract" data-side="left"><title>Contracted hardware development with GekkoScience · 2025-06-10 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="253.0" x2="170" y2="253.0"/>
+<text class="tl-label" x="166" y="258.0" text-anchor="end">Contracted hardware</text>
+<text class="tl-label" x="166" y="274.0" text-anchor="end">development with</text>
+<text class="tl-label" x="166" y="290.0" text-anchor="end">GekkoScience</text>
+<text class="tl-sub" x="166" y="305.0" text-anchor="end">2025-06-10 · per Ronald</text>
+<text class="tl-sub" x="166" y="319.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="miprimer-pitch" data-side="right"><title>Pitched a MiPrimer-branded miner to My First Bitcoin (Arnold) · 2025-06-30 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="293.0" x2="190" y2="293.0"/>
+<text class="tl-label" x="194" y="298.0" text-anchor="start">Pitched a</text>
+<text class="tl-label" x="194" y="314.0" text-anchor="start">MiPrimer-branded</text>
+<text class="tl-label" x="194" y="330.0" text-anchor="start">miner to My First</text>
+<text class="tl-label" x="194" y="346.0" text-anchor="start">Bitcoin (Arnold)</text>
+<text class="tl-sub" x="194" y="361.0" text-anchor="start">2025-06-30 · per Ronald</text>
+<text class="tl-sub" x="194" y="375.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="modeotec-contract" data-side="left"><title>Contracted artwork development with Modeotec · 2025-07-30 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="341.0" x2="170" y2="341.0"/>
+<text class="tl-label" x="166" y="346.0" text-anchor="end">Contracted artwork</text>
+<text class="tl-label" x="166" y="362.0" text-anchor="end">development with</text>
+<text class="tl-label" x="166" y="378.0" text-anchor="end">Modeotec</text>
+<text class="tl-sub" x="166" y="393.0" text-anchor="end">2025-07-30 · per Ronald</text>
+<text class="tl-sub" x="166" y="407.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="grant-public" data-side="right"><title>Grant recipients made public · 2025-09-05 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="463.0" x2="190" y2="463.0"/>
+<text class="tl-label" x="194" y="468.0" text-anchor="start">Grant recipients made</text>
+<text class="tl-label" x="194" y="484.0" text-anchor="start">public</text>
+<text class="tl-sub" x="194" y="499.0" text-anchor="start">2025-09-05 · per Ronald</text>
+<text class="tl-sub" x="194" y="513.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="asics-received" data-side="left"><title>Received the grant of 54,000 ASICs · 2025-09-10 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="487.0" x2="170" y2="487.0"/>
+<text class="tl-label" x="166" y="492.0" text-anchor="end">Received the grant of</text>
+<text class="tl-label" x="166" y="508.0" text-anchor="end">54,000 ASICs</text>
+<text class="tl-sub" x="166" y="523.0" text-anchor="end">2025-09-10 · per Ronald</text>
+<text class="tl-sub" x="166" y="537.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="geyser-planned" data-side="right"><title>Planned the Geyser all-or-nothing campaign with MetaMick · 2025-09-15 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="535.0" x2="190" y2="535.0"/>
+<text class="tl-label" x="194" y="540.0" text-anchor="start">Planned the Geyser</text>
+<text class="tl-label" x="194" y="556.0" text-anchor="start">all-or-nothing</text>
+<text class="tl-label" x="194" y="572.0" text-anchor="start">campaign with</text>
+<text class="tl-label" x="194" y="588.0" text-anchor="start">MetaMick</text>
+<text class="tl-sub" x="194" y="603.0" text-anchor="start">2025-09-15 · per Ronald</text>
+<text class="tl-sub" x="194" y="617.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="miprimer-approved" data-side="left"><title>Approved by MiPrimer to launch the MFB MiniMiner · 2025-09-24 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="559.0" x2="170" y2="559.0"/>
+<text class="tl-label" x="166" y="564.0" text-anchor="end">Approved by MiPrimer</text>
+<text class="tl-label" x="166" y="580.0" text-anchor="end">to launch the MFB</text>
+<text class="tl-label" x="166" y="596.0" text-anchor="end">MiniMiner</text>
+<text class="tl-sub" x="166" y="611.0" text-anchor="end">2025-09-24 · per Ronald</text>
+<text class="tl-sub" x="166" y="625.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="gekkoscience-invoice-1" data-side="right"><title>First invoice from GekkoScience, $10k USD · 2025-09-24 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="639.0" x2="190" y2="639.0"/>
+<text class="tl-label" x="194" y="644.0" text-anchor="start">First invoice from</text>
+<text class="tl-label" x="194" y="660.0" text-anchor="start">GekkoScience, $10k</text>
+<text class="tl-label" x="194" y="676.0" text-anchor="start">USD</text>
+<text class="tl-sub" x="194" y="691.0" text-anchor="start">2025-09-24 · per Ronald</text>
+<text class="tl-sub" x="194" y="705.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="investor-qbt" data-side="left"><title>First investor: $10k USD for an initial 10 units, from QBT · 2025-10-01 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="663.0" x2="170" y2="663.0"/>
+<text class="tl-label" x="166" y="668.0" text-anchor="end">First investor: $10k</text>
+<text class="tl-label" x="166" y="684.0" text-anchor="end">USD for an initial 10</text>
+<text class="tl-label" x="166" y="700.0" text-anchor="end">units, from QBT</text>
+<text class="tl-sub" x="166" y="715.0" text-anchor="end">2025-10-01 · per Ronald</text>
+<text class="tl-sub" x="166" y="729.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="gekkoscience-payment-1" data-side="right"><title>First $5k payment to GekkoScience, in BTC · 2025-10-01 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="727.0" x2="190" y2="727.0"/>
+<text class="tl-label" x="194" y="732.0" text-anchor="start">First $5k payment to</text>
+<text class="tl-label" x="194" y="748.0" text-anchor="start">GekkoScience, in BTC</text>
+<text class="tl-sub" x="194" y="763.0" text-anchor="start">2025-10-01 · per Ronald</text>
+<text class="tl-sub" x="194" y="777.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="gekkoscience-payment-2" data-side="left"><title>Second $5k payment to GekkoScience, by check (received 10/30) · 2025-10-06 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="751.0" x2="170" y2="751.0"/>
+<text class="tl-label" x="166" y="756.0" text-anchor="end">Second $5k payment to</text>
+<text class="tl-label" x="166" y="772.0" text-anchor="end">GekkoScience, by</text>
+<text class="tl-label" x="166" y="788.0" text-anchor="end">check (received</text>
+<text class="tl-label" x="166" y="804.0" text-anchor="end">10/30)</text>
+<text class="tl-sub" x="166" y="819.0" text-anchor="end">2025-10-06 · per Ronald</text>
+<text class="tl-sub" x="166" y="833.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="bom-single-asic" data-side="right"><title>Initial bill of materials completed for the single-ASIC design · 2025-10-14 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="799.0" x2="190" y2="799.0"/>
+<text class="tl-label" x="194" y="804.0" text-anchor="start">Initial bill of</text>
+<text class="tl-label" x="194" y="820.0" text-anchor="start">materials completed</text>
+<text class="tl-label" x="194" y="836.0" text-anchor="start">for the single-ASIC</text>
+<text class="tl-label" x="194" y="852.0" text-anchor="start">design</text>
+<text class="tl-sub" x="194" y="867.0" text-anchor="start">2025-10-14 · per Ronald</text>
+<text class="tl-sub" x="194" y="881.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="investor-cholla" data-side="left"><title>Second investor: $70k USD for an initial 70 units, from Cholla · 2025-10-15 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="855.0" x2="170" y2="855.0"/>
+<text class="tl-label" x="166" y="860.0" text-anchor="end">Second investor: $70k</text>
+<text class="tl-label" x="166" y="876.0" text-anchor="end">USD for an initial 70</text>
+<text class="tl-label" x="166" y="892.0" text-anchor="end">units, from Cholla</text>
+<text class="tl-sub" x="166" y="907.0" text-anchor="end">2025-10-15 · per Ronald</text>
+<text class="tl-sub" x="166" y="921.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="modeotec-agreement" data-side="right"><title>Modeotec agreed to assist with current and future designs · 2025-10-16 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="903.0" x2="190" y2="903.0"/>
+<text class="tl-label" x="194" y="908.0" text-anchor="start">Modeotec agreed to</text>
+<text class="tl-label" x="194" y="924.0" text-anchor="start">assist with current</text>
+<text class="tl-label" x="194" y="940.0" text-anchor="start">and future designs</text>
+<text class="tl-sub" x="194" y="955.0" text-anchor="start">2025-10-16 · per Ronald</text>
+<text class="tl-sub" x="194" y="969.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="gekkoscience-payment-3" data-side="left"><title>Third $5k payment to GekkoScience, in BTC · 2025-10-18 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="943.0" x2="170" y2="943.0"/>
+<text class="tl-label" x="166" y="948.0" text-anchor="end">Third $5k payment to</text>
+<text class="tl-label" x="166" y="964.0" text-anchor="end">GekkoScience, in BTC</text>
+<text class="tl-sub" x="166" y="979.0" text-anchor="end">2025-10-18 · per Ronald</text>
+<text class="tl-sub" x="166" y="993.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="campaign-soft-launch" data-side="right"><title>Campaign soft launch through the MFB General Assembly · 2025-10-30 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="991.0" x2="190" y2="991.0"/>
+<text class="tl-label" x="194" y="996.0" text-anchor="start">Campaign soft launch</text>
+<text class="tl-label" x="194" y="1012.0" text-anchor="start">through the MFB</text>
+<text class="tl-label" x="194" y="1028.0" text-anchor="start">General Assembly</text>
+<text class="tl-sub" x="194" y="1043.0" text-anchor="start">2025-10-30 · per Ronald</text>
+<text class="tl-sub" x="194" y="1057.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="geyser-campaign-launch" data-side="left"><title>Public launch of the Geyser campaign, on the 17th Whitepaper Day · 2025-10-31 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="1015.0" x2="170" y2="1015.0"/>
+<text class="tl-label" x="166" y="1020.0" text-anchor="end">Public launch of the</text>
+<text class="tl-label" x="166" y="1036.0" text-anchor="end">Geyser campaign, on</text>
+<text class="tl-label" x="166" y="1052.0" text-anchor="end">the 17th Whitepaper</text>
+<text class="tl-label" x="166" y="1068.0" text-anchor="end">Day</text>
+<text class="tl-sub" x="166" y="1083.0" text-anchor="end">2025-10-31 · per Ronald</text>
+<text class="tl-sub" x="166" y="1097.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="campaign-pitches" data-side="right"><title>Pitched the campaign to the MFB Node Network, Blockscale Solutions, Geyser&#x27;s marketing network, the 256 Foundation, QBT, Bitcoin Mining World, Mining Disrupt and Plan B Forum Bitcoin El Salvador · 2025-11 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="186" y1="1079.0" x2="190" y2="1079.0"/>
+<text class="tl-label" x="194" y="1084.0" text-anchor="start">Pitched the campaign</text>
+<text class="tl-label" x="194" y="1100.0" text-anchor="start">to the MFB Node</text>
+<text class="tl-label" x="194" y="1116.0" text-anchor="start">Network, Blockscale</text>
+<text class="tl-label" x="194" y="1132.0" text-anchor="start">Solutions, Geyser&#x27;s</text>
+<text class="tl-label" x="194" y="1148.0" text-anchor="start">marketing network,</text>
+<text class="tl-label" x="194" y="1164.0" text-anchor="start">the 256 Foundation,</text>
+<text class="tl-label" x="194" y="1180.0" text-anchor="start">QBT, Bitcoin Mining</text>
+<text class="tl-label" x="194" y="1196.0" text-anchor="start">World, Mining Disrupt</text>
+<text class="tl-label" x="194" y="1212.0" text-anchor="start">and Plan B Forum</text>
+<text class="tl-label" x="194" y="1228.0" text-anchor="start">Bitcoin El Salvador</text>
+<text class="tl-sub" x="194" y="1243.0" text-anchor="start">2025-11 · per Ronald</text>
+<text class="tl-sub" x="194" y="1257.0" text-anchor="start">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="mining-disrupt-keynote" data-side="left"><title>Pitched in a 5-minute keynote at Mining Disrupt · 2025-11-12 · per Ronald Bynoe</title>
+<line class="tl-rule" x1="174" y1="1119.0" x2="170" y2="1119.0"/>
+<text class="tl-label" x="166" y="1124.0" text-anchor="end">Pitched in a 5-minute</text>
+<text class="tl-label" x="166" y="1140.0" text-anchor="end">keynote at Mining</text>
+<text class="tl-label" x="166" y="1156.0" text-anchor="end">Disrupt</text>
+<text class="tl-sub" x="166" y="1171.0" text-anchor="end">2025-11-12 · per Ronald</text>
+<text class="tl-sub" x="166" y="1185.0" text-anchor="end">Bynoe</text>
+</g>
+<g class="tl-mark" data-id="satoshistarter" data-side="right"><title>SatoshiStarter&#x27;s first commit · 2026-02-03 03:52Z</title>
+<line class="tl-rule" x1="186" y1="1343.0" x2="190" y2="1343.0"/>
+<text class="tl-label" x="194" y="1348.0" text-anchor="start">SatoshiStarter&#x27;s</text>
+<text class="tl-label" x="194" y="1364.0" text-anchor="start">first commit</text>
+<text class="tl-sub" x="194" y="1379.0" text-anchor="start">2026-02-03 03:52Z</text>
+</g>
+<g class="tl-mark" data-id="first-pr" data-side="left"><title>First pull request to upstream Mujina · 2026-03-07 00:10Z · upstream #37</title>
+<line class="tl-rule" x1="174" y1="1435.0" x2="170" y2="1435.0"/>
+<text class="tl-label" x="166" y="1440.0" text-anchor="end">First pull request to</text>
+<text class="tl-label" x="166" y="1456.0" text-anchor="end">upstream Mujina</text>
+<text class="tl-sub" x="166" y="1471.0" text-anchor="end">2026-03-07 00:10Z ·</text>
+<text class="tl-sub" x="166" y="1485.0" text-anchor="end">upstream #37</text>
+</g>
+<g class="tl-mark" data-id="revised-pr" data-side="right"><title>Revised pull request · 2026-04-04 05:24Z · upstream #53</title>
+<line class="tl-rule" x1="186" y1="1459.0" x2="190" y2="1459.0"/>
+<text class="tl-label" x="194" y="1464.0" text-anchor="start">Revised pull request</text>
+<text class="tl-sub" x="194" y="1479.0" text-anchor="start">2026-04-04 05:24Z ·</text>
+<text class="tl-sub" x="194" y="1493.0" text-anchor="start">upstream #53</text>
+</g>
+<g class="tl-mark" data-id="restack" data-side="left"><title>Restacked as four pull requests · 2026-06-11 05:35Z · upstream #68–#71</title>
+<line class="tl-rule" x1="174" y1="1549.0" x2="170" y2="1549.0"/>
+<text class="tl-label" x="166" y="1554.0" text-anchor="end">Restacked as four</text>
+<text class="tl-label" x="166" y="1570.0" text-anchor="end">pull requests</text>
+<text class="tl-sub" x="166" y="1585.0" text-anchor="end">2026-06-11 05:35Z ·</text>
+<text class="tl-sub" x="166" y="1599.0" text-anchor="end">upstream #68–#71</text>
+</g>
+<g class="tl-mark" data-id="start" data-side="right"><title>RDS enablement work begins · 2026-09-14 16:56Z</title>
+<line class="tl-rule" x1="186" y1="1655.0" x2="190" y2="1655.0"/>
+<text class="tl-label" x="194" y="1660.0" text-anchor="start">RDS enablement work</text>
+<text class="tl-label" x="194" y="1676.0" text-anchor="start">begins</text>
+<text class="tl-sub" x="194" y="1691.0" text-anchor="start">2026-09-14 16:56Z</text>
+</g>
+<g class="tl-mark" data-id="first-run" data-side="left"><title>First run on the unit · 2026-09-15 01:41Z · MJ-OBS-02 · run 20260915T014110Z</title>
+<line class="tl-rule" x1="174" y1="1679.0" x2="170" y2="1679.0"/>
+<text class="tl-label" x="166" y="1684.0" text-anchor="end">First run on the unit</text>
+<text class="tl-sub" x="166" y="1699.0" text-anchor="end">2026-09-15 01:41Z ·</text>
+<text class="tl-sub" x="166" y="1713.0" text-anchor="end">MJ-OBS-02</text>
+</g>
+<g class="tl-mark" data-id="first-mujina" data-side="right"><title>First run of Mujina on the RDS · 2026-09-15 03:40Z · MJ-BAUD-01 · run 20260915T034026Z</title>
+<line class="tl-rule" x1="186" y1="1713.0" x2="190" y2="1713.0"/>
+<text class="tl-label" x="194" y="1718.0" text-anchor="start">First run of Mujina</text>
+<text class="tl-label" x="194" y="1734.0" text-anchor="start">on the RDS</text>
+<text class="tl-sub" x="194" y="1749.0" text-anchor="start">2026-09-15 03:40Z ·</text>
+<text class="tl-sub" x="194" y="1763.0" text-anchor="start">MJ-BAUD-01</text>
+</g>
+<g class="tl-mark" data-id="first-contact" data-side="left"><title>First contact: Mujina observes a live chain · 2026-09-15 05:17Z · MJ-OBS-01 · run 20260915T051503Z</title>
+<line class="tl-rule" x1="174" y1="1737.0" x2="170" y2="1737.0"/>
+<text class="tl-label" x="166" y="1742.0" text-anchor="end">First contact: Mujina</text>
+<text class="tl-label" x="166" y="1758.0" text-anchor="end">observes a live chain</text>
+<text class="tl-sub" x="166" y="1773.0" text-anchor="end">2026-09-15 05:17Z ·</text>
+<text class="tl-sub" x="166" y="1787.0" text-anchor="end">MJ-OBS-01</text>
+</g>
+<g class="tl-mark" data-id="first-bringup" data-side="right"><title>First bring-up: Mujina takes over an energised board · 2026-09-22 19:25Z · MJ-BRING-01 · run 20260922T191903Z</title>
+<line class="tl-rule" x1="186" y1="1785.0" x2="190" y2="1785.0"/>
+<text class="tl-label" x="194" y="1790.0" text-anchor="start">First bring-up:</text>
+<text class="tl-label" x="194" y="1806.0" text-anchor="start">Mujina takes over an</text>
+<text class="tl-label" x="194" y="1822.0" text-anchor="start">energised board</text>
+<text class="tl-sub" x="194" y="1837.0" text-anchor="start">2026-09-22 19:25Z ·</text>
+<text class="tl-sub" x="194" y="1851.0" text-anchor="start">MJ-BRING-01</text>
+</g>
+<g class="tl-mark" data-id="single-board" data-side="left"><title>First single-board run · 2026-09-22 20:53Z · MJ-HASH-01 · run 20260922T204923Z</title>
+<line class="tl-rule" x1="174" y1="1809.0" x2="170" y2="1809.0"/>
+<text class="tl-label" x="166" y="1814.0" text-anchor="end">First single-board</text>
+<text class="tl-label" x="166" y="1830.0" text-anchor="end">run</text>
+<text class="tl-sub" x="166" y="1845.0" text-anchor="end">2026-09-22 20:53Z ·</text>
+<text class="tl-sub" x="166" y="1859.0" text-anchor="end">MJ-HASH-01</text>
+</g>
+<g class="tl-mark" data-id="first-share" data-side="right"><title>First pool-accepted share · 2026-09-23 02:37Z · MJ-HASH-01 · run 20260923T022940Z</title>
+<line class="tl-rule" x1="186" y1="1873.0" x2="190" y2="1873.0"/>
+<text class="tl-label" x="194" y="1878.0" text-anchor="start">First pool-accepted</text>
+<text class="tl-label" x="194" y="1894.0" text-anchor="start">share</text>
+<text class="tl-sub" x="194" y="1909.0" text-anchor="start">2026-09-23 02:37Z ·</text>
+<text class="tl-sub" x="194" y="1923.0" text-anchor="start">MJ-HASH-01</text>
+</g>
+<g class="tl-mark" data-id="three-boards" data-side="left"><title>First three-board run · 2026-09-23 15:53Z · MJ-HASH-05 · run 20260923T154655Z</title>
+<line class="tl-rule" x1="174" y1="1897.0" x2="170" y2="1897.0"/>
+<text class="tl-label" x="166" y="1902.0" text-anchor="end">First three-board run</text>
+<text class="tl-sub" x="166" y="1917.0" text-anchor="end">2026-09-23 15:53Z ·</text>
+<text class="tl-sub" x="166" y="1931.0" text-anchor="end">MJ-HASH-05</text>
+</g>
+<g class="tl-mark" data-id="steady-state" data-side="right"><title>First thermal steady state · 2026-09-23 17:05Z · MJ-HASH-06 · run 20260923T162332Z</title>
+<line class="tl-rule" x1="186" y1="1945.0" x2="190" y2="1945.0"/>
+<text class="tl-label" x="194" y="1950.0" text-anchor="start">First thermal steady</text>
+<text class="tl-label" x="194" y="1966.0" text-anchor="start">state</text>
+<text class="tl-sub" x="194" y="1981.0" text-anchor="start">2026-09-23 17:05Z ·</text>
+<text class="tl-sub" x="194" y="1995.0" text-anchor="start">MJ-HASH-06</text>
+</g>
+<g class="tl-mark" data-id="two-hours" data-side="left"><title>First two-hour run · 2026-09-28 14:57Z · MJ-HASH-07 · run 20260928T124110Z</title>
+<line class="tl-rule" x1="174" y1="1969.0" x2="170" y2="1969.0"/>
+<text class="tl-label" x="166" y="1974.0" text-anchor="end">First two-hour run</text>
+<text class="tl-sub" x="166" y="1989.0" text-anchor="end">2026-09-28 14:57Z ·</text>
+<text class="tl-sub" x="166" y="2003.0" text-anchor="end">MJ-HASH-07</text>
+</g>
+<g class="tl-mark" data-id="now" data-side="right"><title>Today · 2026-09-28</title>
+<line class="tl-rule" x1="186" y1="2017.0" x2="190" y2="2017.0"/>
+<text class="tl-label" x="194" y="2022.0" text-anchor="start">Today</text>
+<text class="tl-sub" x="194" y="2037.0" text-anchor="start">2026-09-28</text>
+</g>
+<g class="tl-mark" data-id="plan-48h" data-side="left"><title>48-hour run · planned, no date · #82 #137</title>
+<line class="tl-rule" x1="174" y1="2093.0" x2="170" y2="2093.0"/>
+<text class="tl-label" x="166" y="2098.0" text-anchor="end">48-hour run</text>
+<text class="tl-sub" x="166" y="2113.0" text-anchor="end">planned, no date · #82</text>
+<text class="tl-sub" x="166" y="2127.0" text-anchor="end">#137</text>
+</g>
+<g class="tl-mark" data-id="plan-calibration" data-side="right"><title>Calibration by Mujina · planned, no date · #158 #87 #147</title>
+<line class="tl-rule" x1="186" y1="2117.0" x2="190" y2="2117.0"/>
+<text class="tl-label" x="194" y="2122.0" text-anchor="start">Calibration by Mujina</text>
+<text class="tl-sub" x="194" y="2137.0" text-anchor="start">planned, no date · #158</text>
+<text class="tl-sub" x="194" y="2151.0" text-anchor="start">#87 #147</text>
+</g>
+<circle class="tl-said" data-id="grant-announced" cx="180" cy="59.0" r="5"/>
+<circle class="tl-said" data-id="grant-applied" cx="180" cy="181.0" r="5"/>
+<circle class="tl-said" data-id="grant-approved" cx="180" cy="205.0" r="5"/>
+<circle class="tl-said" data-id="gekkoscience-contract" cx="180" cy="253.0" r="5"/>
+<circle class="tl-said" data-id="miprimer-pitch" cx="180" cy="293.0" r="5"/>
+<circle class="tl-said" data-id="modeotec-contract" cx="180" cy="341.0" r="5"/>
+<circle class="tl-said" data-id="grant-public" cx="180" cy="463.0" r="5"/>
+<circle class="tl-said" data-id="asics-received" cx="180" cy="487.0" r="5"/>
+<circle class="tl-said" data-id="geyser-planned" cx="180" cy="535.0" r="5"/>
+<circle class="tl-said" data-id="miprimer-approved" cx="180" cy="559.0" r="5"/>
+<circle class="tl-said" data-id="gekkoscience-invoice-1" cx="180" cy="639.0" r="5"/>
+<circle class="tl-said" data-id="investor-qbt" cx="180" cy="663.0" r="5"/>
+<circle class="tl-said" data-id="gekkoscience-payment-1" cx="180" cy="727.0" r="5"/>
+<circle class="tl-said" data-id="gekkoscience-payment-2" cx="180" cy="751.0" r="5"/>
+<circle class="tl-said" data-id="bom-single-asic" cx="180" cy="799.0" r="5"/>
+<circle class="tl-said" data-id="investor-cholla" cx="180" cy="855.0" r="5"/>
+<circle class="tl-said" data-id="modeotec-agreement" cx="180" cy="903.0" r="5"/>
+<circle class="tl-said" data-id="gekkoscience-payment-3" cx="180" cy="943.0" r="5"/>
+<circle class="tl-said" data-id="campaign-soft-launch" cx="180" cy="991.0" r="5"/>
+<circle class="tl-said" data-id="geyser-campaign-launch" cx="180" cy="1015.0" r="5"/>
+<circle class="tl-said" data-id="campaign-pitches" cx="180" cy="1079.0" r="5"/>
+<circle class="tl-said" data-id="mining-disrupt-keynote" cx="180" cy="1119.0" r="5"/>
+<circle class="tl-dot" data-id="satoshistarter" cx="180" cy="1343.0" r="5"/>
+<circle class="tl-dot" data-id="first-pr" cx="180" cy="1435.0" r="5"/>
+<circle class="tl-dot" data-id="revised-pr" cx="180" cy="1459.0" r="5"/>
+<circle class="tl-dot" data-id="restack" cx="180" cy="1549.0" r="5"/>
+<circle class="tl-dot" data-id="start" cx="180" cy="1655.0" r="5"/>
+<circle class="tl-dot" data-id="first-run" cx="180" cy="1679.0" r="5"/>
+<circle class="tl-dot" data-id="first-mujina" cx="180" cy="1713.0" r="5"/>
+<circle class="tl-dot" data-id="first-contact" cx="180" cy="1737.0" r="5"/>
+<circle class="tl-dot" data-id="first-bringup" cx="180" cy="1785.0" r="5"/>
+<circle class="tl-dot" data-id="single-board" cx="180" cy="1809.0" r="5"/>
+<circle class="tl-dot" data-id="first-share" cx="180" cy="1873.0" r="5"/>
+<circle class="tl-dot" data-id="three-boards" cx="180" cy="1897.0" r="5"/>
+<circle class="tl-dot" data-id="steady-state" cx="180" cy="1945.0" r="5"/>
+<circle class="tl-dot" data-id="two-hours" cx="180" cy="1969.0" r="5"/>
+<circle class="tl-bound" data-id="now" cx="180" cy="2017.0" r="5"/>
+<circle class="tl-plan" data-id="plan-48h" cx="180" cy="2093.0" r="5"/>
+<circle class="tl-plan" data-id="plan-calibration" cx="180" cy="2117.0" r="5"/>
+</svg>
