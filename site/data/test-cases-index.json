@@ -28,7 +28,7 @@
     "RDS-LOG-03": {
       "id": "RDS-LOG-03",
       "title": "Runtime log-level control, and what the top level is made of",
-      "subtitle": "**Executed 2026-09-14.** Evidence: (evidence held internally). A measurement case.",
+      "subtitle": "**Executed 2026-09-14.** Evidence: (evidence held internally). A measurement case. **Corrected 2026-09-25.** The stack-arrangement conclusion in \"What the firehose contains\" (2s2p, \"series depth 50 devices\") is **superseded**: a board is **25 series levels of 4 ASICs in parallel**. Settled by analys",
       "objective": "Two things at once, on one powered board: 1. Prove that the log level can be **raised and lowered while the daemon runs**, so a debug capture can be a window around a phase rather than a tax on the whole run. 2. Establish what the top level consists of **in steady state**, as opposed to during power-on, which RDS-LOG-01 already measured.",
       "requirements": "- One RDS 2.0 unit, reachable over ssh. - The debug daemon at `/data/bin/bzmd-debug`, built with the option set that restores the board mask and carrying the two signal handlers. Built by `tools/rds/build-debug-daemon.sh`; the installed daemon is not touched. - One hashboard only. The mask keeps this near a third of powered-idle draw.",
       "procedure": "1. Start the debug daemon on board 0 at `-L 4`, output to a file on the unit. 2. Let power-on complete without intervention. 3. Raise the level three times, one step each, pausing between steps, and record the file size after each. 4. Lower it twice and record the growth over the following seconds. 5. Collect the log, stop the daemon, remove the file from the unit.",
