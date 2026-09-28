@@ -126,6 +126,86 @@
     return local;
   }
 
+  /* The blocks a mining run covered. Every figure here is read from the feed,
+   * which reads each run's blocks.tsv through run-blocks.py; nothing is
+   * derived a second time in the page. */
+  function height(n) {
+    return Number(n).toLocaleString("en-US");
+  }
+
+  function blocksShort(b) {
+    if (!b) return "";
+    if (b.state === "measured") {
+      var edge = b.pool_agrees === false ? "\u2248 " : "";
+      if (b.first == null) return edge + "toward " + height(b.toward);
+      if (b.first === b.last) return edge + "block " + height(b.first);
+      return edge + "blocks " + height(b.first) + "\u2013" + height(b.last);
+    }
+    if (b.state === "not looked up") return "blocks not looked up";
+    return "blocks unmeasured";
+  }
+
+  function clock(iso, day) {
+    if (!iso) return "";
+    var d = String(iso).slice(0, 10);
+    var t = String(iso).slice(11, 19) + "Z";
+    return d === day ? t : d + " " + t;
+  }
+
+  var SPAN_WORDS = {
+    hold: "the hold",
+    "hold-start-to-stop": "from the hold's start to the stop; the hold did not complete",
+    "dispatch-to-stop": "from the first job dispatched to the stop; this run had no hold",
+  };
+
+  function blocksSection(run) {
+    var b = run.blocks;
+    var day = run.day || "";
+    var when = day ? "<p>Ran on <strong>" + esc(day) + "</strong> (UTC).</p>" : "";
+    if (!b) return when ? section("When", day ? "Ran on **" + day + "** (UTC)." : "") : "";
+    var parts = [when];
+    if (b.start && b.end) {
+      parts.push(
+        "<p>Mining span <code>" + esc(clock(b.start, day)) + "</code> to <code>" +
+          esc(clock(b.end, day)) + "</code> UTC: " + esc(SPAN_WORDS[b.span] || b.span || "") + ".</p>"
+      );
+    }
+    if (b.state === "measured") {
+      var tips =
+        b.tip_start === b.tip_end
+          ? "Chain tip " + height(b.tip_start) + " at both ends"
+          : "Chain tip " + height(b.tip_start) + " at the start, " + height(b.tip_end) + " at the end";
+      parts.push(
+        b.first == null
+          ? "<p>No block was found during the span; it mined toward block <strong>" +
+              esc(height(b.toward)) + "</strong> throughout.</p>"
+          : "<p>Covered " + (b.first === b.last ? "block <strong>" + esc(height(b.first)) + "</strong>"
+              : "blocks <strong>" + esc(height(b.first)) + " to " + esc(height(b.last)) + "</strong>") +
+              ": each was found while this run was mining toward it.</p>"
+      );
+      parts.push(
+        "<p>" + esc(tips) + ", by block header time; two independent explorers agree on " +
+          (b.tip_start === b.tip_end ? "it" : "both") + "." +
+          (b.pool_agrees === true ? " The pool's own new-block notices agree."
+            : b.pool_agrees === false
+              ? " The pool's own new-block notices give a different count, so a block at one edge may" +
+                " sit on the other side of it: header times are set by miners and can lead or lag" +
+                " a block's arrival by minutes."
+              : "") +
+          "</p>"
+      );
+    } else if (b.state === "not looked up") {
+      parts.push("<p>Blocks: not looked up yet.</p>");
+    } else {
+      parts.push("<p>Blocks: <strong>unmeasured</strong>" + (b.why ? ": " + esc(b.why) : "") + ".</p>");
+    }
+    return (
+      '<section class="doc-section">' +
+      '<h3 class="doc-section-label">When and which blocks</h3>' +
+      '<div class="doc-md">' + parts.join("") + "</div></section>"
+    );
+  }
+
   function renderCases(cell) {
     var cases = S.caseList(cell);
     if (!cases.length) {
@@ -151,11 +231,14 @@
           var stamp = c.stamp || "";
           var mk = caseMark(st);
           var when = caseWhen(st, started, finished);
+          var blk = blocksShort(c.blocks);
           return (
             '<li class="case-row st-' +
             st +
             '">' +
-            '<button type="button" class="run-open" data-tcid="' +
+            '<button type="button" class="run-open' +
+            (blk ? " has-blocks" : "") +
+            '" data-tcid="' +
             esc(tcid) +
             '" data-run-id="' +
             esc(id) +
@@ -177,6 +260,13 @@
             '<span class="case-when">' +
             esc(when) +
             "</span>" +
+            (blk
+              ? '<span class="case-blocks"' +
+                (c.blocks && c.blocks.pool_agrees === false
+                  ? ' title="The pool\'s new-block notices disagree at an edge; open the run"'
+                  : "") +
+                ">" + esc(blk) + "</span>"
+              : "") +
             "</button>" +
             "</li>"
           );
@@ -837,6 +927,7 @@
       "</strong>" +
       (dur ? " · " + esc(dur) : "") +
       "</p></div></section>" +
+      blocksSection(run) +
       (why ? section("Summary", why) : '<p class="doc-empty">No summary text on this execution record.</p>') +
       '<p class="run-doc-link"><button type="button" class="case-doc-open" data-case-id="' +
       esc(run.tcid || tcid) +

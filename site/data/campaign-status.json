@@ -1,10 +1,10 @@
 {
   "schema": "rds-validation-status/v1",
   "campaign": "Mujina on the BZM2 RDS control board",
-  "updated_at": "2026-09-28T16:25:25Z",
-  "status_updated_at": "2026-09-28T16:25:25Z",
+  "updated_at": "2026-09-28T16:37:43Z",
+  "status_updated_at": "2026-09-28T16:37:43Z",
   "stale_after_s": 86400,
-  "git_commit": "424be59",
+  "git_commit": "fd45b49",
   "source": "generated from case records and result files",
   "note": "Status and timings only. No metric, temperature, serial, host or path appears here by design.",
   "stages": [
@@ -29,6 +29,7 @@
               "tcid": "RDS-LOG-01",
               "stamp": "20260915T022459Z",
               "status": "skipped",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T02:24:59Z",
               "finished_at": "2026-09-15T02:33:02Z",
               "why": "**Executed 2026-09-14.** Evidence: (evidence held internally), shared with RDS-PWR-02. A measurement case: its output is a table, not a verdict."
@@ -51,6 +52,7 @@
               "tcid": "RDS-LOG-02",
               "stamp": "20260915T030927Z",
               "status": "blocked",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T03:09:27Z",
               "finished_at": "2026-09-15T03:09:35Z",
               "why": "status: ABORTED"
@@ -60,6 +62,7 @@
               "tcid": "RDS-LOG-02",
               "stamp": "20260915T031619Z",
               "status": "skipped",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T03:16:19Z",
               "finished_at": "2026-09-15T03:22:14Z",
               "why": "ran, no verdict stated"
@@ -69,6 +72,7 @@
               "tcid": "RDS-LOG-02",
               "stamp": "20260915T032314Z",
               "status": "passed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T03:23:14Z",
               "finished_at": "2026-09-15T03:26:44Z",
               "why": "power-on done"
@@ -78,6 +82,7 @@
               "tcid": "RDS-LOG-02",
               "stamp": "20260915T032744Z",
               "status": "passed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T03:27:44Z",
               "finished_at": "2026-09-15T03:31:13Z",
               "why": "power-on done"
@@ -87,6 +92,7 @@
               "tcid": "RDS-LOG-02",
               "stamp": "20260915T033214Z",
               "status": "passed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T03:32:14Z",
               "finished_at": "2026-09-15T03:37:01Z",
               "why": "power-on done"
@@ -109,6 +115,7 @@
               "tcid": "RDS-LOG-03",
               "stamp": "20260915T031456Z",
               "status": "skipped",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T03:14:56Z",
               "finished_at": "2026-09-15T03:14:56Z",
               "why": null
@@ -138,6 +145,7 @@
               "tcid": "RDS-PWR-01",
               "stamp": "20260915T130113Z",
               "status": "skipped",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T13:01:13Z",
               "finished_at": "2026-09-15T16:40:02Z",
               "why": "**Executed 2026-09-15.** Evidence: (evidence held internally). The first attempt, on 2026-09-14, ran under the defective capture method that RDS-PWR-02 documents, so it recorded the sequence and not a verdict. It did not need a dedicated re-run in the end: the corrected harness captured a complete p"
@@ -160,6 +168,7 @@
               "tcid": "RDS-PWR-02",
               "stamp": "20260915T022459Z",
               "status": "failed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T02:24:59Z",
               "finished_at": "2026-09-15T02:33:02Z",
               "why": "**Executed 2026-09-14.** Evidence: (evidence held internally). The failure is the finding; the verdict is computed from the evidence. Evidence: (evidence held internally), `daemon.log` 244,988 lines / 24 MB, sha256 `4097fc0932c5e1d6\u2026`."
@@ -206,6 +215,7 @@
               "tcid": "RDS-THR-01",
               "stamp": "20260915T130113Z",
               "status": "passed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T13:01:13Z",
               "finished_at": "2026-09-15T16:40:02Z",
               "why": "PASS"
@@ -215,6 +225,7 @@
               "tcid": "RDS-THR-01",
               "stamp": "20260915T192231Z",
               "status": "blocked",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T19:22:31Z",
               "finished_at": "2026-09-15T19:22:37Z",
               "why": "status: ABORTED"
@@ -224,6 +235,7 @@
               "tcid": "RDS-THR-01",
               "stamp": "20260915T202356Z",
               "status": "passed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T20:23:56Z",
               "finished_at": "2026-09-15T20:57:15Z",
               "why": "PASS"
@@ -233,6 +245,7 @@
               "tcid": "RDS-THR-01",
               "stamp": "20260915T205745Z",
               "status": "skipped",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T20:57:45Z",
               "finished_at": "2026-09-15T20:57:48Z",
               "why": null
@@ -262,6 +275,7 @@
               "tcid": "MJ-BAUD-01",
               "stamp": "20260915T034026Z",
               "status": "skipped",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T03:40:26Z",
               "finished_at": "2026-09-15T03:41:28Z",
               "why": "ran, no verdict stated"
@@ -271,6 +285,7 @@
               "tcid": "MJ-BAUD-01",
               "stamp": "20260915T034226Z",
               "status": "failed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T03:42:26Z",
               "finished_at": "2026-09-15T03:43:29Z",
               "why": "FAIL"
@@ -280,6 +295,7 @@
               "tcid": "MJ-BAUD-01",
               "stamp": "20260915T042032Z",
               "status": "failed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T04:20:32Z",
               "finished_at": "2026-09-15T04:21:35Z",
               "why": "FAIL"
@@ -289,6 +305,7 @@
               "tcid": "MJ-BAUD-01",
               "stamp": "20260915T042209Z",
               "status": "passed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T04:22:09Z",
               "finished_at": "2026-09-15T04:23:12Z",
               "why": "PASS"
@@ -311,6 +328,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260915T043607Z",
               "status": "failed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T04:36:07Z",
               "finished_at": "2026-09-15T04:38:16Z",
               "why": "PARTIAL"
@@ -320,6 +338,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260915T044246Z",
               "status": "blocked",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T04:42:46Z",
               "finished_at": "2026-09-15T04:44:58Z",
               "why": "ABORTED"
@@ -329,6 +348,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260915T044754Z",
               "status": "skipped",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T04:47:54Z",
               "finished_at": "2026-09-15T04:50:32Z",
               "why": "ran, no verdict stated"
@@ -338,6 +358,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260915T045056Z",
               "status": "failed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T04:50:56Z",
               "finished_at": "2026-09-15T04:53:34Z",
               "why": "FAIL"
@@ -347,6 +368,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260915T051445Z",
               "status": "blocked",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T05:14:45Z",
               "finished_at": "2026-09-15T05:14:46Z",
               "why": "status: ABORTED"
@@ -356,6 +378,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260915T051503Z",
               "status": "failed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T05:15:03Z",
               "finished_at": "2026-09-15T05:17:49Z",
               "why": "FAIL"
@@ -365,6 +388,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260915T193432Z",
               "status": "failed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T19:34:32Z",
               "finished_at": "2026-09-15T19:39:10Z",
               "why": "PARTIAL"
@@ -374,6 +398,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260915T194916Z",
               "status": "failed",
+              "day": "2026-09-15",
               "started_at": "2026-09-15T19:49:16Z",
               "finished_at": "2026-09-15T19:53:55Z",
               "why": "PARTIAL"
@@ -383,6 +408,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260916T043844Z",
               "status": "blocked",
+              "day": "2026-09-16",
               "started_at": "2026-09-16T04:38:44Z",
               "finished_at": "2026-09-16T04:38:49Z",
               "why": "status: ABORTED"
@@ -392,6 +418,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260916T043901Z",
               "status": "failed",
+              "day": "2026-09-16",
               "started_at": "2026-09-16T04:39:01Z",
               "finished_at": "2026-09-16T04:42:12Z",
               "why": "FAIL"
@@ -401,6 +428,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260916T044431Z",
               "status": "failed",
+              "day": "2026-09-16",
               "started_at": "2026-09-16T04:44:31Z",
               "finished_at": "2026-09-16T04:47:41Z",
               "why": "FAIL"
@@ -410,6 +438,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260916T052158Z",
               "status": "failed",
+              "day": "2026-09-16",
               "started_at": "2026-09-16T05:21:58Z",
               "finished_at": "2026-09-16T05:25:01Z",
               "why": "FAIL"
@@ -419,6 +448,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260916T054511Z",
               "status": "failed",
+              "day": "2026-09-16",
               "started_at": "2026-09-16T05:45:11Z",
               "finished_at": "2026-09-16T05:50:15Z",
               "why": "FAIL"
@@ -428,6 +458,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260916T060342Z",
               "status": "failed",
+              "day": "2026-09-16",
               "started_at": "2026-09-16T06:03:42Z",
               "finished_at": "2026-09-16T06:08:34Z",
               "why": "PARTIAL"
@@ -437,6 +468,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260916T133842Z",
               "status": "failed",
+              "day": "2026-09-16",
               "started_at": "2026-09-16T13:38:42Z",
               "finished_at": "2026-09-16T13:41:23Z",
               "why": "FAIL"
@@ -446,6 +478,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260917T234156Z",
               "status": "blocked",
+              "day": "2026-09-17",
               "started_at": "2026-09-17T23:41:56Z",
               "finished_at": "2026-09-17T23:44:18Z",
               "why": "status: ABORTED"
@@ -455,6 +488,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260917T234429Z",
               "status": "failed",
+              "day": "2026-09-17",
               "started_at": "2026-09-17T23:44:29Z",
               "finished_at": "2026-09-17T23:48:02Z",
               "why": "FAIL"
@@ -464,6 +498,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260917T235414Z",
               "status": "failed",
+              "day": "2026-09-17",
               "started_at": "2026-09-17T23:54:14Z",
               "finished_at": "2026-09-17T23:59:11Z",
               "why": "PARTIAL"
@@ -473,6 +508,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260918T000256Z",
               "status": "failed",
+              "day": "2026-09-18",
               "started_at": "2026-09-18T00:02:56Z",
               "finished_at": "2026-09-18T00:05:51Z",
               "why": "FAIL"
@@ -482,6 +518,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T144604Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T14:46:04Z",
               "finished_at": "2026-09-21T14:51:18Z",
               "why": "PARTIAL"
@@ -491,6 +528,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T145704Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T14:57:04Z",
               "finished_at": "2026-09-21T15:02:24Z",
               "why": "FAIL"
@@ -500,6 +538,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T150701Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T15:07:01Z",
               "finished_at": "2026-09-21T15:11:59Z",
               "why": "PARTIAL"
@@ -509,6 +548,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T151246Z",
               "status": "blocked",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T15:12:46Z",
               "finished_at": "2026-09-21T15:12:53Z",
               "why": "status: ABORTED"
@@ -518,6 +558,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T151320Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T15:13:20Z",
               "finished_at": "2026-09-21T15:16:02Z",
               "why": "FAIL"
@@ -527,6 +568,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T151652Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T15:16:52Z",
               "finished_at": "2026-09-21T15:19:26Z",
               "why": "PARTIAL"
@@ -536,6 +578,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T152719Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T15:27:19Z",
               "finished_at": "2026-09-21T15:30:13Z",
               "why": "PARTIAL"
@@ -545,6 +588,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T162322Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T16:23:22Z",
               "finished_at": "2026-09-21T16:31:19Z",
               "why": "PARTIAL"
@@ -554,6 +598,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T163509Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T16:35:09Z",
               "finished_at": "2026-09-21T16:40:24Z",
               "why": "PARTIAL"
@@ -563,6 +608,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T170723Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T17:07:23Z",
               "finished_at": "2026-09-21T17:15:00Z",
               "why": "PARTIAL"
@@ -572,6 +618,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T171646Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T17:16:46Z",
               "finished_at": "2026-09-21T17:24:57Z",
               "why": "PARTIAL"
@@ -581,6 +628,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T180444Z",
               "status": "blocked",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T18:04:44Z",
               "finished_at": "2026-09-21T18:14:30Z",
               "why": "ABORTED"
@@ -590,6 +638,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T182448Z",
               "status": "blocked",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T18:24:48Z",
               "finished_at": "2026-09-21T18:31:17Z",
               "why": "ABORTED"
@@ -599,6 +648,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T195607Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T19:56:07Z",
               "finished_at": "2026-09-21T20:05:15Z",
               "why": "PARTIAL"
@@ -608,6 +658,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T200914Z",
               "status": "failed",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T20:09:14Z",
               "finished_at": "2026-09-21T20:18:18Z",
               "why": "PARTIAL"
@@ -617,6 +668,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260921T220743Z",
               "status": "skipped",
+              "day": "2026-09-21",
               "started_at": "2026-09-21T22:07:43Z",
               "finished_at": "2026-09-21T22:17:13Z",
               "why": null
@@ -626,6 +678,7 @@
               "tcid": "MJ-OBS-01",
               "stamp": "20260922T005014Z",
               "status": "blocked",
+              "day": "2026-09-22",
               "started_at": "2026-09-22T00:50:14Z",
               "finished_at": "2026-09-22T00:52:52Z",
               "why": "status: ABORTED"
@@ -703,27 +756,66 @@
               "tcid": "MJ-HASH-01",
               "stamp": "20260922T204923Z",
               "status": "skipped",
+              "day": "2026-09-22",
               "started_at": "2026-09-22T20:49:23Z",
               "finished_at": "2026-09-22T21:10:47Z",
-              "why": "ran, no verdict stated"
+              "why": "ran, no verdict stated",
+              "blocks": {
+                "state": "measured",
+                "start": "2026-09-22T20:53:13Z",
+                "end": "2026-09-22T21:03:13Z",
+                "span": "hold",
+                "tip_start": 968181,
+                "tip_end": 968182,
+                "first": 968182,
+                "last": 968182,
+                "toward": 968183,
+                "pool_agrees": false
+              }
             },
             {
               "id": "2026-09-23 02:03Z",
               "tcid": "MJ-HASH-01",
               "stamp": "20260923T020342Z",
               "status": "skipped",
+              "day": "2026-09-23",
               "started_at": "2026-09-23T02:03:42Z",
               "finished_at": "2026-09-23T02:28:16Z",
-              "why": "ran, no verdict stated"
+              "why": "ran, no verdict stated",
+              "blocks": {
+                "state": "measured",
+                "start": "2026-09-23T02:10:29Z",
+                "end": "2026-09-23T02:20:30Z",
+                "span": "hold",
+                "tip_start": 968213,
+                "tip_end": 968214,
+                "first": 968214,
+                "last": 968214,
+                "toward": 968215,
+                "pool_agrees": true
+              }
             },
             {
               "id": "2026-09-23 02:29Z",
               "tcid": "MJ-HASH-01",
               "stamp": "20260923T022940Z",
               "status": "skipped",
+              "day": "2026-09-23",
               "started_at": "2026-09-23T02:29:40Z",
               "finished_at": "2026-09-23T02:54:35Z",
-              "why": "ran, no verdict stated"
+              "why": "ran, no verdict stated",
+              "blocks": {
+                "state": "measured",
+                "start": "2026-09-23T02:36:30Z",
+                "end": "2026-09-23T02:46:31Z",
+                "span": "hold",
+                "tip_start": 968215,
+                "tip_end": 968217,
+                "first": 968216,
+                "last": 968217,
+                "toward": 968218,
+                "pool_agrees": true
+              }
             }
           ]
         },
