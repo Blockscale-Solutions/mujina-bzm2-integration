@@ -1,0 +1,3380 @@
+{
+  "schema": "rds-roadmap/v2",
+  "generated_at": "2026-09-28T16:25:25Z",
+  "git_commit": "424be59",
+  "stale_after_s": 604800,
+  "source": "typed in one source file from the case records, and checked by a generator before publication",
+  "note": "Status, case ids, run times and links only. No figure, temperature, serial, host or path appears here by design.",
+  "checks": [
+    "Every case cited has a record.",
+    "Every run cited exists in the evidence.",
+    "A run shown as passed or failed has that verdict in its case record.",
+    "Where a label states what a run's own log says, that log says it.",
+    "A capability called proven cites a run; one short of proven names the roadmap item that closes it.",
+    "Each capability sits under the pull request whose branch carries its code; code that no branch carries is shown as already upstream or as staying here.",
+    "Each upstream branch is on the project's origin, is stacked on the one before it, and carries its files as they are in the lab tree it was built from, apart from declared edits.",
+    "The summary at the top agrees with the rows it summarises.",
+    "Each issue sits in one class of roadmap item, each gap is closed from one class, and no item depends on a weaker class than its own.",
+    "The roadmap's own text carries no figure with a unit, no path and no vendor name.",
+    "Which repositories are private was confirmed with GitHub, and a reference into a private one is shown as text, not a link.",
+    "Every issue and pull request cited exists, and every epic is marked as an epic in its tracker."
+  ],
+  "visibility_checked": true,
+  "trackers_checked": true,
+  "headline": "Mujina mines on this machine in handover mode: the stock firmware powers and calibrates the hashboards, then Mujina takes over the running chains and mines to a public pool on one, two or all three boards. It has passed a two-hour run on all three boards, judged against criteria written before the run. It cannot yet start the machine from cold, stop it safely on its own, or run outside the test harness. Parity with the stock firmware on delivered work is the gate before anything goes upstream, and it has not yet been shown.",
+  "statuses": [
+    "proven",
+    "partly proven",
+    "not yet"
+  ],
+  "classes": [
+    {
+      "id": "upstream-gate",
+      "label": "Required to go upstream",
+      "blurb": "The gate for the upstream pull requests: two hours of parity with the stock firmware on this machine, then the pull requests themselves."
+    },
+    {
+      "id": "standalone",
+      "label": "Required to run on its own",
+      "blurb": "Needed before Mujina can start, run and stop this machine without the stock firmware or the test harness. Where an upstream item waits on one of these, it says so."
+    },
+    {
+      "id": "nice-to-have",
+      "label": "Nice to have",
+      "blurb": "Makes the port better; none of it blocks mining, running on its own or going upstream."
+    },
+    {
+      "id": "enhancement",
+      "label": "Enhancement",
+      "blurb": "New capability beyond the port itself."
+    }
+  ],
+  "tree": {
+    "built_from": "7c66040",
+    "newer": []
+  },
+  "tiers": [
+    {
+      "tier": "mujina-general",
+      "upstream": true,
+      "inherited": false,
+      "test": "Not specific to this chip at all: useful to any Mujina board.",
+      "note": null,
+      "branch": "upstream/mujina-general",
+      "head": "2216098",
+      "date": "2026-09-28",
+      "subject": "mujina: Linux I2C backend, serial control-flag override, log budget",
+      "repo": "mujina-bzm2-dev",
+      "public": false
+    },
+    {
+      "tier": "bzm2-silicon",
+      "upstream": true,
+      "inherited": false,
+      "test": "The chip itself: swapping the chassis would not change it.",
+      "note": "Today this tier compiles only together with the board tier; merging the two, or breaking the dependency in code, is still to be decided.",
+      "branch": "upstream/bzm2-silicon",
+      "stacked_on": "mujina-general",
+      "head": "2f9db37",
+      "date": "2026-09-28",
+      "subject": "bzm2: silicon tier - protocol, soft-UART, telemetry decode, calibration",
+      "repo": "mujina-bzm2-dev",
+      "public": false
+    },
+    {
+      "tier": "bzm2-board",
+      "upstream": true,
+      "inherited": false,
+      "test": "This hashboard family: swapping the hashboard would change it.",
+      "note": null,
+      "branch": "upstream/bzm2-board",
+      "stacked_on": "bzm2-silicon",
+      "head": "383adcb",
+      "date": "2026-09-28",
+      "subject": "bzm2: board tier - board controller, power, fans, abort ladder, platform",
+      "repo": "mujina-bzm2-dev",
+      "public": false
+    },
+    {
+      "tier": "upstream-mujina",
+      "upstream": false,
+      "inherited": true,
+      "test": "Already in upstream Mujina: this stack does not change it, and no pull request here carries it.",
+      "note": null,
+      "branch": null
+    },
+    {
+      "tier": "rds-harness",
+      "upstream": false,
+      "inherited": false,
+      "test": "The lab harness and evidence for this one machine. It stays here and never goes upstream.",
+      "note": null,
+      "branch": null
+    }
+  ],
+  "proven": [
+    {
+      "id": "mining",
+      "tier": "bzm2-silicon",
+      "status": "proven",
+      "text": "Mines to a public pool on each hashboard alone, on two together and on all three together, and has held all three at full load until the chips reached a steady temperature.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-23T02:29:40Z",
+          "label": "run 3: first accepted share, board 0",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-02",
+          "at": "2026-09-23T14:21:24Z",
+          "label": "board 1 (one criterion unmeasured)",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-04",
+          "at": "2026-09-23T15:19:58Z",
+          "label": "board 2",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-03",
+          "at": "2026-09-23T14:54:54Z",
+          "label": "boards 0 and 1",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-05",
+          "at": "2026-09-23T15:46:55Z",
+          "label": "all three boards",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "all three boards, held to a steady temperature",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-28T12:41:10Z",
+          "label": "attempt 4: all three boards through a two-hour hold",
+          "pending": null,
+          "verdict": "pass"
+        },
+        {
+          "case": "MJ-HARN-01",
+          "at": "2026-09-24T12:39:17Z",
+          "label": "all three boards",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HARN-02",
+          "at": "2026-09-25T01:12:19Z",
+          "label": "all three boards",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": [],
+      "milestone": "milestones/2026-09-23-first-accepted-share.html"
+    },
+    {
+      "id": "takeover",
+      "tier": "bzm2-silicon",
+      "status": "proven",
+      "text": "Takes over a running hashboard chain from the stock firmware without dropping power, returns it to rest and attaches, on one board or all three.",
+      "evidence": [
+        {
+          "case": "MJ-BRING-01",
+          "at": "2026-09-22T20:34:25Z",
+          "label": "attempt 4: one board, stream unbroken",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-OBS-03",
+          "at": "2026-09-23T06:10:22Z",
+          "label": "three boards held in one process",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-05",
+          "at": "2026-09-23T15:46:55Z",
+          "label": "three boards, mining",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "engine-ungate",
+      "tier": "bzm2-silicon",
+      "status": "proven",
+      "text": "Releases and ungates every engine after its takeover reset, refuses to dispatch unless the chip reads back ready, and the load comes off as soon as work stops.",
+      "evidence": [
+        {
+          "case": "MJ-ENG-01",
+          "at": "2026-09-23T00:24:29Z",
+          "label": "gate read back, one chip ungated alone",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-RUN-01",
+          "at": "2026-09-23T00:55:01Z",
+          "label": "load follows work, on and off",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "held under three-board mining",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "job-encoding",
+      "tier": "bzm2-silicon",
+      "status": "proven",
+      "text": "Encodes jobs and decodes returned nonces in the byte order the chip uses, confirmed by shares a pool accepted.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-22T20:49:23Z",
+          "label": "run 1: the failure that found it",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-23T02:03:42Z",
+          "label": "run 2",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-23T02:29:40Z",
+          "label": "run 3: pool-accepted shares",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "work-division",
+      "tier": "bzm2-silicon",
+      "status": "proven",
+      "text": "Divides work so that every ASIC and every engine hashes its own range instead of repeating the same work.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-23T02:29:40Z",
+          "label": "run 3",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "all three boards",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-POOL-01",
+          "at": "2026-09-23T21:29:46Z",
+          "label": "rejections only while the pool was cut on purpose",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#123",
+          "repo": "mujina-bzm2-dev",
+          "num": 123,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": []
+    },
+    {
+      "id": "telemetry",
+      "tier": "bzm2-silicon",
+      "status": "proven",
+      "text": "Reads every ASIC's die temperature and voltage channels from the chain's own sensor stream, on all three hashboards.",
+      "evidence": [
+        {
+          "case": "MJ-OBS-01",
+          "at": "2026-09-17T23:35:44Z",
+          "label": "decode settled on captured data",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-OBS-01",
+          "at": "2026-09-21T15:27:19Z",
+          "label": "7th execution: designed path, first success",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-BRING-01",
+          "at": "2026-09-22T20:34:25Z",
+          "label": "attempt 4: every die fresh",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-OBS-03",
+          "at": "2026-09-23T06:10:22Z",
+          "label": "all three chains",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "every die fresh before first dispatch, per chain",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "dispatch-interlock",
+      "tier": "bzm2-silicon",
+      "status": "proven",
+      "text": "Refuses to send work to a chain until every chip on it has reported its temperature.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-23T02:03:42Z",
+          "label": "run 2: stream down, every job held back",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-03",
+          "at": "2026-09-23T14:54:54Z",
+          "label": "boards 0 and 1",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-04",
+          "at": "2026-09-23T15:19:58Z",
+          "label": "board 2",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-05",
+          "at": "2026-09-23T15:46:55Z",
+          "label": "all three boards",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "all three boards",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-POOL-01",
+          "at": "2026-09-23T21:29:46Z",
+          "label": "one board, pool cut",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "fault-reports",
+      "tier": "bzm2-silicon",
+      "status": "partly proven",
+      "text": "Believes a chip's fault report only when the same device repeats it, so one garbled frame no longer stops a board; a genuine fault has not yet occurred on this machine.",
+      "evidence": [
+        {
+          "case": "MJ-OBS-03",
+          "at": "2026-09-23T06:10:22Z",
+          "label": "found the false stop",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "no false stop after the fix",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-POOL-01",
+          "at": "2026-09-23T21:29:46Z",
+          "label": "no false stop after the fix",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#126",
+          "repo": "mujina-bzm2-dev",
+          "num": 126,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "safety-gates"
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "tier": "bzm2-silicon",
+      "status": "partly proven",
+      "text": "Chip diagnostics (known-answer, loopback, register read) answer from live silicon on a quiet chain; running them while the sensor stream is on is not yet proven.",
+      "evidence": [
+        {
+          "case": "MJ-OBS-01",
+          "at": "2026-09-21T15:27:19Z",
+          "label": "7th execution: loopback echoed exactly",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-OBS-03",
+          "at": "2026-09-23T06:10:22Z",
+          "label": "streaming chain: probes misread",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#127",
+          "repo": "mujina-bzm2-dev",
+          "num": 127,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#135",
+          "repo": "mujina-bzm2-dev",
+          "num": 135,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#131",
+          "repo": "mujina-bzm2-dev",
+          "num": 131,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "live-discovery"
+      ]
+    },
+    {
+      "id": "engine-discovery",
+      "tier": "bzm2-silicon",
+      "status": "not yet",
+      "text": "Discovering the engine map on a live chain does not yet complete; mining uses the known layout.",
+      "evidence": [
+        {
+          "case": "MJ-BRING-01",
+          "at": "2026-09-22T20:34:25Z",
+          "label": "attempt 4: one unanswered read aborts the sweep",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-OBS-03",
+          "at": "2026-09-23T06:10:22Z",
+          "label": "refused on all three chains",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#127",
+          "repo": "mujina-bzm2-dev",
+          "num": 127,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "live-discovery"
+      ]
+    },
+    {
+      "id": "calibration",
+      "tier": "bzm2-silicon",
+      "status": "not yet",
+      "text": "Mujina currently mines at the per-chip operating point the stock firmware set; applying or deriving that calibration itself is not yet proven.",
+      "evidence": [
+        {
+          "case": "RDS-CAL-02",
+          "at": "2026-09-16T15:02:26Z",
+          "label": "the stock firmware's derivation, captured for reference",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#87",
+          "repo": "mujina-bzm2-dev",
+          "num": 87,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#147",
+          "repo": "mujina-bzm2-dev",
+          "num": 147,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "operating-point"
+      ]
+    },
+    {
+      "id": "parity",
+      "tier": "bzm2-silicon",
+      "status": "not yet",
+      "text": "Parity with the stock firmware on delivered work has not yet been shown; it is the gate before anything goes upstream.",
+      "evidence": [
+        {
+          "case": "RDS-PAR-01",
+          "at": "2026-09-15T23:29:47Z",
+          "label": "stock arm, definition only",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-PAR-01",
+          "at": "2026-09-15T23:33:43Z",
+          "label": "stock arm, public pool",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-SAFE-01",
+          "at": "2026-09-17T04:51:20Z",
+          "label": "stock two-hour reference",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#137",
+          "repo": "mujina-bzm2-dev",
+          "num": 137,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#121",
+          "repo": "mujina-bzm2-dev",
+          "num": 121,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "parity-gate"
+      ]
+    },
+    {
+      "id": "two-hours",
+      "tier": "bzm2-silicon",
+      "status": "proven",
+      "text": "Mines on all three boards through a two-hour hold, judged against criteria written before the run; after the hold the boards fell dark on the board controller's own timer and the harness proved them dark. Earlier attempts were stopped by the stock kernel and by the test harness, not by Mujina.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-24T04:11:48Z",
+          "label": "attempt 1: stock kernel fault before Mujina started",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-24T13:07:27Z",
+          "label": "retry: harness hold overran",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-25T01:40:28Z",
+          "label": "attempt 3: harness shell died, not judged",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-28T12:41:10Z",
+          "label": "attempt 4: the full two-hour hold",
+          "pending": null,
+          "verdict": "pass"
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "the longest judged hold before it",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "rdsmujina-env#71",
+          "repo": "rdsmujina-env",
+          "num": 71,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "endurance"
+      ],
+      "milestone": "milestones/2026-09-28-two-hours-three-boards.html"
+    },
+    {
+      "id": "chain-link",
+      "tier": "mujina-general",
+      "status": "proven",
+      "text": "Drives the hashboard chain link at its full rate through a generic serial-port override, and reads back the line settings instead of trusting them.",
+      "evidence": [
+        {
+          "case": "MJ-BAUD-01",
+          "at": "2026-09-15T04:22:09Z",
+          "label": "all three ports read back the requested rate",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-BAUD-02",
+          "at": "2026-09-15T21:33:08Z",
+          "label": "step 1, third attempt: our own setter was reverting it",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-BRING-01",
+          "at": "2026-09-22T20:34:25Z",
+          "label": "attempt 4: one open, one close",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "i2c-backend",
+      "tier": "mujina-general",
+      "status": "proven",
+      "text": "A Linux I2C backend carries all board-controller traffic on the real machine: heartbeat, power status and power-down.",
+      "evidence": [
+        {
+          "case": "MJ-HEART-01",
+          "at": "2026-09-21T16:23:22Z",
+          "label": "heartbeat",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HEART-01",
+          "at": "2026-09-21T16:35:09Z",
+          "label": "heartbeat",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-ABORT-02",
+          "at": "2026-09-23T12:48:20Z",
+          "label": "power-down on all three boards",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "throughout three-board mining",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "heartbeat",
+      "tier": "bzm2-board",
+      "status": "partly proven",
+      "text": "Keeps every hashboard powered with its board controller's heartbeat through every mining run so far, and the shed after the heartbeat stops has been measured; one shed while the heartbeat was running, outside mining, is still unexplained.",
+      "evidence": [
+        {
+          "case": "MJ-HEART-01",
+          "at": "2026-09-21T16:23:22Z",
+          "label": "first execution: board held, its power trace lost",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HEART-01",
+          "at": "2026-09-21T16:35:09Z",
+          "label": "second execution: board held for the whole hold",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HEART-01",
+          "at": "2026-09-21T17:16:46Z",
+          "label": "board went dark while the heartbeat was running: unexplained",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HEART-01",
+          "at": "2026-09-21T20:09:14Z",
+          "label": "shed after the beat stops",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HEART-01",
+          "at": "2026-09-21T22:07:43Z",
+          "label": "shed after the beat stops",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-BRING-01",
+          "at": "2026-09-22T20:34:25Z",
+          "label": "attempt 4",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "every beat answered, all three boards",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#29",
+          "repo": "mujina-bzm2-dev",
+          "num": 29,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "board-power-up"
+      ]
+    },
+    {
+      "id": "controller-identity",
+      "tier": "bzm2-board",
+      "status": "proven",
+      "text": "Reads each board controller's identity and drains its fault history before it touches the board.",
+      "evidence": [
+        {
+          "case": "MJ-BRING-01",
+          "at": "2026-09-22T20:34:25Z",
+          "label": "attempt 4: identified, fault queue empty before the first beat",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#112",
+          "repo": "mujina-bzm2-dev",
+          "num": 112,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#140",
+          "repo": "mujina-bzm2-dev",
+          "num": 140,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": []
+    },
+    {
+      "id": "self-test",
+      "tier": "bzm2-board",
+      "status": "partly proven",
+      "text": "A self-test confirms every fan turns before the boards are driven; its refusal path has not yet been exercised on the machine.",
+      "evidence": [
+        {
+          "case": "MJ-BRING-01",
+          "at": "2026-09-22T20:34:25Z",
+          "label": "attempt 4: self-test passes, every fan confirmed",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": [
+        "safety-gates"
+      ]
+    },
+    {
+      "id": "fan-control",
+      "tier": "bzm2-board",
+      "status": "proven",
+      "text": "Drives the chassis fans from a thermal loop and confirms each fan turns; at full load the loop runs at full duty.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "loop reached and held full duty",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-POOL-01",
+          "at": "2026-09-23T21:29:46Z",
+          "label": "fans read in every report",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#102",
+          "repo": "mujina-bzm2-dev",
+          "num": 102,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#136",
+          "repo": "mujina-bzm2-dev",
+          "num": 136,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#69",
+          "repo": "mujina-bzm2-dev",
+          "num": 69,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#175",
+          "repo": "mujina-bzm2-dev",
+          "num": 175,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": []
+    },
+    {
+      "id": "abort-ladder",
+      "tier": "bzm2-board",
+      "status": "proven",
+      "text": "On a fault that persists, stops all work, then stops the heartbeat and powers every hashboard down through its controller, confirming each rail is dark; an independent instrument agreed.",
+      "evidence": [
+        {
+          "case": "MJ-ABORT-01",
+          "at": "2026-09-22T01:20:04Z",
+          "label": "run B: one board, induced condition",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-ABORT-02",
+          "at": "2026-09-23T12:48:20Z",
+          "label": "all three boards, confirmed dark independently",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-22T20:49:23Z",
+          "label": "run 1: a real stop",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-23T02:03:42Z",
+          "label": "run 2: a real stop",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "stall-detection",
+      "tier": "bzm2-board",
+      "status": "proven",
+      "text": "Detects a chain that stops returning results, stops reporting temperatures, or loses its thread, and escalates to a safe power-down.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-22T20:49:23Z",
+          "label": "run 1: stall caught",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-01",
+          "at": "2026-09-23T02:03:42Z",
+          "label": "run 2: blind chain caught, powered down",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-ABORT-02",
+          "at": "2026-09-23T12:48:20Z",
+          "label": "lost chain escalated",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#113",
+          "repo": "mujina-bzm2-dev",
+          "num": 113,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#128",
+          "repo": "mujina-bzm2-dev",
+          "num": 128,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#167",
+          "repo": "mujina-bzm2-dev",
+          "num": 167,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": []
+    },
+    {
+      "id": "three-boards",
+      "tier": "bzm2-board",
+      "status": "proven",
+      "text": "Runs all three hashboards of the machine from one process, with every chain and board controller taken from a declared chassis description.",
+      "evidence": [
+        {
+          "case": "MJ-OBS-03",
+          "at": "2026-09-23T06:10:22Z",
+          "label": "three ports, three buses",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-05",
+          "at": "2026-09-23T15:46:55Z",
+          "label": "mining",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "mining",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HARN-01",
+          "at": "2026-09-24T12:39:17Z",
+          "label": "mining",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HARN-02",
+          "at": "2026-09-25T01:12:19Z",
+          "label": "mining",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "staggered-start",
+      "tier": "bzm2-board",
+      "status": "proven",
+      "text": "Starts and stops the chains one at a time, each waiting for the previous one's first share, so the supply takes one board's load step at a time.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-03",
+          "at": "2026-09-23T14:54:54Z",
+          "label": "first measurement, up and down",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-05",
+          "at": "2026-09-23T15:46:55Z",
+          "label": "all three boards",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "all three boards",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "http-api",
+      "tier": "bzm2-board",
+      "status": "proven",
+      "text": "The HTTP API keeps answering while all three hashboards mine, with per-board and per-ASIC summaries.",
+      "evidence": [
+        {
+          "case": "MJ-OBS-01",
+          "at": "2026-09-17T23:44:29Z",
+          "label": "4th execution: starvation found",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-OBS-01",
+          "at": "2026-09-17T23:54:14Z",
+          "label": "5th execution: fixed",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-BRING-01",
+          "at": "2026-09-22T20:34:25Z",
+          "label": "attempt 4",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-25T01:40:28Z",
+          "label": "attempt 3: every probe answered while mining",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "cold-start",
+      "tier": "bzm2-board",
+      "status": "not yet",
+      "text": "Starting the machine from cold without the stock firmware is not yet possible; today the stock firmware powers the boards and Mujina takes over.",
+      "evidence": [
+        {
+          "case": "RDS-WARM-01",
+          "at": "2026-09-16T14:18:24Z",
+          "label": "the stock firmware always re-powers: handover is the only path",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#158",
+          "repo": "mujina-bzm2-dev",
+          "num": 158,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#111",
+          "repo": "mujina-bzm2-dev",
+          "num": 111,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#140",
+          "repo": "mujina-bzm2-dev",
+          "num": 140,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#116",
+          "repo": "mujina-bzm2-dev",
+          "num": 116,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#143",
+          "repo": "mujina-bzm2-dev",
+          "num": 143,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#144",
+          "repo": "mujina-bzm2-dev",
+          "num": 144,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#145",
+          "repo": "mujina-bzm2-dev",
+          "num": 145,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#146",
+          "repo": "mujina-bzm2-dev",
+          "num": 146,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "stock-capture",
+        "supply",
+        "board-power-up",
+        "cold-chain",
+        "operating-point"
+      ]
+    },
+    {
+      "id": "clean-stop",
+      "tier": "bzm2-board",
+      "status": "not yet",
+      "text": "A normal stop does not yet power the boards off itself; they fall dark on the board controller's own timer.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "rails up after exit, shed by the controller",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-ABORT-02",
+          "at": "2026-09-23T12:48:20Z",
+          "label": "power-down reached only on the fault path",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#151",
+          "repo": "mujina-bzm2-dev",
+          "num": 151,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "stop-supervision"
+      ]
+    },
+    {
+      "id": "supply-limits",
+      "tier": "bzm2-board",
+      "status": "not yet",
+      "text": "Supply limits are enforced by the test harness today, not yet by Mujina.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "Mujina's own limits unset; the harness guard held",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#139",
+          "repo": "mujina-bzm2-dev",
+          "num": 139,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "supply"
+      ]
+    },
+    {
+      "id": "degradation",
+      "tier": "bzm2-board",
+      "status": "not yet",
+      "text": "One fault currently stops the whole machine; keeping the healthy parts running is future work.",
+      "evidence": [],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#167",
+          "repo": "mujina-bzm2-dev",
+          "num": 167,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "keep-healthy"
+      ]
+    },
+    {
+      "id": "pool-loss",
+      "tier": "upstream-mujina",
+      "status": "partly proven",
+      "text": "Recovers and resumes after a pool connection reset and after a silent network drop; a pool that goes silent is not yet noticed while it is silent.",
+      "evidence": [
+        {
+          "case": "MJ-POOL-01",
+          "at": "2026-09-23T21:29:46Z",
+          "label": "reset and silent drop, both recovered",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#137",
+          "repo": "mujina-bzm2-dev",
+          "num": 137,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#149",
+          "repo": "mujina-bzm2-dev",
+          "num": 149,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "silent-pool"
+      ]
+    },
+    {
+      "id": "hardware-gate",
+      "tier": "rds-harness",
+      "status": "proven",
+      "text": "A hardware gate refuses any power-on without passing tests, a verified binary and a recorded reason, and it has refused real launches.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-28T12:41:10Z",
+          "label": "attempt 4: gate passed with binary provenance",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-OBS-03",
+          "at": "2026-09-23T06:04:49Z",
+          "label": "launch refused before power-on",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HARN-02",
+          "at": "2026-09-25T00:27:41Z",
+          "label": "launch 1 refused before power-on",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-BRING-01",
+          "at": "2026-09-22T20:12:59Z",
+          "label": "attempt 3: ran in dry run; configuration now enforced",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-08",
+          "at": "2026-09-28T15:20:47Z",
+          "label": "first launch refused before power-on",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#125",
+          "repo": "mujina-bzm2-dev",
+          "num": 125,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": []
+    },
+    {
+      "id": "stop-ladder",
+      "tier": "rds-harness",
+      "status": "partly proven",
+      "text": "Every run ends with an independent stop ladder proving the boards dark; the killswitch's full step-by-step qualification is not yet passing.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "ladder clean, final sweep dark",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-POOL-01",
+          "at": "2026-09-23T21:29:46Z",
+          "label": "ladder clean, final sweep dark",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HARN-02",
+          "at": "2026-09-25T01:12:19Z",
+          "label": "ladder clean, final sweep dark",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-25T01:40:28Z",
+          "label": "attempt 3: forced stop from outside, dark",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-KILL-01",
+          "at": "2026-09-17T02:42:06Z",
+          "label": "killswitch qualification: not passing",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#159",
+          "repo": "mujina-bzm2-dev",
+          "num": 159,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": [
+        "safety-gates"
+      ]
+    },
+    {
+      "id": "instruments",
+      "tier": "rds-harness",
+      "status": "proven",
+      "text": "Independent instruments sample the board controllers and the supply throughout every run, outside the software being tested.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-06",
+          "at": "2026-09-23T16:23:32Z",
+          "label": "both instruments within budget",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HARN-02",
+          "at": "2026-09-25T01:12:19Z",
+          "label": "on the unit's own shell",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#138",
+          "repo": "mujina-bzm2-dev",
+          "num": 138,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": []
+    },
+    {
+      "id": "evidence-collection",
+      "tier": "rds-harness",
+      "status": "proven",
+      "text": "Every run's evidence is hash-verified before the unit's copy is removed, and a kernel fault at the takeover is detected and contained rather than mined through.",
+      "evidence": [
+        {
+          "case": "MJ-HARN-01",
+          "at": "2026-09-24T12:39:17Z",
+          "label": "kernel-fault gates, every file verified",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HARN-02",
+          "at": "2026-09-25T01:12:19Z",
+          "label": "stop path on the unit's shell, every file verified",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-POOL-01",
+          "at": "2026-09-23T21:29:46Z",
+          "label": "every file verified",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-25T01:40:28Z",
+          "label": "attempt 3: every file verified",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-24T13:07:27Z",
+          "label": "retry: the evidence loss that was fixed",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#154",
+          "repo": "mujina-bzm2-dev",
+          "num": 154,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#71",
+          "repo": "rdsmujina-env",
+          "num": 71,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "path": []
+    },
+    {
+      "id": "pool-fault-injection",
+      "tier": "rds-harness",
+      "status": "proven",
+      "text": "The harness can take the pool away on purpose, two different ways, and put it back cleanly.",
+      "evidence": [
+        {
+          "case": "MJ-POOL-01",
+          "at": "2026-09-23T21:29:46Z",
+          "label": "both cuts made and undone, unit left clean",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    },
+    {
+      "id": "harness-window",
+      "tier": "rds-harness",
+      "status": "partly proven",
+      "text": "The test harness has carried a two-hour window to its own end once, with every file collected; what ended an earlier window's shell was not found, so it is not yet known to do so every time.",
+      "evidence": [
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-24T13:07:27Z",
+          "label": "retry: hold overran",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-25T01:40:28Z",
+          "label": "attempt 3: window shell died",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-SHELL-01",
+          "at": "2026-09-25T09:40:52Z",
+          "label": "did not reproduce",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-SHELL-02",
+          "at": "2026-09-25T13:22:47Z",
+          "label": "did not reproduce",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-28T12:41:10Z",
+          "label": "attempt 4: the window ran to its own end",
+          "pending": null,
+          "verdict": "pass"
+        }
+      ],
+      "issues": [],
+      "path": [
+        "endurance"
+      ]
+    },
+    {
+      "id": "stock-reference",
+      "tier": "rds-harness",
+      "status": "proven",
+      "text": "The stock firmware's power-on, calibration, warm restart, logging and two-hour behaviour were measured on the same machine, as the reference Mujina is judged against.",
+      "evidence": [
+        {
+          "case": "RDS-PWR-01",
+          "at": "2026-09-15T13:01:13Z",
+          "label": "power-on",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-PWR-02",
+          "at": "2026-09-15T02:24:59Z",
+          "label": "power-on under logging load",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-LOG-01",
+          "at": "2026-09-15T02:24:59Z",
+          "label": "logging cost",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-LOG-02",
+          "at": "2026-09-15T03:16:19Z",
+          "label": "log-level ladder, rung 1",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-LOG-02",
+          "at": "2026-09-15T03:23:14Z",
+          "label": "rung 2",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-LOG-02",
+          "at": "2026-09-15T03:27:44Z",
+          "label": "rung 3",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-LOG-02",
+          "at": "2026-09-15T03:32:14Z",
+          "label": "rung 4",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-LOG-03",
+          "at": "2026-09-15T03:14:56Z",
+          "label": "runtime log control",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-WARM-01",
+          "at": "2026-09-16T14:18:24Z",
+          "label": "warm restart",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-CAL-02",
+          "at": "2026-09-16T15:02:26Z",
+          "label": "cold calibration",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-THR-01",
+          "at": "2026-09-15T13:01:13Z",
+          "label": "idle thermal response, arm A",
+          "pending": null,
+          "verdict": null
+        },
+        {
+          "case": "RDS-SAFE-01",
+          "at": "2026-09-17T04:51:20Z",
+          "label": "two-hour trajectory",
+          "pending": null,
+          "verdict": null
+        }
+      ],
+      "issues": [],
+      "path": []
+    }
+  ],
+  "roadmap": [
+    {
+      "id": "endurance",
+      "class": "upstream-gate",
+      "text": "Show that the test harness carries long runs dependably: the two-hour run on all three hashboards passed on its fourth attempt, and what ended an earlier attempt's harness shell is still unexplained. Then decide the four-hour run.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#82",
+        "repo": "mujina-bzm2-dev",
+        "num": 82,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#137",
+          "repo": "mujina-bzm2-dev",
+          "num": 137,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "two-hours",
+        "harness-window"
+      ],
+      "evidence": [
+        {
+          "case": "MJ-HASH-07",
+          "at": "2026-09-28T12:41:10Z",
+          "label": "attempt 4: the full two-hour hold",
+          "pending": null,
+          "verdict": "pass"
+        }
+      ]
+    },
+    {
+      "id": "parity-gate",
+      "class": "upstream-gate",
+      "text": "Show, measured by the pool rather than by ourselves, that Mujina delivers at least as much work as the stock firmware on the same machine.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#82",
+        "repo": "mujina-bzm2-dev",
+        "num": 82,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#121",
+          "repo": "mujina-bzm2-dev",
+          "num": 121,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#86",
+          "repo": "mujina-bzm2-dev",
+          "num": 86,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#95",
+          "repo": "mujina-bzm2-dev",
+          "num": 95,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#137",
+          "repo": "mujina-bzm2-dev",
+          "num": 137,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "PR mujina-bzm2-dev#190",
+          "repo": "mujina-bzm2-dev",
+          "num": 190,
+          "pr": true,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [
+        "endurance",
+        "operating-point"
+      ],
+      "planned": [],
+      "closes": [
+        "parity"
+      ],
+      "evidence": [
+        {
+          "case": "MJ-HASH-08",
+          "at": "2026-09-28T15:20:47Z",
+          "label": "the change that decodes each result against its own dispatch: its first launch was refused by the hardware gate, before power-on",
+          "pending": null,
+          "verdict": null
+        }
+      ]
+    },
+    {
+      "id": "upstream-prs",
+      "class": "upstream-gate",
+      "text": "Rebuild the enablement on current upstream as reviewed pull requests, split by what each depends on: the chip, the hashboard, and general Mujina.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#82",
+        "repo": "mujina-bzm2-dev",
+        "num": 82,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#81",
+          "repo": "mujina-bzm2-dev",
+          "num": 81,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#85",
+          "repo": "mujina-bzm2-dev",
+          "num": 85,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#83",
+          "repo": "mujina-bzm2-dev",
+          "num": 83,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [
+        "parity-gate"
+      ],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "safety-gates",
+      "class": "standalone",
+      "text": "Qualify the independent watchdog, the killswitch and simulated fault injection before Mujina drives any new power actuator.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#59",
+          "repo": "mujina-bzm2-dev",
+          "num": 59,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#55",
+          "repo": "mujina-bzm2-dev",
+          "num": 55,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#57",
+          "repo": "mujina-bzm2-dev",
+          "num": 57,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#58",
+          "repo": "mujina-bzm2-dev",
+          "num": 58,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#97",
+          "repo": "mujina-bzm2-dev",
+          "num": 97,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#98",
+          "repo": "mujina-bzm2-dev",
+          "num": 98,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#157",
+          "repo": "mujina-bzm2-dev",
+          "num": 157,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#159",
+          "repo": "mujina-bzm2-dev",
+          "num": 159,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#172",
+          "repo": "mujina-bzm2-dev",
+          "num": 172,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "stop-ladder",
+        "fault-reports",
+        "self-test"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "stock-capture",
+      "class": "standalone",
+      "text": "Record the stock firmware's power-on sequence and each unit's factory data before the stock software is removed.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#142",
+          "repo": "mujina-bzm2-dev",
+          "num": 142,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#8",
+          "repo": "rdsmujina-env",
+          "num": 8,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#82",
+          "repo": "mujina-bzm2-dev",
+          "num": 82,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "cold-start"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "supply",
+      "class": "standalone",
+      "text": "Read and control the power supply from Mujina, verify every setpoint before enabling output, and enforce the machine's power budget itself.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "rdsmujina-env#72",
+          "repo": "rdsmujina-env",
+          "num": 72,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#138",
+          "repo": "mujina-bzm2-dev",
+          "num": 138,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#139",
+          "repo": "mujina-bzm2-dev",
+          "num": 139,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#111",
+          "repo": "mujina-bzm2-dev",
+          "num": 111,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "supply-limits",
+        "cold-start"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "board-power-up",
+      "class": "standalone",
+      "text": "Power each hashboard up through its board controller, with every protection armed before the first energising write.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#140",
+          "repo": "mujina-bzm2-dev",
+          "num": 140,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#141",
+          "repo": "mujina-bzm2-dev",
+          "num": 141,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#29",
+          "repo": "mujina-bzm2-dev",
+          "num": 29,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#28",
+          "repo": "mujina-bzm2-dev",
+          "num": 28,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#30",
+          "repo": "mujina-bzm2-dev",
+          "num": 30,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "cold-start",
+        "heartbeat"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "cold-chain",
+      "class": "standalone",
+      "text": "Bring a cold chain up without the stock firmware: find every chip, set result timing, lock the clocks and raise the rail under load.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#143",
+          "repo": "mujina-bzm2-dev",
+          "num": 143,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#116",
+          "repo": "mujina-bzm2-dev",
+          "num": 116,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#144",
+          "repo": "mujina-bzm2-dev",
+          "num": 144,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#145",
+          "repo": "mujina-bzm2-dev",
+          "num": 145,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#146",
+          "repo": "mujina-bzm2-dev",
+          "num": 146,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "cold-start"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "operating-point",
+      "class": "standalone",
+      "text": "Apply each board's stored per-chip calibration itself, and derive one when none exists.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#87",
+          "repo": "mujina-bzm2-dev",
+          "num": 87,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#147",
+          "repo": "mujina-bzm2-dev",
+          "num": 147,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "calibration",
+        "cold-start"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "runtime-monitoring",
+      "class": "standalone",
+      "text": "Watch the board controllers throughout a run, and take the load off when there is no valid work to do.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#148",
+          "repo": "mujina-bzm2-dev",
+          "num": 148,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#149",
+          "repo": "mujina-bzm2-dev",
+          "num": 149,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#52",
+          "repo": "mujina-bzm2-dev",
+          "num": 52,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#129",
+          "repo": "mujina-bzm2-dev",
+          "num": 129,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#113",
+          "repo": "mujina-bzm2-dev",
+          "num": 113,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#122",
+          "repo": "mujina-bzm2-dev",
+          "num": 122,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#134",
+          "repo": "mujina-bzm2-dev",
+          "num": 134,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#132",
+          "repo": "mujina-bzm2-dev",
+          "num": 132,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "stop-supervision",
+      "class": "standalone",
+      "text": "Power every board off and verify it on every stop, supervise Mujina outside the test harness, and start only from a proven-dark state.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#151",
+          "repo": "mujina-bzm2-dev",
+          "num": 151,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#152",
+          "repo": "mujina-bzm2-dev",
+          "num": 152,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#69",
+          "repo": "mujina-bzm2-dev",
+          "num": 69,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#73",
+          "repo": "rdsmujina-env",
+          "num": 73,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#155",
+          "repo": "mujina-bzm2-dev",
+          "num": 155,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#156",
+          "repo": "mujina-bzm2-dev",
+          "num": 156,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "clean-stop"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "boot-dark",
+      "class": "standalone",
+      "text": "Every boot lands with the boards dark, and a kernel fault reboots the unit rather than leaving it wedged.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "rdsmujina-env#74",
+          "repo": "rdsmujina-env",
+          "num": 74,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#153",
+          "repo": "mujina-bzm2-dev",
+          "num": 153,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#75",
+          "repo": "rdsmujina-env",
+          "num": 75,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#154",
+          "repo": "mujina-bzm2-dev",
+          "num": 154,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "pool-config",
+      "class": "standalone",
+      "text": "Take the pool configuration from Mujina's own file, and do no work when there is none.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#158",
+        "repo": "mujina-bzm2-dev",
+        "num": 158,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#150",
+          "repo": "mujina-bzm2-dev",
+          "num": 150,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#7",
+          "repo": "rdsmujina-env",
+          "num": 7,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "os-image",
+      "class": "standalone",
+      "text": "A fresh operating system for the control board, with a userspace chain-link driver, a fan failsafe and a tested way back to the stock image.",
+      "epic": {
+        "ref": "rdsmujina-env#6",
+        "repo": "rdsmujina-env",
+        "num": 6,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "rdsmujina-env#7",
+          "repo": "rdsmujina-env",
+          "num": 7,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#71",
+          "repo": "rdsmujina-env",
+          "num": 71,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#14",
+          "repo": "rdsmujina-env",
+          "num": 14,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#28",
+          "repo": "rdsmujina-env",
+          "num": 28,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#29",
+          "repo": "rdsmujina-env",
+          "num": 29,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#30",
+          "repo": "rdsmujina-env",
+          "num": 30,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#31",
+          "repo": "rdsmujina-env",
+          "num": 31,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#4",
+          "repo": "rdsmujina-env",
+          "num": 4,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#44",
+          "repo": "rdsmujina-env",
+          "num": 44,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#63",
+          "repo": "rdsmujina-env",
+          "num": 63,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#66",
+          "repo": "rdsmujina-env",
+          "num": 66,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "rdsmujina-env#67",
+          "repo": "rdsmujina-env",
+          "num": 67,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "api-lockdown",
+      "class": "standalone",
+      "text": "Lock down the API calls that write to the hardware before Mujina runs on a shared network.",
+      "epic": null,
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#72",
+          "repo": "mujina-bzm2-dev",
+          "num": 72,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "fault-tolerance",
+      "class": "standalone",
+      "text": "Respond safely to fan, chip, stack and board failures, with limits set from measurement: a voltage guard band, a fan-loss derate, a temperature-driven fan law and a latched board-off.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#167",
+        "repo": "mujina-bzm2-dev",
+        "num": 167,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#170",
+          "repo": "mujina-bzm2-dev",
+          "num": 170,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#177",
+          "repo": "mujina-bzm2-dev",
+          "num": 177,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#175",
+          "repo": "mujina-bzm2-dev",
+          "num": 175,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#136",
+          "repo": "mujina-bzm2-dev",
+          "num": 136,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#169",
+          "repo": "mujina-bzm2-dev",
+          "num": 169,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#171",
+          "repo": "mujina-bzm2-dev",
+          "num": 171,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#103",
+          "repo": "mujina-bzm2-dev",
+          "num": 103,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#18",
+          "repo": "mujina-bzm2-dev",
+          "num": 18,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#180",
+          "repo": "mujina-bzm2-dev",
+          "num": 180,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#181",
+          "repo": "mujina-bzm2-dev",
+          "num": 181,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#179",
+          "repo": "mujina-bzm2-dev",
+          "num": 179,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#188",
+          "repo": "mujina-bzm2-dev",
+          "num": 188,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "fault-reporting",
+      "class": "standalone",
+      "text": "Report every fault through the API with its cause, evidence and time, so an operator can see why the miner stopped.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#167",
+        "repo": "mujina-bzm2-dev",
+        "num": 167,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#168",
+          "repo": "mujina-bzm2-dev",
+          "num": 168,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "silent-pool",
+      "class": "nice-to-have",
+      "text": "Notice a pool that has gone silent, not only one that has disconnected, and fail over to another.",
+      "epic": null,
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#191",
+          "repo": "mujina-bzm2-dev",
+          "num": 191,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#163",
+          "repo": "mujina-bzm2-dev",
+          "num": 163,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": {
+        "ref": "mujina-bzm2-dev#137",
+        "repo": "mujina-bzm2-dev",
+        "num": 137,
+        "pr": false,
+        "public": false
+      },
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "pool-loss"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "live-discovery",
+      "class": "nice-to-have",
+      "text": "Complete engine discovery and chip diagnostics on a live chain while the sensor stream is running.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#20",
+        "repo": "mujina-bzm2-dev",
+        "num": 20,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#127",
+          "repo": "mujina-bzm2-dev",
+          "num": 127,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#131",
+          "repo": "mujina-bzm2-dev",
+          "num": 131,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#135",
+          "repo": "mujina-bzm2-dev",
+          "num": 135,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#117",
+          "repo": "mujina-bzm2-dev",
+          "num": 117,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#130",
+          "repo": "mujina-bzm2-dev",
+          "num": 130,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [
+        "engine-discovery",
+        "diagnostics"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "share-hygiene",
+      "class": "nice-to-have",
+      "text": "Count duplicate and rejected shares by cause, and keep the payout identity out of the logs.",
+      "epic": null,
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#123",
+          "repo": "mujina-bzm2-dev",
+          "num": 123,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#162",
+          "repo": "mujina-bzm2-dev",
+          "num": 162,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#118",
+          "repo": "mujina-bzm2-dev",
+          "num": 118,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "keep-healthy",
+      "class": "nice-to-have",
+      "text": "Keep the healthy boards and chips hashing when one part fails, instead of stopping the whole machine.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#167",
+        "repo": "mujina-bzm2-dev",
+        "num": 167,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#182",
+          "repo": "mujina-bzm2-dev",
+          "num": 182,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [
+        "fault-tolerance"
+      ],
+      "planned": [],
+      "closes": [
+        "degradation"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "characterisation",
+      "class": "nice-to-have",
+      "text": "Measure the rest of the hashboard stack's electrical behaviour under load, without damaging anything, to refine the fault limits from data.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#167",
+        "repo": "mujina-bzm2-dev",
+        "num": 167,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#174",
+          "repo": "mujina-bzm2-dev",
+          "num": 174,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "PR mujina-bzm2-dev#186",
+          "repo": "mujina-bzm2-dev",
+          "num": 186,
+          "pr": true,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#176",
+          "repo": "mujina-bzm2-dev",
+          "num": 176,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#178",
+          "repo": "mujina-bzm2-dev",
+          "num": 178,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#183",
+          "repo": "mujina-bzm2-dev",
+          "num": 183,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#184",
+          "repo": "mujina-bzm2-dev",
+          "num": 184,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#185",
+          "repo": "mujina-bzm2-dev",
+          "num": 185,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#187",
+          "repo": "mujina-bzm2-dev",
+          "num": 187,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#189",
+          "repo": "mujina-bzm2-dev",
+          "num": 189,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "long-recordings",
+      "class": "nice-to-have",
+      "text": "Keep complete chain recordings for runs longer than an hour.",
+      "epic": null,
+      "issues": [],
+      "raised_in": {
+        "ref": "mujina-bzm2-dev#137",
+        "repo": "mujina-bzm2-dev",
+        "num": 137,
+        "pr": false,
+        "public": false
+      },
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "generated-status",
+      "class": "nice-to-have",
+      "text": "Generate every status on the page from the case records, so the page cannot disagree with the evidence, and list every case in the validation matrix, which today shows only the earlier ones.",
+      "epic": null,
+      "issues": [],
+      "raised_in": {
+        "ref": "mujina-bzm2-dev#137",
+        "repo": "mujina-bzm2-dev",
+        "num": 137,
+        "pr": false,
+        "public": false
+      },
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "generic-upstream",
+      "class": "nice-to-have",
+      "text": "Offer the generic pieces, such as the serial-port override and multiple reset lines, upstream separately.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#20",
+        "repo": "mujina-bzm2-dev",
+        "num": 20,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#31",
+          "repo": "mujina-bzm2-dev",
+          "num": 31,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#80",
+          "repo": "mujina-bzm2-dev",
+          "num": 80,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "device-ui",
+      "class": "enhancement",
+      "text": "A read-only live dashboard served by Mujina itself, showing only measured values.",
+      "epic": null,
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#124",
+          "repo": "mujina-bzm2-dev",
+          "num": 124,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#192",
+          "repo": "mujina-bzm2-dev",
+          "num": 192,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#194",
+          "repo": "mujina-bzm2-dev",
+          "num": 194,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#173",
+          "repo": "mujina-bzm2-dev",
+          "num": 173,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#195",
+          "repo": "mujina-bzm2-dev",
+          "num": 195,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#196",
+          "repo": "mujina-bzm2-dev",
+          "num": 196,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-device-ui#73",
+          "repo": "mujina-bzm2-device-ui",
+          "num": 73,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-device-ui#74",
+          "repo": "mujina-bzm2-device-ui",
+          "num": 74,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-device-ui#75",
+          "repo": "mujina-bzm2-device-ui",
+          "num": 75,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-device-ui#76",
+          "repo": "mujina-bzm2-device-ui",
+          "num": 76,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [
+        "api-lockdown"
+      ],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "efficiency",
+      "class": "enhancement",
+      "text": "Make efficiency the control objective: metered power, calibrated chip sensors and per-chip work division.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#14",
+        "repo": "mujina-bzm2-dev",
+        "num": 14,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#1",
+          "repo": "mujina-bzm2-dev",
+          "num": 1,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#2",
+          "repo": "mujina-bzm2-dev",
+          "num": 2,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#3",
+          "repo": "mujina-bzm2-dev",
+          "num": 3,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#4",
+          "repo": "mujina-bzm2-dev",
+          "num": 4,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#5",
+          "repo": "mujina-bzm2-dev",
+          "num": 5,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#6",
+          "repo": "mujina-bzm2-dev",
+          "num": 6,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#7",
+          "repo": "mujina-bzm2-dev",
+          "num": 7,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#8",
+          "repo": "mujina-bzm2-dev",
+          "num": 8,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#9",
+          "repo": "mujina-bzm2-dev",
+          "num": 9,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#13",
+          "repo": "mujina-bzm2-dev",
+          "num": 13,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#15",
+          "repo": "mujina-bzm2-dev",
+          "num": 15,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#19",
+          "repo": "mujina-bzm2-dev",
+          "num": 19,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#64",
+          "repo": "mujina-bzm2-dev",
+          "num": 64,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#88",
+          "repo": "mujina-bzm2-dev",
+          "num": 88,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "audiences",
+      "class": "enhancement",
+      "text": "Support further boards and uses, such as an educational single-chip miner, a heated-bed tile and a solar-first miner, as each hardware design is finished.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#90",
+        "repo": "mujina-bzm2-dev",
+        "num": 90,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#91",
+          "repo": "mujina-bzm2-dev",
+          "num": 91,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#92",
+          "repo": "mujina-bzm2-dev",
+          "num": 92,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#94",
+          "repo": "mujina-bzm2-dev",
+          "num": 94,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#101",
+          "repo": "mujina-bzm2-dev",
+          "num": 101,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#110",
+          "repo": "mujina-bzm2-dev",
+          "num": 110,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#10",
+          "repo": "mujina-bzm2-dev",
+          "num": 10,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#12",
+          "repo": "mujina-bzm2-dev",
+          "num": 12,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#11",
+          "repo": "mujina-bzm2-dev",
+          "num": 11,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "research",
+      "class": "enhancement",
+      "text": "Expose the controls a research instrument needs: nonce windows, return threshold, version pinning and per-chip counters.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#21",
+        "repo": "mujina-bzm2-dev",
+        "num": 21,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#93",
+          "repo": "mujina-bzm2-dev",
+          "num": 93,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#37",
+          "repo": "mujina-bzm2-dev",
+          "num": 37,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#38",
+          "repo": "mujina-bzm2-dev",
+          "num": 38,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#39",
+          "repo": "mujina-bzm2-dev",
+          "num": 39,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#40",
+          "repo": "mujina-bzm2-dev",
+          "num": 40,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#41",
+          "repo": "mujina-bzm2-dev",
+          "num": 41,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#42",
+          "repo": "mujina-bzm2-dev",
+          "num": 42,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#43",
+          "repo": "mujina-bzm2-dev",
+          "num": 43,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#44",
+          "repo": "mujina-bzm2-dev",
+          "num": 44,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#45",
+          "repo": "mujina-bzm2-dev",
+          "num": 45,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    },
+    {
+      "id": "control-modes",
+      "class": "enhancement",
+      "text": "Target a power level or a room temperature, curtail on a deadline, and manage several pools.",
+      "epic": {
+        "ref": "mujina-bzm2-dev#14",
+        "repo": "mujina-bzm2-dev",
+        "num": 14,
+        "pr": false,
+        "public": false
+      },
+      "issues": [
+        {
+          "ref": "mujina-bzm2-dev#161",
+          "repo": "mujina-bzm2-dev",
+          "num": 161,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#164",
+          "repo": "mujina-bzm2-dev",
+          "num": 164,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#165",
+          "repo": "mujina-bzm2-dev",
+          "num": 165,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#166",
+          "repo": "mujina-bzm2-dev",
+          "num": 166,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#160",
+          "repo": "mujina-bzm2-dev",
+          "num": 160,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#193",
+          "repo": "mujina-bzm2-dev",
+          "num": 193,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#197",
+          "repo": "mujina-bzm2-dev",
+          "num": 197,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#198",
+          "repo": "mujina-bzm2-dev",
+          "num": 198,
+          "pr": false,
+          "public": false
+        },
+        {
+          "ref": "mujina-bzm2-dev#199",
+          "repo": "mujina-bzm2-dev",
+          "num": 199,
+          "pr": false,
+          "public": false
+        }
+      ],
+      "raised_in": null,
+      "depends_on": [],
+      "planned": [],
+      "closes": [],
+      "evidence": []
+    }
+  ]
+}

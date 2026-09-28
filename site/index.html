@@ -29,6 +29,7 @@
         <a href="milestones/">Milestones</a>
         <a href="worklog/">Worklog</a>
         <a href="matrix/">Matrix</a>
+        <a href="roadmap/">Roadmap</a>
         <a href="rds-viz/">RDS</a>
         <a href="https://blockscale-solutions.github.io/bzm2-hwref/" rel="noopener noreferrer" title="BZM2 hardware reference (Pages; repo linked from that hub)">Hardware ref</a>
         <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration" rel="noopener noreferrer">GitHub</a>
@@ -47,12 +48,14 @@
       <p class="hero-sub">
         Open-source <a href="https://github.com/256foundation/mujina">Mujina</a> mining daemon onto
         Intel Blockscale BZM2 silicon. Validation is gated: vendor RDS characterization (RDS-*),
-        then Mujina bring-up (MJ-*). Nothing hashes under Mujina control until the thermal interlock is in place.
+        then Mujina bring-up and mining (MJ-*).
       </p>
       <div class="story-links">
-        <a class="primary" href="matrix/">Validation matrix →</a>
+        <a class="primary" href="#proven">Proven on hardware →</a>
+        <a href="roadmap/">Roadmap</a>
+        <a href="matrix/">Validation matrix</a>
+        <a href="https://blockscale-solutions.github.io/bzm2-hwref/" rel="noopener noreferrer">Hardware reference</a>
         <a href="worklog/">Worklog</a>
-        <a href="rds-viz/">RDS schematic</a>
         <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration">Repository</a>
       </div>
     </div>
@@ -71,14 +74,43 @@
     </p>
 
     <h2>Current phase</h2>
+    <div data-roadmap-view="headline" data-data-root="data">
+      <noscript><p>The current phase is rendered from <a href="data/roadmap.json">data/roadmap.json</a>.</p></noscript>
+    </div>
+    <div class="callout" id="checks">
+      Every row below is typed once, in one source file, from the case records: status, case ids and run times only.
+      The statuses are not yet derived from the records; that is on the <a href="roadmap/">roadmap</a>, with the rest of
+      what is still missing. Before publication a generator checked the following, and the list is its own:
+      <div data-roadmap-view="checks" data-data-root="data">
+        <noscript><p>The list is rendered from <a href="data/roadmap.json">data/roadmap.json</a>.</p></noscript>
+      </div>
+    </div>
+
+    <h2 id="enablement">Upstream enablement</h2>
     <p>
-      Vendor stack characterized for everything short of sustained hashing. Mujina attaches to a real chain
-      and reads it. The remaining gap before we drive the hardware ourselves is an interlock that refuses to
-      dispatch work we cannot thermally protect. That interlock is specified and not yet built.
+      The enablement goes upstream as three pull requests, split by what would change each one: general Mujina,
+      the chip, and the hashboard. The lab harness stays here. Branch heads, and what each branch carries, are read
+      from git when the page is built. The branches live in a private repository, so they are named here, not linked.
+      Every hardware run cited on this page used a Mujina build from before the two newest changes these
+      branches carry, the in-flight result fix and the supply client. The first run of the branches' own code
+      is under way.
     </p>
-    <div class="callout">
-      <strong>Gate:</strong> Phase 3 (mining) stays blocked until an explicit go-ahead and a cool thermal path.
-      Spurious stop beats missing stop.
+    <div data-roadmap-view="enablement" data-data-root="data">
+      <noscript><p>This section is rendered from <a href="data/roadmap.json">data/roadmap.json</a>.</p></noscript>
+    </div>
+    <p>
+      The chip and board facts the port rests on, written from our own captures, are in the
+      <a href="https://blockscale-solutions.github.io/bzm2-hwref/" rel="noopener noreferrer">BZM2 hardware reference</a>.
+    </p>
+
+    <h2 id="proven">Proven on hardware</h2>
+    <p>
+      Grouped by the pull request whose branch carries each capability's code, which the generator checks against
+      the branches; a capability not yet built sits where its code is expected to go. A proven row folds its evidence
+      away; a row short of proven keeps its runs open and names the roadmap item that closes it.
+    </p>
+    <div data-roadmap-view="proven" data-data-root="data" data-roadmap="roadmap/" aria-live="polite">
+      <noscript><p>This section is rendered from <a href="data/roadmap.json">data/roadmap.json</a>.</p></noscript>
     </div>
 
     <div class="phase-card">
@@ -90,7 +122,7 @@
       <div class="phase-item">
         <div class="phase-id">MJ-* · Mujina</div>
         <h3>Daemon bring-up</h3>
-        <p>Baud, observation, diagnostics, enumeration — attach and read before any Mujina-controlled hashing.</p>
+        <p>Chain link, observation, takeover of a running chain, then mining on one, two and all three boards.</p>
       </div>
     </div>
 
@@ -112,9 +144,10 @@
     <ul>
       <li><a href="milestones/2026-09-23-first-accepted-share.html">Mujina's first pool-accepted share on BZM2 silicon</a> — 2026-09-23, chain tip 968,216</li>
       <li><a href="worklog/2026-09-15-first-hardware-week.html">First hardware week</a> — five defects, four of them ours</li>
+      <li><a href="roadmap/">Roadmap</a> — what is required to go upstream and to run on its own, what is nice to have, and enhancements, each naming its epic and issues</li>
       <li><a href="matrix/">Validation matrix</a> — live phase / case status</li>
       <li><a href="rds-viz/">RDS schematic</a> — control board, PSU, fans, hashboards</li>
-      <li><a href="https://blockscale-solutions.github.io/bzm2-hwref/">Hardware reference</a> — BZM2 ASIC docs (bring-up, board design, UART/TDM, pinout). Pages site; until the hwref Pages deploy is live after merge, the <a href="https://github.com/Blockscale-Solutions/bzm2-hwref">repo</a> remains available.</li>
+      <li><a href="https://blockscale-solutions.github.io/bzm2-hwref/">Hardware reference</a> — BZM2 ASIC docs (bring-up, board design, UART/TDM, pinout); its <a href="https://github.com/Blockscale-Solutions/bzm2-hwref">repository</a> is public too.</li>
     </ul>
   </main>
 
@@ -122,9 +155,11 @@
     <div class="wrap">
       <p class="section-label">Provenance</p>
       <p class="lede">Status and timestamps only. Site chrome began as an internal lab dashboard and was retargeted for this port.</p>
+      <p class="lede rm-feed-meta" data-roadmap-view="meta" data-data-root="data"></p>
     </div>
   </footer>
 
+  <script src="js/roadmap.js"></script>
   <script src="rds-viz/js/board.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {

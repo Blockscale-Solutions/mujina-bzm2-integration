@@ -96,7 +96,7 @@
     "MJ-BAUD-01": {
       "id": "MJ-BAUD-01",
       "title": "5 Mbaud on the vendor 9-bit tty driver",
-      "subtitle": "**Executed 2026-09-14.** Evidence: (evidence held internally). Runs before MJ-DIAG-01, deliberately. Verdict is computed from the evidence.",
+      "subtitle": "**Executed 2026-09-14.** Evidence: (evidence held internally) (PASS). *Corrected 2026-09-28: this line first cited `20260915T042226Z`, a run id that does not exist; the four runs on disk are 034026Z, 034226Z, 042032Z (FAIL, superseded) and 042209Z (PASS).* Runs before MJ-DIAG-01, deliberately. Verdi",
       "objective": "Establish whether the vendor tty driver accepts the baud rate Mujina asks for by the method Mujina uses to ask. Not whether 5 Mbaud works \u2014 the vendor stack proves that nightly \u2014 but whether *our* request is honoured, silently ignored, or rejected.",
       "requirements": "- One RDS 2.0 unit. **The chain need not be powered**, which is what makes this the cheapest case in the phase: it is about the driver, not the silicon. - Mujina able to open the tty, which means the vendor daemon must not hold it.",
       "procedure": "1. Stop the vendor stack so the ttys are free. Confirm by open file descriptors, not by assumption. 2. Have Mujina open the tty and set the rate the way it does in production. 3. Read the rate back **from the driver**, not from Mujina's own record of what it asked for. 4. Compare against what the vendor stack configures, read the same way. 5. Repeat for each of the three ttys: a driver that honours one and not another is a real possibility and a miserable thing to discover later.",

@@ -1403,3 +1403,99 @@ html[data-theme="dark"] .story-links a.primary { color: #0e1114; }
   font-family: var(--mono);
   font-size: 0.85em;
 }
+
+/* —— Proven on hardware, upstream enablement, roadmap (js/roadmap.js) ——
+   Rendered from data/roadmap.json. Status colours reuse the matrix's tokens:
+   proven = passed, partly proven = blocked, not yet = pending. */
+.rm-tier { margin-top: 1.75rem; }
+.prose .rm-tier h3 { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.prose .rm-test { font-size: 0.92rem; color: var(--muted); margin: 0 0 0.75rem; }
+.rm-cap,
+.rm-item,
+.rm-branch {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  margin: 0 0 0.6rem;
+  max-width: 68ch;
+}
+.rm-cap-head { display: flex; gap: 0.75rem; align-items: flex-start; }
+.prose .rm-cap-head p,
+.prose .rm-item-text { margin: 0; color: var(--ink); }
+.rm-status {
+  flex: none;
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid currentColor;
+  margin-top: 0.2rem;
+}
+.rm-status.st-proven { color: var(--st-passed); }
+.rm-status.st-partly { color: var(--st-blocked); }
+.rm-status.st-notyet { color: var(--st-pending); }
+.rm-evidence { margin-top: 0.55rem; font-size: 0.88rem; }
+.rm-evidence summary { cursor: pointer; color: var(--muted); font-family: var(--mono); font-size: 0.8rem; }
+.prose ul.rm-runs { list-style: none; margin: 0.45rem 0 0; padding: 0; }
+.prose ul.rm-runs li { font-size: 0.86rem; line-height: 1.5; margin: 0.15rem 0; color: var(--ink-soft); }
+.rm-runs time { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); margin: 0 0.35rem; }
+.rm-pending {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--st-running);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-pill);
+  padding: 0 0.4rem;
+}
+.rm-pending-judging { color: var(--st-blocked); }
+.rm-verdict {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-pill);
+  padding: 0 0.4rem;
+  color: var(--muted);
+}
+.rm-verdict-pass { color: var(--st-passed); }
+.rm-verdict-fail { color: var(--st-failed); }
+.prose .rm-meta { font-size: 0.86rem; color: var(--muted); margin: 0.45rem 0 0; overflow-wrap: anywhere; }
+.prose .rm-none { font-size: 0.86rem; color: var(--faint); margin: 0.45rem 0 0; }
+.rm-ref-private { color: var(--ink-soft); }
+.prose ul.rm-checks { margin: 0.5rem 0 0; padding-left: 1.1rem; }
+.prose ul.rm-checks li { font-size: 0.88rem; line-height: 1.5; margin: 0.15rem 0; }
+.rm-home {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: 0.05rem 0.45rem;
+}
+.prose ul.rm-branches { list-style: none; margin: 0.75rem 0 0; padding: 0; }
+.prose ul.rm-branches li + li { margin-top: 0.6rem; }
+.rm-branch-head { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; }
+.rm-sha { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+.prose .rm-branch p { margin: 0.35rem 0 0; }
+.prose .rm-subject { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); }
+.prose .rm-note { border-left: 3px solid var(--st-blocked); padding-left: 0.6rem; }
+.rm-class { margin-top: 1.5rem; }
+.rm-class-upstream-gate .rm-item,
+.rm-class-standalone .rm-item { border-left: 3px solid var(--accent-warm); }
+.rm-class-nice-to-have .rm-item { border-left: 3px solid var(--accent-cool); }
+.rm-class-enhancement .rm-item { border-left: 3px solid var(--line-strong); }
+.rm-stale { color: var(--st-failed); }
+.rm-feed-meta code { font-family: var(--mono); font-size: 0.88em; }
+@media (max-width: 480px) {
+  .rm-cap-head { flex-direction: column; gap: 0.35rem; }
+}

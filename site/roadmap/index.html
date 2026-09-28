@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mujina BZM2 · roadmap</title>
+  <meta name="description" content="What is still needed for Mujina to go upstream and to run the RDS 2.0 machine on its own, what is nice to have, and enhancements, each naming its epic and issues." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="../js/theme.js"></script>
+</head>
+<body class="story-page">
+  <aside class="provisional-banner" role="status" aria-live="polite">
+    <div class="provisional-banner-inner">
+      <strong class="provisional-title">BRING-UP IN PROGRESS — STATUS + TIMINGS ONLY</strong>
+      <p class="provisional-body">Every row on this page is typed once, in one source file, and checked by a generator before it is published; the checks are listed on the home page. Measurements are not published here.</p>
+    </div>
+  </aside>
+
+  <nav class="site-nav" aria-label="Section navigation">
+    <div class="inner">
+      <div class="nav-brand">Mujina BZM2 · <span class="accent">RDS bring-up</span></div>
+      <div class="nav-links">
+        <a href="../">Story</a>
+        <a href="../milestones/">Milestones</a>
+        <a href="../worklog/">Worklog</a>
+        <a href="../matrix/">Matrix</a>
+        <a href="./" class="active" aria-current="page">Roadmap</a>
+        <a href="../rds-viz/">RDS</a>
+        <a href="https://blockscale-solutions.github.io/bzm2-hwref/" rel="noopener noreferrer" title="BZM2 hardware reference">Hardware ref</a>
+        <a href="https://github.com/Blockscale-Solutions/mujina-bzm2-integration" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <div class="theme-toggle" data-theme-toggle role="group" aria-label="Color theme">
+        <button type="button" data-theme-value="light">Light</button>
+        <button type="button" data-theme-value="dark">Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Roadmap · from handover to standalone</p>
+      <h1>What is left.<br /><span class="t-muted">Required, nice to have, enhancement.</span></h1>
+      <div class="hero-sub" data-roadmap-view="headline" data-data-root="../data"><p>Loading the roadmap feed…</p></div>
+      <div class="story-links">
+        <a class="primary" href="../#proven">Proven on hardware →</a>
+        <a href="../#enablement">Upstream enablement</a>
+        <a href="https://blockscale-solutions.github.io/bzm2-hwref/" rel="noopener noreferrer">Hardware reference</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap prose">
+    <p>
+      Each item names its epic and issues. They are tracked in private repositories, so they are shown as text rather
+      than links. Each issue sits in one class. Where an item waits on another, it says so. Where an item closes a
+      gap in what has been proven, it names the capability and its current status. Both pages render one source, so
+      they cannot tell different stories. <a href="../#checks">What the generator checked</a>.
+    </p>
+    <div data-roadmap-view="roadmap" data-data-root="../data" data-home="../" aria-live="polite">
+      <noscript><p>This page is rendered from <a href="../data/roadmap.json">data/roadmap.json</a>.</p></noscript>
+    </div>
+
+    <h2>Hardware reference</h2>
+    <p>
+      The chip and board facts this port rests on, written from our own captures, are in the
+      <a href="https://blockscale-solutions.github.io/bzm2-hwref/" rel="noopener noreferrer">BZM2 hardware reference</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="section-label">Provenance</p>
+      <p class="lede rm-feed-meta" data-roadmap-view="meta" data-data-root="../data">Loading…</p>
+    </div>
+  </footer>
+
+  <script src="../js/roadmap.js"></script>
+</body>
+</html>
