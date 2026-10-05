@@ -1,7 +1,7 @@
 {
   "schema": "rds-roadmap/v2",
-  "generated_at": "2026-09-28T19:24:41Z",
-  "git_commit": "d5a0db7",
+  "generated_at": "2026-10-05T20:29:32Z",
+  "git_commit": "32d3dfb",
   "stale_after_s": 604800,
   "source": "typed in one source file from the case records, and checked by a generator before publication",
   "note": "Status, case ids, run times and links only. No figure, temperature, serial, host or path appears here by design.",
@@ -15,7 +15,7 @@
     "Each upstream branch is on the project's origin, is stacked on the one before it, and carries its files as they are in the lab tree it was built from, apart from declared edits.",
     "The summary at the top agrees with the rows it summarises.",
     "Each issue sits in one class of roadmap item, each gap is closed from one class, and no item depends on a weaker class than its own.",
-    "The roadmap's own text carries no figure with a unit, no path and no vendor name.",
+    "The roadmap's own text carries no path, no vendor name and no figure with a unit, apart from figures approved one by one in the exact text they appear in.",
     "Which repositories are private was confirmed with GitHub, and a reference into a private one is shown as text, not a link.",
     "Every issue and pull request cited exists, and every epic is marked as an epic in its tracker."
   ],
@@ -51,7 +51,240 @@
   ],
   "tree": {
     "built_from": "7c66040",
-    "newer": []
+    "newer": [
+      {
+        "head": "25ca1aa",
+        "subject": "fix(bzm2): power off every driven board on a clean stop, and verify dark (#151)"
+      },
+      {
+        "head": "1959a0f",
+        "subject": "docs(api): document the run state for consumers (#263)"
+      },
+      {
+        "head": "83ab5aa",
+        "subject": "feat(bzm2): report attaching, calibrating and ungating in run state (#263)"
+      },
+      {
+        "head": "e209615",
+        "subject": "feat(bzm2): report run state at bring-up, dispatch, pause and stop (#263)"
+      },
+      {
+        "head": "88803ea",
+        "subject": "feat(runstate): add one machine-wide run-state record (#263)"
+      },
+      {
+        "head": "ffd8080",
+        "subject": "fix(stratum): keep a pool message's bytes across a racing select!, and cap its length (#261)"
+      },
+      {
+        "head": "6ab3cac",
+        "subject": "fix(bzm2): arm on-die protection whenever calibration runs, not only with bring-up (#259)"
+      },
+      {
+        "head": "854e5b3",
+        "subject": "style(bzm2): use RangeInclusive::contains for the register byte-count checks (#252)"
+      },
+      {
+        "head": "f7af685",
+        "subject": "style(bzm2): cargo fmt over the #252 review fixes"
+      },
+      {
+        "head": "5851827",
+        "subject": "fix(bzm2): map the wire ASIC id to its index before using it as one (#252)"
+      },
+      {
+        "head": "eff3339",
+        "subject": "fix(api): gate raw register read/write behind an explicit opt-in (#252)"
+      },
+      {
+        "head": "43e1d68",
+        "subject": "fix(api): refuse an invalid register-write frame with 400 and the reason (#252)"
+      },
+      {
+        "head": "b1d221a",
+        "subject": "fix(bzm2): refuse a zero-length register read before it reaches the wire (#252)"
+      },
+      {
+        "head": "1104481",
+        "subject": "fix(bzm2): refuse an enumeration layout that reaches a reserved id (#252)"
+      },
+      {
+        "head": "996414c",
+        "subject": "fix(bzm2): log the per-attach nonce-slice write burst's start and end (#251)"
+      },
+      {
+        "head": "c8ec940",
+        "subject": "fix(bzm2): stop dispatch and scram on a confirmed rail drop (#252)"
+      },
+      {
+        "head": "6dac659",
+        "subject": "fix(bzm2): refuse to calibrate with on-die protection unconfirmed (#252)"
+      },
+      {
+        "head": "3c811ea",
+        "subject": "feat(daemon): sample board telemetry into the history log (#194)"
+      },
+      {
+        "head": "8c58401",
+        "subject": "feat(scheduler): record pool traffic in the history log (#194)"
+      },
+      {
+        "head": "076143f",
+        "subject": "feat(history): write the versioned JSONL history log (#194)"
+      },
+      {
+        "head": "758ebd8",
+        "subject": "feat(api): serve each ASIC's pool replies in bzm2_tuning.asics[] (#221)"
+      },
+      {
+        "head": "ddfa04e",
+        "subject": "feat(bzm2): count the pool's replies against the ASIC that found each share (#221)"
+      },
+      {
+        "head": "a797469",
+        "subject": "feat(scheduler): route each pool reply back to the thread that found its share (#221)"
+      },
+      {
+        "head": "9950b5c",
+        "subject": "refactor(bzm2): build the result share through its constructor (#221)"
+      },
+      {
+        "head": "dad5e68",
+        "subject": "feat(stratum): return each pool reply with the origin of its share (#221)"
+      },
+      {
+        "head": "26b05ec",
+        "subject": "refactor(hash_thread): build shares through constructors (#221)"
+      },
+      {
+        "head": "de10367",
+        "subject": "refactor(job_source): count pool replies without allocating (#221)"
+      },
+      {
+        "head": "3b61f73",
+        "subject": "feat(job_source): carry a Copy origin on each share (#221)"
+      },
+      {
+        "head": "3feb011",
+        "subject": "feat(stratum): set TCP keepalive on the pool socket (#228)"
+      },
+      {
+        "head": "6733477",
+        "subject": "fix(stratum): end a pool connection that goes silent or fails a write (#228)"
+      },
+      {
+        "head": "dbf924c",
+        "subject": "docs(api): document how soon a dead pool connection reads disconnected (#228)"
+      },
+      {
+        "head": "7b0c911",
+        "subject": "fix(fans): refuse a manual fan duty below the law's on a hot board (#235)"
+      },
+      {
+        "head": "e405ec6",
+        "subject": "fix(fans): hold the command loop only for the fan duty write (#234)"
+      },
+      {
+        "head": "3b83ae0",
+        "subject": "fix(fans): refuse a fan command after the stop or below the floor (#235)"
+      },
+      {
+        "head": "36fc9a5",
+        "subject": "fix(fans): release the full-speed latch on a clean stop only on evidence (#69)"
+      },
+      {
+        "head": "0c36963",
+        "subject": "feat(fans): let the operator bound the thermal fan law over the API (#175)"
+      },
+      {
+        "head": "63dc531",
+        "subject": "api: test that every endpoint serves one measured-only board hashrate"
+      },
+      {
+        "head": "8a0d37e",
+        "subject": "api: every served board carries a hashrate summed from its threads"
+      },
+      {
+        "head": "f5cdf5d",
+        "subject": "api: a thread's hashrate is measured or null, with its provenance"
+      },
+      {
+        "head": "840d9a7",
+        "subject": "bzm2: a thread reports measured hashrate only; calibration power is never split"
+      },
+      {
+        "head": "896eee8",
+        "subject": "hash_thread: a status can say whether its hashrate was measured"
+      },
+      {
+        "head": "a0a85bb",
+        "subject": "types: the hashrate estimator reports what a reading rests on"
+      },
+      {
+        "head": "5df15fa",
+        "subject": "fans: anti-windup and saturation state for the thermal fan loop, gain 0 until #175 (#136)"
+      },
+      {
+        "head": "6439854",
+        "subject": "api: sources[] reports the worker and the stratum connection state"
+      },
+      {
+        "head": "24bf1ac",
+        "subject": "job_source: the stratum source publishes its connection state and worker"
+      },
+      {
+        "head": "b874862",
+        "subject": "fans, api: SetFanTarget waits for the fan command's own derived wait (#229)"
+      },
+      {
+        "head": "a850d1d",
+        "subject": "scheduler: test the total before any thread registers; document the departed row's transfers (#215)"
+      },
+      {
+        "head": "b0ac3c2",
+        "subject": "api: multi-window hashrate from the work counter, published at 1 Hz (#215)"
+      },
+      {
+        "head": "ef64f0d",
+        "subject": "types: a cumulative work counter with windowed reads (#215)"
+      },
+      {
+        "head": "0af4ca2",
+        "subject": "bzm2: one outstanding metrics query per thread, so the stop still lands (#134)"
+      },
+      {
+        "head": "6e9c695",
+        "subject": "tests: general-layer tests clean under clippy --all-targets (Rust 1.94) (#223)"
+      },
+      {
+        "head": "06e924e",
+        "subject": "bzm2: board-layer tests clean under clippy --all-targets (Rust 1.94) (#223)"
+      },
+      {
+        "head": "b2e3185",
+        "subject": "bzm2: chip-layer tests clean under clippy --all-targets (Rust 1.94) (#223)"
+      },
+      {
+        "head": "9e09a72",
+        "subject": "scheduler, api: pool share replies per source in /api/v0/miner (#211)"
+      },
+      {
+        "head": "ce65a30",
+        "subject": "job_source: report each pool reply to a submitted share as an event (#211)"
+      },
+      {
+        "head": "2be2c54",
+        "subject": "transport: collapse a nested if (clippy, Rust 1.94)"
+      },
+      {
+        "head": "7273783",
+        "subject": "bzm2: board layer clean under clippy -D warnings (Rust 1.94)"
+      },
+      {
+        "head": "904b683",
+        "subject": "bzm2: chip layer clean under clippy -D warnings (Rust 1.94); doc quote fenced"
+      }
+    ]
   },
   "tiers": [
     {
