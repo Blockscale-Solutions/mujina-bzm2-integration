@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" class="tl" data-view="key" viewBox="0 0 360 1080" width="360" height="1080" role="img" aria-labelledby="tl-title-key tl-desc-key">
-<title id="tl-title-key">Timeline, high-level view, 2025-06-09 to 2026-10-05</title>
+<title id="tl-title-key">Timeline, high-level view, 2025-06-09 to 2026-10-06</title>
 <desc id="tl-desc-key">12 milestones in order along a vertical line, alternating sides, then what is planned; spaced by order, not by time. A pill marks each new year and a break marks each gap of more than a month. The same list follows as text.</desc>
 <style>
 svg.tl{--tl-ink:#1a1917;--tl-muted:#6b665e;--tl-line:rgba(26,25,23,.28);--tl-accent:#0e938b;--tl-surface:#ffffff;--tl-said:#b45309;--tl-pill:#efece6;font-family:Ubuntu,ui-sans-serif,system-ui,-apple-system,sans-serif}
@@ -128,10 +128,10 @@ svg.tl .tl-plan{fill:var(--tl-surface);stroke:var(--tl-muted);stroke-width:2;str
 <text class="tl-sub" x="166" y="915.0" text-anchor="end">2026-09-28 14:57Z ·</text>
 <text class="tl-sub" x="166" y="929.0" text-anchor="end">MJ-HASH-07</text>
 </g>
-<g class="tl-mark" data-id="now" data-side="right"><title>Today · 2026-10-05</title>
+<g class="tl-mark" data-id="now" data-side="right"><title>Today · 2026-10-06</title>
 <line class="tl-rule" x1="186" y1="919.0" x2="190" y2="919.0"/>
 <text class="tl-label" x="194" y="924.0" text-anchor="start">Today</text>
-<text class="tl-sub" x="194" y="939.0" text-anchor="start">2026-10-05</text>
+<text class="tl-sub" x="194" y="939.0" text-anchor="start">2026-10-06</text>
 </g>
 <g class="tl-mark" data-id="plan-48h" data-side="left"><title>48-hour run · planned, no date · #82 #137</title>
 <line class="tl-rule" x1="174" y1="995.0" x2="170" y2="995.0"/>
