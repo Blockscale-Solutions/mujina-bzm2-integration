@@ -573,7 +573,7 @@ svg.tl .tl-plan{fill:var(--tl-surface);stroke:var(--tl-muted);stroke-width:2;str
 <p>Every run in which Mujina received work from the pool: the day it ran, the span it mined over, and the
 blocks found in that span, each of which it was mining toward when it was found. Read from each run's own
 record of the chain tip at the start and the end of that span, looked up once from two independent public
-block explorers, which agree on 14 of these 25. Tips are placed by block header time, which miners set;
+block explorers, which agree on 14 of these 26. Tips are placed by block header time, which miners set;
 <span aria-label="approximately">&asymp;</span> marks a run where the pool's own new-block notices count
 differently, so a block at one edge of the span may sit on the other side of it.</p>
 <div class="tl-scroll"><table class="tl-runs">
@@ -605,6 +605,7 @@ differently, so a block at one edge of the span may sit on the other side of it.
 <tr><td>MJ-HASH-13<span class="tl-run">20261001T192725Z</span></td><td><span class="tl-when">2026-10-01</span></td><td>not looked up yet</td></tr>
 <tr><td>MJ-STOP-01<span class="tl-run">20261006T014121Z</span></td><td><span class="tl-when">2026-10-06</span></td><td>not looked up yet</td></tr>
 <tr><td>MJ-HASH-14<span class="tl-run">20261006T023659Z</span></td><td><span class="tl-when">2026-10-06</span></td><td>not looked up yet</td></tr>
+<tr><td>MJ-STOP-01<span class="tl-run">20261006T054041Z</span></td><td><span class="tl-when">2026-10-06</span></td><td>not looked up yet</td></tr>
 </tbody></table></div>
 <h2>How each date is found</h2>
 <dl class="tl-how">
@@ -625,7 +626,7 @@ differently, so a block at one edge of the span may sit on the other side of it.
 <dt>First two-hour run</dt><dd>The earliest mining run whose window log reports a hold of two hours complete, at that line&#x27;s time.</dd>
 <dt>Planned</dt><dd>A roadmap item that has not happened yet. It is drawn after today with no date, and names the roadmap item, epic and issues it is tracked under.</dd>
 </dl>
-<p class="tl-prov">Generated 2026-10-06T05:30:46Z from commit 8a68f75. Status, dates and case ids only.</p>
+<p class="tl-prov">Generated 2026-10-06T06:39:25Z from commit d73caa5. Status, dates and case ids only.</p>
 </main>
 <script>
 (function () {
